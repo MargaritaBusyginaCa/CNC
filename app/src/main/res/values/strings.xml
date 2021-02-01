@@ -4,9 +4,13 @@
     <string name="StudentNumber">Your student number</string>
     <string name="login">login</string>
     <string name="title_activity_login_page">LoginPageActivity</string>
+    <string name="Assignments">Assignments</string>
+    <string name="CheckList">Check List</string>
+    <string name="Submissions">Submissions</string>
+    <string name="Manual">CNC Manual</string>
     <!--
     This string is used for square devices and overridden by hello_world in
     values-round/strings.xml for round devices.
     -->
-    <string name="hello_world">Hello Square World!</string>
+
 </resources>
