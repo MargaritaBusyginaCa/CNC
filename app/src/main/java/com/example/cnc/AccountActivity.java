@@ -17,5 +17,11 @@ Button bt_checklist;
             Intent intent=new Intent(this, CheckList_pdf_reader.class);
             startActivity(intent);
         });
+
+        Button submitAct=findViewById(R.id.submission_bt);
+        submitAct.setOnClickListener(click->{
+            Intent intent=new Intent(this,SubmitActivity.class);
+            startActivity(intent);
+        });
     }
 }

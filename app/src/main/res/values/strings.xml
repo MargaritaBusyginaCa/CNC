@@ -8,6 +8,9 @@
     <string name="CheckList">Check List</string>
     <string name="Submissions">Submissions</string>
     <string name="Manual">CNC Manual</string>
+    <string name="submit">submit</string>
+    <string name="cancel">cancel</string>
+    <string name="comments">comments</string>
     <!--
     This string is used for square devices and overridden by hello_world in
     values-round/strings.xml for round devices.
