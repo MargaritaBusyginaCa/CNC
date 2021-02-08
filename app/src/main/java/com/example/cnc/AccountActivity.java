@@ -14,7 +14,7 @@ Button bt_checklist;
         setContentView(R.layout.activity_account);
         bt_checklist=findViewById(R.id.check_list_bt);
         bt_checklist.setOnClickListener(click->{
-            Intent intent=new Intent(this, CheckList_pdf_reader.class);
+            Intent intent=new Intent(this, CheckListActivity.class);
             startActivity(intent);
         });
 
