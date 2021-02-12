@@ -7,30 +7,20 @@
 
     tools:context=".loginPage.AccountActivity">
 
-    <!--<Button-->
-    <!--    android:id="@+id/check_list_bt"-->
-    <!--    android:layout_width="168dp"-->
-    <!--    android:layout_height="64dp"-->
-    <!--    android:layout_marginLeft="120dp"-->
-    <!--    android:layout_marginTop="170dp"-->
-    <!--    android:text="@string/CheckList"-->
-    <!--    android:background="@color/orange"/>-->
-
-    <Button
-        android:id="@+id/orientation_bt"
-        android:layout_width="168dp"
-        android:layout_height="64dp"
-        android:layout_marginLeft="120dp"
-        android:layout_marginTop="120dp"
-        android:text="@string/orientation" />
-
+<!--<Button-->
+<!--    android:id="@+id/check_list_bt"-->
+<!--    android:layout_width="168dp"-->
+<!--    android:layout_height="64dp"-->
+<!--    android:layout_marginLeft="120dp"-->
+<!--    android:layout_marginTop="170dp"-->
+<!--    android:text="@string/CheckList"-->
+<!--    android:background="@color/orange"/>-->
     <Button
         android:id="@+id/check_list_bt"
         android:layout_width="168dp"
         android:layout_height="64dp"
-        android:layout_below="@+id/orientation_bt"
         android:layout_marginLeft="120dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="120dp"
         android:text="@string/CheckList"/>
 
 
@@ -52,14 +42,14 @@
         android:text="@string/Submissions"
         />
 
-    <Button
-        android:id="@+id/manual_bt"
-        android:layout_width="168dp"
-        android:layout_height="64dp"
-        android:layout_marginLeft="120dp"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/submission_bt"
-        android:text="@string/Manual"
-        />
+     <Button
+         android:id="@+id/manual_bt"
+         android:layout_width="168dp"
+         android:layout_height="64dp"
+         android:layout_marginLeft="120dp"
+         android:layout_marginTop="20dp"
+         android:layout_below="@+id/submission_bt"
+         android:text="@string/Manual"
+         />
 
 </RelativeLayout>

@@ -15,16 +15,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CNC">
-        <activity android:name=".ChecklistActivity_2"></activity>
-        <activity android:name=".SubmitActivity" />
-        <activity android:name=".AccountActivity" />
-        <activity android:name=".CheckListActivity" />
+        <activity android:name=".checklist.ChecklistActivity_2"></activity>
+        <activity android:name=".submit.SubmitActivity" />
+        <activity android:name=".loginPage.AccountActivity" />
+        <activity android:name=".checklist.CheckListActivity" />
+        <activity android:name=".orientation.OrientationActivity" />
+
         <!--
                Set to true if your app is Standalone, that is, it does not require the handheld
                app to run.
         -->
         <activity
-            android:name=".LoginPageActivity"
+            android:name=".loginPage.LoginPageActivity"
             android:label="@string/title_activity_login_page">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,7 +34,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
