@@ -12,12 +12,14 @@ import android.widget.TextView;
 
 //import com.github.barteksc.pdfviewer.PDFView;
 
+import com.example.cnc.R;
+
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 public class CheckListActivity extends AppCompatActivity {
-    /*
-private PDFView ch_list_pdf;
+
+//private PDFView ch_list_pdf;
 private TextView youtube_video_one, youtube_video_two, youtube_video_three, youtube_video_four;
 private Button arrow_next;
 private CheckBox cb_1, cb_2, cb_3, cb_4, cb_5, cb_6, cb_7;
@@ -88,7 +90,7 @@ private ArrayList<CheckBox> checkBoxes;
         startActivity(new Intent(Intent.ACTION_VIEW, uri));
     }
 
-*/
+
 
 }
 

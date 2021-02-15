@@ -24,6 +24,7 @@
         android:text="@string/GetStarted"
        android:layout_marginLeft="130dp"
         android:layout_marginTop="50dp"
+        android:background="@color/orange"
         />
 
 </RelativeLayout>

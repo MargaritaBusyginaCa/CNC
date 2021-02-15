@@ -3,19 +3,23 @@ package com.example.cnc.submit;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.cnc.R;
+import com.example.cnc.loginPage.AccountActivity;
 
 import java.util.ArrayList;
 
 public class SubmitActivity extends AppCompatActivity {
+    Button noSubmitBtn;
 
     MyListAdapter myAdapter;
     private ArrayList<String> elements = new ArrayList<>();
@@ -29,6 +33,12 @@ public class SubmitActivity extends AppCompatActivity {
         myList.setAdapter(myAdapter);
 
 
+        //--- No submit ---
+        noSubmitBtn = findViewById(R.id.cancelBtn);
+        noSubmitBtn.setOnClickListener(click->{
+            Intent intent=new Intent(this, AccountActivity.class);
+            startActivity(intent);
+        });
     }
 
     private class MyListAdapter extends BaseAdapter {

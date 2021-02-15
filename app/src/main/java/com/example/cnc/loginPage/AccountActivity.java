@@ -7,12 +7,14 @@ import android.os.Bundle;
 import android.widget.Button;
 
 import com.example.cnc.R;
-import com.example.cnc.checklist.CheckListActivity;
+import com.example.cnc.assignment.Assignment1Activity;
+import com.example.cnc.assignment.MainAssignmentActivity;
+import com.example.cnc.manual.ManualActivity;
 import com.example.cnc.orientation.OrientationActivity;
 import com.example.cnc.submit.SubmitActivity;
 
 public class AccountActivity extends AppCompatActivity {
-Button bt_orientation, bt_checklist;
+Button bt_orientation, bt_assignment, bt_submit, bt_manual;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,15 +26,24 @@ Button bt_orientation, bt_checklist;
             startActivity(intent);
         });
 
-        bt_checklist=findViewById(R.id.check_list_bt);
-        bt_checklist.setOnClickListener(click->{
-            Intent intent=new Intent(this, CheckListActivity.class);
+        bt_assignment=findViewById(R.id.assignments_bt);
+        bt_assignment.setOnClickListener(click->{
+            Intent intent=new Intent(this, MainAssignmentActivity.class);
             startActivity(intent);
         });
 
-        Button submitAct=findViewById(R.id.submission_bt);
-        submitAct.setOnClickListener(click->{
+        //This submission section will be deleted
+
+        bt_submit=findViewById(R.id.submission_bt);
+        bt_submit.setOnClickListener(click->{
             Intent intent=new Intent(this, SubmitActivity.class);
+            startActivity(intent);
+        });
+
+
+        bt_manual=findViewById(R.id.manual_bt);
+        bt_manual.setOnClickListener(click->{
+            Intent intent=new Intent(this, ManualActivity.class);
             startActivity(intent);
         });
     }

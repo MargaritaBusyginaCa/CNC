@@ -14,12 +14,18 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.CNC">
+        android:theme="@style/Theme.CNC"
+        >
         <activity android:name=".checklist.ChecklistActivity_2"></activity>
         <activity android:name=".submit.SubmitActivity" />
         <activity android:name=".loginPage.AccountActivity" />
         <activity android:name=".checklist.CheckListActivity" />
         <activity android:name=".orientation.OrientationActivity" />
+        <activity android:name=".orientation.Exercise1Activity" />
+        <activity android:name=".orientation.Exercise2Activity" />
+        <activity android:name=".assignment.Assignment1Activity" />
+        <activity android:name=".assignment.MainAssignmentActivity" />
+        <activity android:name=".manual.ManualActivity" />
 
         <!--
                Set to true if your app is Standalone, that is, it does not require the handheld

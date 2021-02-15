@@ -6,7 +6,7 @@
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/cnc"/>
+        android:src="@drawable/sub_cnc"/>
 
     <TextView
         android:layout_width="match_parent"

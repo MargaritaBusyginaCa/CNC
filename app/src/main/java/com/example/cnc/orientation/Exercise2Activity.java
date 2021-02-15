@@ -2,12 +2,14 @@ package com.example.cnc.orientation;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cnc.R;
+import com.example.cnc.loginPage.AccountActivity;
+import com.example.cnc.submit.SubmitActivity;
 
+import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -16,8 +18,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class OrientationActivity extends AppCompatActivity {
-    Button ex1Btn, ex2Btn;
+public class Exercise2Activity extends AppCompatActivity {
+    Button submitBtn, noSubmitBtn;
 
     // Array of strings storing title names
     String[] title = new String[] {
@@ -38,18 +40,12 @@ public class OrientationActivity extends AppCompatActivity {
     //here you have to give image name which you already pasted it in /res/drawable/
 
     int[] flags = new int[]{
-            R.drawable.ori_p1, R.drawable.ori_p2, R.drawable.ori_p3, R.drawable.ori_p4, R.drawable.ori_p5,
-            R.drawable.ori_p6, R.drawable.ori_p7, R.drawable.ori_p8, R.drawable.ori_p9, R.drawable.ori_p10,
-            R.drawable.ori_p11, R.drawable.ori_p12, R.drawable.ori_p13, R.drawable.ori_p14, R.drawable.ori_p15,
-            R.drawable.ori_p16, R.drawable.ori_p17,
-       /*
-            R.drawable.ori_ex1, R.drawable.ori_p18, R.drawable.ori_p19,
-            R.drawable.ori_p20, R.drawable.ori_p21, R.drawable.ori_p22, R.drawable.ori_p23, R.drawable.ori_p24,
-            R.drawable.ori_p25, R.drawable.ori_p26, R.drawable.ori_p27, R.drawable.ori_p28, R.drawable.ori_p29,
-            R.drawable.ori_p30, R.drawable.ori_p31, R.drawable.ori_p32, R.drawable.ori_p33, R.drawable.ori_p34,
-            R.drawable.ori_p35, R.drawable.ori_p36, R.drawable.ori_end,
 
-        */
+                 R.drawable.ori_p27, R.drawable.ori_p28, R.drawable.ori_p29, R.drawable.ori_p30,
+                 R.drawable.ori_p31, R.drawable.ori_p32, R.drawable.ori_p33, R.drawable.ori_p34,
+                 R.drawable.ori_p35, R.drawable.ori_p36a, R.drawable.ori_endex,
+
+
     };
 
     // Array of strings to store page number
@@ -70,15 +66,15 @@ public class OrientationActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_orientation);
+        setContentView(R.layout.ori_activity_exercise2);
 
         // Each row in the list stores title, page num and flag
         List<HashMap<String,String>> aList = new ArrayList<HashMap<String,String>>();
 
-        for(int i=0;i<17;i++){
+        for(int i=0;i<11;i++){
             HashMap<String, String> hm = new HashMap<String,String>();
-         //   hm.put("txt", "Title : " + title[i]);
-        //    hm.put("cur","Count : " + count[i]);
+            //   hm.put("txt", "Title : " + title[i]);
+            //    hm.put("cur","Count : " + count[i]);
             hm.put("flag", Integer.toString(flags[i]) );
             aList.add(hm);
         }
@@ -88,52 +84,47 @@ public class OrientationActivity extends AppCompatActivity {
         String[] from = { "flag"};
 
         // Ids of views in listview_layout
-       // int[] to = { R.id.flag,R.id.txt,R.id.cur};
+        // int[] to = { R.id.flag,R.id.txt,R.id.cur};
         int[] to = { R.id.flag};
 
         // Instantiating an adapter to store each items
         // R.layout.ori_listview_layout defines the layout of each item
         SimpleAdapter adapter = new SimpleAdapter(getBaseContext(), aList, R.layout.ori_listview_layout, from, to);
 
-        ListView listView = (ListView) findViewById(R.id.listview);
+        ListView listView = (ListView) findViewById(R.id.ex2_listview);
 
+
+        //--- Exercise 1 ---
+        //  ex1Btn = findViewById(R.id.ex1Button);
+        // ex1Btn.setOnClickListener(new View.OnClickListener() {
+        //      public void onClick(View view) {
+        //          startActivity(new Intent(OrientationActivity.this, exercise1Activity.class));
+        //       }
+        //   });
 
         // Setting the adapter to the listView
         listView.setAdapter(adapter);
 
-        View footer = getLayoutInflater().inflate(R.layout.ori_exercise_footerview, null);
+        View footer = getLayoutInflater().inflate(R.layout.ori_submit_footerview, null);
 
 
         // listView.addFooterView(footer);
         listView.addFooterView(footer, null, false);
 
 
-        //--- Exercise 1 ---
-        ex1Btn = footer.findViewById(R.id.ex1Button);
-        ex1Btn.setOnClickListener(click->{
-            Intent intent=new Intent(OrientationActivity.this, Exercise1Activity.class);
+
+        //--- No submit ---
+        noSubmitBtn = footer.findViewById(R.id.exitNotSubmit);
+        noSubmitBtn.setOnClickListener(click->{
+            Intent intent=new Intent(this, AccountActivity.class);
             startActivity(intent);
         });
 
-        //--- Exercise 2 ---
-        ex2Btn = footer.findViewById(R.id.ex2Button);
-        ex2Btn.setOnClickListener(click->{
-            Intent intent=new Intent(OrientationActivity.this, Exercise2Activity.class);
+        //--- submit ---
+        submitBtn = footer.findViewById(R.id.goToSubmit);
+        submitBtn.setOnClickListener(click->{
+            Intent intent=new Intent(this, SubmitActivity.class);
             startActivity(intent);
-         });
-
-/*
-        //   listView.addFooterView(ex1Btn);
-        TextView footer = new TextView(this);
-        footer.setGravity(Gravity.CENTER);
-        footer.setTextSize(30);
-        footer.setText("Footer");
-        if ( footer != null ) {
-            listView.addFooterView(footer);
-        } else {
-            throw new NullPointerException("footer is null");
-        }
-
-*/
+        });
     }
 }

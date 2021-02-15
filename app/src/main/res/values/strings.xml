@@ -17,6 +17,14 @@
 
     <!-- For Orientation : Lai Shan Law-->
     <string name="orientation">Orientation</string>
+    <string name="exercise1Btn">Goto Exercise 1</string>
+    <string name="goSubmit">Yes! Submit</string>
+    <string name="notGoSubmit">Exit, NO! submit</string>
+    <string name="assigName">ASSIGNMENT</string>
+
+
+
+
 
     <!--
     This string is used for square devices and overridden by hello_world in

@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/assiTitle_tx"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:text="@string/Assignments"
+        android:textColor="#ff582f"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        />
+
+    <!-- A1 -->
+    <TextView
+           android:id="@+id/subAssiTitle1_tx"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginLeft="10dp"
+           android:layout_marginTop="40dp"
+           android:textSize="30dp"
+           android:textStyle="bold"
+           android:text="A1"
+           android:textColor="#2d6960"
+           android:layout_below="@+id/assiTitle_tx"
+           />
+
+       <FrameLayout
+           android:id="@+id/assignment1"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:background="#2d6960"
+           android:layout_marginLeft="10dp"
+           android:layout_marginRight="10dp"
+           android:layout_below="@+id/subAssiTitle1_tx">
+
+
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal"
+               android:id="@+id/A1_Button"
+               android:background="#FEEA7F"
+               android:layout_margin="2dp">
+
+               <Button
+                   android:layout_width="0pt"
+                   android:layout_height="70dp"
+                   android:layout_weight="1"
+                   android:id="@+id/check1Button"
+                   android:text="Checklist 1"
+                   android:layout_margin="10dp"
+                   android:background="#602D69"/>
+
+               <Button
+                   android:layout_width="0pt"
+                   android:layout_height="70dp"
+                   android:layout_weight="1"
+                   android:id="@+id/assig1Button"
+                   android:text="Assignment 1"
+                   android:layout_margin="10dp"
+                   android:background="#602D69"/>
+           </LinearLayout>
+
+       </FrameLayout>
+
+   <!-- A2 -->
+
+        <TextView
+            android:id="@+id/subAssiTitle2_tx"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:text="A2"
+            android:textColor="#2d6960"
+            android:layout_below="@+id/assignment1"
+            />
+
+        <FrameLayout
+            android:id="@+id/assignment2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#2d6960"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_below="@+id/subAssiTitle2_tx">
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/A2_Button"
+                android:background="#FEEA7F"
+                android:layout_margin="2dp">
+
+                <Button
+                    android:layout_width="0pt"
+                    android:layout_height="70dp"
+                    android:layout_weight="1"
+                    android:id="@+id/check2Button"
+                    android:text="Checklist 2"
+                    android:layout_margin="10dp"
+                    android:background="#602D69"/>
+
+                <Button
+                    android:layout_width="0pt"
+                    android:layout_height="70dp"
+                    android:layout_weight="1"
+                    android:id="@+id/assig2Button"
+                    android:text="Assignment 2"
+                    android:layout_margin="10dp"
+                    android:background="#602D69"/>
+            </LinearLayout>
+
+        </FrameLayout>
+
+
+        <!-- A3 -->
+
+        <TextView
+            android:id="@+id/subAssiTitle3_tx"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:text="A3"
+            android:textColor="#2d6960"
+            android:layout_below="@+id/assignment2"
+            />
+
+        <FrameLayout
+            android:id="@+id/assignment3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#2d6960"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_below="@+id/subAssiTitle3_tx">
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/A3_Button"
+                android:background="#FEEA7F"
+                android:layout_margin="2dp">
+
+                <Button
+                    android:layout_width="0pt"
+                    android:layout_height="70dp"
+                    android:layout_weight="1"
+                    android:id="@+id/check3Button"
+                    android:text="Checklist 3"
+                    android:layout_margin="10dp"
+                    android:background="#602D69"/>
+
+                <Button
+                    android:layout_width="0pt"
+                    android:layout_height="70dp"
+                    android:layout_weight="1"
+                    android:id="@+id/assig3Button"
+                    android:text="Assignment 3"
+                    android:layout_margin="10dp"
+                    android:background="#602D69"/>
+            </LinearLayout>
+
+        </FrameLayout>
+
+
+
+
+</RelativeLayout>
