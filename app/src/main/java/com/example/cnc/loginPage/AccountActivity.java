@@ -32,7 +32,6 @@ Button bt_orientation, bt_assignment, bt_submit, bt_manual;
             startActivity(intent);
         });
 
-        //This submission section will be deleted
 
         bt_submit=findViewById(R.id.submission_bt);
         bt_submit.setOnClickListener(click->{
