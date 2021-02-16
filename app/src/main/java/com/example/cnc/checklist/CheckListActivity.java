@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 //import com.github.barteksc.pdfviewer.PDFView;
 
@@ -72,6 +73,8 @@ public class CheckListActivity extends AppCompatActivity {
             if(allChecked()){
                 Intent intent=new Intent(this, ChecklistActivity_2.class);
                 startActivity(intent);
+            }else{
+                Toast.makeText(getApplicationContext(),"Mark all the checkboxes",Toast.LENGTH_LONG).show();
             }
         });
 
