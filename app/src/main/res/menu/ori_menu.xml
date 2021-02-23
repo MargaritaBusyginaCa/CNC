@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    >
+<!--
+    <item
+        android:id="@+id/mainpage"
+        android:title="main page"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/icon_about"
+        android:title="about"
+        app:showAsAction="never"/>
+-->
+    <item
+        android:id="@+id/icon_home"
+        android:icon="@drawable/menu_home"
+        android:title="home"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/icon_ori"
+        android:icon="@drawable/menu_ori"
+        android:title="Orientation"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/icon_assi"
+        android:icon="@drawable/menu_assi"
+        android:title="Assignment"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/icon_man"
+        android:icon="@drawable/menu_man"
+        android:title="@string/Manual"
+        app:showAsAction="always"/>
+
+
+</menu>

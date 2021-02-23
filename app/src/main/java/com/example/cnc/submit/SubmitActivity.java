@@ -122,10 +122,10 @@ public class SubmitActivity extends AppCompatActivity {
             LayoutInflater inflater = getLayoutInflater(); //this loads xml layouts
             View thisRow;
             thisRow= inflater.inflate(R.layout.row_submitpicture, viewGroup, false);
-           // TextView tv = thisRow.findViewById(R.id.textGoesHere);
+            // TextView tv = thisRow.findViewById(R.id.textGoesHere);
             //tv.setText( getItem(i)); //what goes in row i
-            ImageView imgView= thisRow.findViewById(R.id.selectedImg);
-            imgView.setImageURI(msg);
+            //   imgView.setImageURI(msg);
+            //  ImageView imgView= thisRow.findViewById(R.id.selectedImg);
             return thisRow;
         }
     }

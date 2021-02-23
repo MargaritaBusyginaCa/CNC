@@ -1,31 +1,34 @@
 package com.example.cnc.main;
 
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-//import com.example.cnc.orientation.OrientationActivity;
-import com.example.cnc.loginPage.LoginPageActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cnc.R;
 
+
+
+/**
+ * Created by NyNguyen on Feb 15, 2021
+ */
 public class MainActivity extends AppCompatActivity {
-    Button get_started;
+    Button getStart;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.welcome_page);
-
-        get_started=findViewById(R.id.GetStarted_Bt);
-        get_started.setOnClickListener(click->{
-            Intent intent=new Intent(this, LoginPageActivity.class);
-      //      Intent intent=new Intent(this, OrientationActivity.class);
-            startActivity(intent);
+        // for Login Button to navigate to LoginPage
+        getStart = findViewById(R.id.GetStarted_Bt);
+        getStart.setOnClickListener(click -> {
+            Intent intentGetStart = new Intent(this, EntranceActivity.class);
+            startActivity(intentGetStart);
         });
 
 
-
     }
+
+
+
 }

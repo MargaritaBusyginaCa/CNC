@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">CNC</string>
+    <!--<string name="app_name">CNC</string>-->
+    <string name="app_name">CAM8515</string>
     <string name="GetStarted">Get Started</string>
     <string name="StudentNumber">Your student number</string>
     <string name="login">login</string>
@@ -16,21 +17,43 @@
     <string name="select">select photos</string>
 
 
-
     <!-- For Orientation : Lai Shan Law-->
     <string name="orientation">Orientation</string>
     <string name="exercise1Btn">Goto Exercise 1</string>
     <string name="goSubmit">Yes! Submit</string>
     <string name="notGoSubmit">Exit, NO! submit</string>
     <string name="assigName">ASSIGNMENT</string>
+    <string name="alertSubmitExercise1">You have not completed the Orientation Certificate!</string>
+    <string name="alertSubmitExercise2">If you exit now, you will need to start over!</string>
+    <string name="warningNoAccess1">You have not granted permission to access this page!</string>
+    <string name="alertSubmitAssign1">You have not submitted the assignment!</string>
+    <string name="alertSubmitAssign2">If you exit now, you will need to start over from the Checklist!</string>
+    <string name="wantExit">Do you want to exit?</string>
+    <string name="logout">Log out</string>
 
 
+    <!--For Login and Register by Ny Nguyen    -->
+    <string name="GetStartedTitle1">CAM8515</string>
+    <string name="GetStartedTitle2">COMPUTER AIDED MANUFACTURING I</string>
+    <string name="welcome">Welcome to CAM8515</string>
+    <string name="email">Email</string>
+    <string name="hint_email">Enter email address </string>
+    <string name="password">Password</string>
+    <string name="hint_password">Enter password</string>
+    <string name="text_login">LOGIN </string>
+    <string name="text_not_member">"Don't have an account yet? Register"</string>
+    <string name="studentID">StudentID </string>
+    <string name="hint_studentID">Enter studentID </string>
+    <string name="confirm_password">Confirm Password </string>
+    <string name="text_register">REGISTER</string>
+    <string name="text_already_member">Already have an account? Login</string>
+    <string name="error_message_studentID">Enter Valid StudentID</string>
+    <string name="error_message_email">Enter Valid Email</string>
+    <string name="error_message_password">Enter Valid Password </string>
+    <string name="error_password_match">Password Does Not Matches</string>
+    <string name="success_message">Registration Successful</string>
+    <string name="unsuccess_message">Registration unsuccessful, please try again!</string>
+    <string name="error_valid_email_password">Wrong Email or Password, please try again!</string>
 
-
-
-    <!--
-    This string is used for square devices and overridden by hello_world in
-    values-round/strings.xml for round devices.
-    -->
 
 </resources>

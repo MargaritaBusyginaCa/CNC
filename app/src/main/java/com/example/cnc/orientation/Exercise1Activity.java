@@ -10,7 +10,6 @@ import android.widget.SimpleAdapter;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cnc.R;
-import com.example.cnc.loginPage.AccountActivity;
 import com.example.cnc.submit.SubmitActivity;
 
 import java.util.ArrayList;
@@ -26,7 +25,7 @@ public class Exercise1Activity extends AppCompatActivity {
     int[] flags = new int[]{
             R.drawable.ori_ex1, R.drawable.ori_p18, R.drawable.ori_p19, R.drawable.ori_p20,
             R.drawable.ori_p21, R.drawable.ori_p22, R.drawable.ori_p23, R.drawable.ori_p24,
-            R.drawable.ori_p25, R.drawable.ori_p26a, R.drawable.ori_endex,
+            R.drawable.ori_p25, R.drawable.ori_p26a, R.drawable.ori_endex1,
     };
 
 
@@ -73,7 +72,7 @@ public class Exercise1Activity extends AppCompatActivity {
         //--- No submit ---
         noSubmitBtn = footer.findViewById(R.id.exitNotSubmit);
         noSubmitBtn.setOnClickListener(click->{
-            Intent intent=new Intent(this, AccountActivity.class);
+            Intent intent=new Intent(this, AlertExerciseNoSubmitActivity.class);
             startActivity(intent);
         });
 
@@ -87,4 +86,8 @@ public class Exercise1Activity extends AppCompatActivity {
 
 
     }
+
+
+
+
 }

@@ -2,29 +2,43 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".main.MainActivity">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".main.EntranceActivity"
+    android:layout_gravity="center"
+    >
 
     <TextView
-        android:id="@+id/Welcome"
-        android:layout_width="wrap_content"
+        android:id="@+id/Welcome1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcome to CNC"
-        android:textSize="30dp"
-        android:layout_marginLeft="90dp"
-        android:layout_marginTop="200dp"
-         />
+        android:text="@string/GetStartedTitle1"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        />
+
+
+    <TextView
+        android:id="@+id/Welcome2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GetStartedTitle2"
+        android:layout_below="@+id/Welcome1"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        />
 
     <Button
         android:id="@+id/GetStarted_Bt"
-        android:layout_below="@+id/Welcome"
+        android:layout_below="@+id/Welcome2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/GetStarted"
-       android:layout_marginLeft="130dp"
         android:layout_marginTop="50dp"
         android:background="@color/orange"
+        android:layout_centerInParent="true"
         />
 
 </RelativeLayout>
