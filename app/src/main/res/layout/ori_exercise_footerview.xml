@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/ex1Button"
-            android:text="Goto exercised 1"
+            android:text="Goto exercise 1"
             android:layout_margin="10dp"
             android:clickable="true"
             android:background="#2fd6ff"/>
@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/ex2Button"
-             android:text="Goto exercised 2"
+             android:text="Goto exercise 2"
             android:layout_margin="10dp"
             android:clickable="true"
             android:background="#00cafb"/>

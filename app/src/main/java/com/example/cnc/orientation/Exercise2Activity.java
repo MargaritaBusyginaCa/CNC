@@ -6,7 +6,6 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cnc.R;
-import com.example.cnc.loginPage.AccountActivity;
 import com.example.cnc.submit.SubmitActivity;
 
 import android.view.View;
@@ -43,7 +42,7 @@ public class Exercise2Activity extends AppCompatActivity {
 
                  R.drawable.ori_p27, R.drawable.ori_p28, R.drawable.ori_p29, R.drawable.ori_p30,
                  R.drawable.ori_p31, R.drawable.ori_p32, R.drawable.ori_p33, R.drawable.ori_p34,
-                 R.drawable.ori_p35, R.drawable.ori_p36a, R.drawable.ori_endex,
+                 R.drawable.ori_p35, R.drawable.ori_p36a, R.drawable.ori_endex2,
 
 
     };
@@ -116,7 +115,7 @@ public class Exercise2Activity extends AppCompatActivity {
         //--- No submit ---
         noSubmitBtn = footer.findViewById(R.id.exitNotSubmit);
         noSubmitBtn.setOnClickListener(click->{
-            Intent intent=new Intent(this, AccountActivity.class);
+            Intent intent=new Intent(this, AlertExerciseNoSubmitActivity.class);
             startActivity(intent);
         });
 

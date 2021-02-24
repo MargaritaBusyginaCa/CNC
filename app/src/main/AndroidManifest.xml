@@ -16,21 +16,36 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CNC"
         >
-        <activity android:name=".checklist.ChecklistActivity_2"></activity>
-        <activity android:name=".submit.SubmitActivity" />
-        <activity android:name=".loginPage.AccountActivity" />
+
+          <!--Checklist by Rita-->
+        <activity android:name=".checklist.ChecklistActivity_2"/>
         <activity android:name=".checklist.CheckListActivity" />
+
+        <!--Manual, Orientation and Assignment by Lai Shan Law-->
         <activity android:name=".orientation.OrientationActivity" />
         <activity android:name=".orientation.Exercise1Activity" />
         <activity android:name=".orientation.Exercise2Activity" />
+        <activity android:name=".orientation.AlertExerciseNoSubmitActivity" />
+        <activity android:name=".assignment.AlertAssignmentNoSubmitActivity" />
         <activity android:name=".assignment.Assignment1Activity" />
         <activity android:name=".assignment.MainAssignmentActivity" />
+        <activity android:name=".assignment.WarningNoAccessActivity" />
         <activity android:name=".manual.ManualActivity" />
+
+        <!--Submission by Ny Huilin-->
+        <activity android:name=".submit.SubmitActivity" />
+
+        <!--Login & Register by Ny Nguyen-->
+        <activity android:name=".loginPage.RegisterActivity"/>
+        <activity android:name=".loginPage.LoginActivity" />
+        <activity android:name=".loginPage.AccountActivity" />
+        <activity android:name=".main.EntranceActivity" />
 
         <!--
                Set to true if your app is Standalone, that is, it does not require the handheld
                app to run.
         -->
+        <!--
         <activity
             android:name=".loginPage.LoginPageActivity"
             android:label="@string/title_activity_login_page">
@@ -40,6 +55,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+         -->
+
         <activity android:name=".main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

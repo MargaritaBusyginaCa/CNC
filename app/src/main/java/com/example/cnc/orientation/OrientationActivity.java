@@ -1,12 +1,21 @@
 package com.example.cnc.orientation;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cnc.R;
+import com.example.cnc.assignment.MainAssignmentActivity;
+import com.example.cnc.loginPage.AccountActivity;
+import com.example.cnc.main.MainActivity;
+import com.example.cnc.manual.ManualActivity;
 
 import android.widget.Button;
 import android.widget.ListView;
@@ -122,6 +131,7 @@ public class OrientationActivity extends AppCompatActivity {
             startActivity(intent);
          });
 
+
 /*
         //   listView.addFooterView(ex1Btn);
         TextView footer = new TextView(this);
@@ -136,4 +146,38 @@ public class OrientationActivity extends AppCompatActivity {
 
 */
     }
+/*
+    //TOOLBAR, inflate the Menu resource
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.ori_menu, menu);
+        return true;
+    }
+    //MENU item
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+
+            case R.id.icon_home:
+                startActivity(new Intent(OrientationActivity.this, AccountActivity.class));
+                return true;
+            case R.id.icon_ori:
+                startActivity(new Intent(OrientationActivity.this, OrientationActivity.class));
+                return true;
+            case R.id.icon_assi:
+                startActivity(new Intent(OrientationActivity.this, MainAssignmentActivity.class));
+            case R.id.icon_man:
+                startActivity(new Intent(OrientationActivity.this, ManualActivity.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+*/
+
+
+
 }

@@ -73,7 +73,7 @@ public class Assignment1Activity extends AppCompatActivity {
         //--- No submit ---
         noSubmitBtn = footer.findViewById(R.id.exitNotSubmit);
         noSubmitBtn.setOnClickListener(click->{
-            Intent intent=new Intent(this, AccountActivity.class);
+            Intent intent=new Intent(this, AlertAssignmentNoSubmitActivity.class);
             startActivity(intent);
         });
 

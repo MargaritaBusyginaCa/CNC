@@ -39,7 +39,9 @@ public class MainAssignmentActivity extends AppCompatActivity {
 
         bt_c2=findViewById(R.id.check2Button);
         bt_c2.setOnClickListener(click-> {
-            Toast.makeText(this, "DO NOT ALLOW TO ACCESS!", Toast.LENGTH_LONG).show();
+            Intent intent=new Intent(this, WarningNoAccessActivity.class);
+            startActivity(intent);
+            // Toast.makeText(this, "ACCESS UNAVAILABLE!", Toast.LENGTH_LONG).show();
         });
 
 
@@ -48,7 +50,8 @@ public class MainAssignmentActivity extends AppCompatActivity {
 
         //    Intent intent = new Intent(this, CheckList3Activity.class);
         //    startActivity(intent);
-            Toast.makeText(this, "DO NOT ALLOW TO ACCESS!", Toast.LENGTH_LONG).show();
+            Intent intent=new Intent(this, WarningNoAccessActivity.class);
+            startActivity(intent);
         });
 
         bt_a1 = findViewById(R.id.assig1Button);
@@ -61,15 +64,16 @@ public class MainAssignmentActivity extends AppCompatActivity {
         bt_a2.setOnClickListener(click -> {
             //    Intent intent = new Intent(this, Assignment2Activity.class);
             //    startActivity(intent);
-            Toast.makeText(this, "DO NOT ALLOW TO ACCESS!", Toast.LENGTH_LONG).show();
+            Intent intent=new Intent(this, WarningNoAccessActivity.class);
+            startActivity(intent);
         });
 
         bt_a3 = findViewById(R.id.assig3Button);
         bt_a3.setOnClickListener(click -> {
             //    Intent intent = new Intent(this, Assignment3Activity.class);
             //    startActivity(intent);
-
-            Toast.makeText(this, "DO NOT ALLOW TO ACCESS!", Toast.LENGTH_LONG).show();
+            Intent intent=new Intent(this, WarningNoAccessActivity.class);
+            startActivity(intent);
         });
 
     }
