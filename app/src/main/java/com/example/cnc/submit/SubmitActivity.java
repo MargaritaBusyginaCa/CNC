@@ -27,8 +27,7 @@ import java.util.ArrayList;
 import java.util.zip.ZipOutputStream;
 
 public class SubmitActivity extends AppCompatActivity {
-    Button noSubmitBtn;
-    Button SelectPhoto;
+
     private static final int PICK_IMAGE = 100;
 
     MyListAdapter myAdapter;
@@ -44,7 +43,7 @@ public class SubmitActivity extends AppCompatActivity {
         myList.setAdapter(myAdapter);
 
         //--- Select photos ---
-        SelectPhoto = findViewById(R.id.photos);
+        Button SelectPhoto = findViewById(R.id.photos);
         SelectPhoto.setOnClickListener(click->{
             Intent gallery = new Intent(Intent.ACTION_GET_CONTENT);
             gallery.setType("image/*");
@@ -53,7 +52,7 @@ public class SubmitActivity extends AppCompatActivity {
         });
 
         //--- No submit ---
-        noSubmitBtn = findViewById(R.id.cancelBtn);
+        Button noSubmitBtn = findViewById(R.id.cancelBtn);
         noSubmitBtn.setOnClickListener(click->{
             Intent intent=new Intent(this, AccountActivity.class);
             startActivity(intent);
@@ -105,7 +104,7 @@ public class SubmitActivity extends AppCompatActivity {
     private class MyListAdapter extends BaseAdapter {
         @Override
         public int getCount() {
-            return elements.size() ; //list will have 10 items
+            return elements.size() ;
         }
 
         @Override //shows what string is at row i (0-9)
@@ -114,18 +113,18 @@ public class SubmitActivity extends AppCompatActivity {
         }
 
         @Override //returns the database id of row i
-        public long getItemId(int i) { return i;} //worry about this next week
+        public long getItemId(int i) { return i;}
 
         @Override //how to show row i
         public View getView(int i, View view, ViewGroup viewGroup) {
-            Uri msg=getItem(i);
+            Uri img=getItem(i);
             LayoutInflater inflater = getLayoutInflater(); //this loads xml layouts
             View thisRow;
             thisRow= inflater.inflate(R.layout.row_submitpicture, viewGroup, false);
            // TextView tv = thisRow.findViewById(R.id.textGoesHere);
             //tv.setText( getItem(i)); //what goes in row i
             ImageView imgView= thisRow.findViewById(R.id.selectedImg);
-            imgView.setImageURI(msg);
+            imgView.setImageURI(img);
             return thisRow;
         }
     }
