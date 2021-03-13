@@ -15,6 +15,8 @@
     <string name="Dos">Checklist</string>
     <string name="Donts">Donts</string>
     <string name="select">select photos</string>
+    <string name="SubmitViaEmail">Submit Through Email</string>
+    <string name="SubmitViaMS">Submit Through Microsoft Forms</string>
 
 
     <!-- For Orientation : Lai Shan Law-->

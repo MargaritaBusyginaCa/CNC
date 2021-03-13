@@ -14,14 +14,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.CNC"
-        >
-
-          <!--Checklist by Rita-->
-        <activity android:name=".checklist.ChecklistActivity_2"/>
-        <activity android:name=".checklist.CheckListActivity" />
-
-        <!--Manual, Orientation and Assignment by Lai Shan Law-->
+        android:theme="@style/Theme.CNC">
+        <activity android:name=".SubmitChoiceActivity"></activity>
+        <!-- Checklist by Rita -->
+        <activity android:name=".checklist.ChecklistActivity_2" />
+        <activity android:name=".checklist.CheckListActivity" /> <!-- Manual, Orientation and Assignment by Lai Shan Law -->
         <activity android:name=".orientation.OrientationActivity" />
         <activity android:name=".orientation.Exercise1Activity" />
         <activity android:name=".orientation.Exercise2Activity" />
@@ -30,17 +27,12 @@
         <activity android:name=".assignment.Assignment1Activity" />
         <activity android:name=".assignment.MainAssignmentActivity" />
         <activity android:name=".assignment.WarningNoAccessActivity" />
-        <activity android:name=".manual.ManualActivity" />
-
-        <!--Submission by Ny Huilin-->
-        <activity android:name=".submit.SubmitActivity" />
-
-        <!--Login & Register by Ny Nguyen-->
-        <activity android:name=".loginPage.RegisterActivity"/>
+        <activity android:name=".manual.ManualActivity" /> <!-- Submission by Ny Huilin -->
+        <activity android:name=".submit.SubmitActivity" /> <!-- Login & Register by Ny Nguyen -->
+        <activity android:name=".loginPage.RegisterActivity" />
         <activity android:name=".loginPage.LoginActivity" />
         <activity android:name=".loginPage.AccountActivity" />
         <activity android:name=".main.EntranceActivity" />
-
         <!--
                Set to true if your app is Standalone, that is, it does not require the handheld
                app to run.
@@ -55,8 +47,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-         -->
-
+        -->
         <activity android:name=".main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -10,6 +10,7 @@ import android.widget.SimpleAdapter;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cnc.R;
+import com.example.cnc.SubmitChoiceActivity;
 import com.example.cnc.loginPage.AccountActivity;
 import com.example.cnc.submit.SubmitActivity;
 
@@ -80,7 +81,7 @@ public class Assignment1Activity extends AppCompatActivity {
         //--- submit ---
         submitBtn = footer.findViewById(R.id.goToSubmit);
         submitBtn.setOnClickListener(click->{
-            Intent intent=new Intent(this, SubmitActivity.class);
+            Intent intent=new Intent(this, SubmitChoiceActivity.class);
             startActivity(intent);
         });
 
