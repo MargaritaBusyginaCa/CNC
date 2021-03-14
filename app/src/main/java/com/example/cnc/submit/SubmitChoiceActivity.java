@@ -1,4 +1,4 @@
-package com.example.cnc;
+package com.example.cnc.submit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
 
+import com.example.cnc.R;
 import com.example.cnc.submit.SubmitActivity;
 
 public class SubmitChoiceActivity extends AppCompatActivity {

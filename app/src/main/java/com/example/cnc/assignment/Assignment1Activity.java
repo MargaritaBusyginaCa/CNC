@@ -10,9 +10,8 @@ import android.widget.SimpleAdapter;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cnc.R;
-import com.example.cnc.SubmitChoiceActivity;
-import com.example.cnc.loginPage.AccountActivity;
-import com.example.cnc.submit.SubmitActivity;
+import com.example.cnc.checklist.ChecklistActivity_2;
+import com.example.cnc.submit.SubmitChoiceActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,6 +19,7 @@ import java.util.List;
 
 public class Assignment1Activity extends AppCompatActivity {
     Button submitBtn, noSubmitBtn;
+
 
 
       //here you have to give image name which you already pasted it in /res/drawable/

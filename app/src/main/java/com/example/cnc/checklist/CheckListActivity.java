@@ -7,7 +7,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,7 +14,6 @@ import android.widget.Toast;
 
 import com.example.cnc.R;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 public class CheckListActivity extends AppCompatActivity {
@@ -73,6 +71,7 @@ public class CheckListActivity extends AppCompatActivity {
             if(allChecked()){
                 Intent intent=new Intent(this, ChecklistActivity_2.class);
                 startActivity(intent);
+
             }else{
                 Toast.makeText(getApplicationContext(),"Mark all the checkboxes",Toast.LENGTH_LONG).show();
             }
