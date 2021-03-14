@@ -31,6 +31,7 @@ import java.util.zip.ZipOutputStream;
 public class SubmitActivity extends AppCompatActivity {
 
     private static final int PICK_IMAGE = 100;
+    private static final int SEND_EMAIL = 200;
     private Button submitBtn;
     MyListAdapter myAdapter;
     private ArrayList<Uri> elements = new ArrayList<>();
@@ -80,9 +81,8 @@ public class SubmitActivity extends AppCompatActivity {
                 emailIntent.putExtra(Intent.EXTRA_TEXT, commentStr);
             }
 
-            this.startActivity(Intent.createChooser(emailIntent, "Sending email..."));
-            /*Intent intent=new Intent(this, AccountActivity.class);
-            startActivity(intent);*/
+            this.startActivityForResult(Intent.createChooser(emailIntent, "Sending email..."), SEND_EMAIL);
+
         });
     }
 
@@ -100,16 +100,17 @@ public class SubmitActivity extends AppCompatActivity {
 
                     elements.add(data.getData());
                 }
+                myAdapter.notifyDataSetChanged();
+                toggleSubmitStatus();
             }
-            myAdapter.notifyDataSetChanged();
+            if (requestCode == SEND_EMAIL) {
+                Intent intent=new Intent(this, AccountActivity.class);
+                startActivity(intent);
+            }
+
         }catch (Exception e){
             Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG).show();
         }
-        toggleSubmitStatus();
-            /*loadDataFromDatabase();
-            imageUri = data.getData();
-            imageView.setImageURI(imageUri);
-            myAdapter.notifyDataSetChanged(); */
 
     }
 
