@@ -65,7 +65,7 @@ android:layout_height="match_parent">
         android:layout_above="@+id/submitArea">
 
     <EditText
-        android:id="@+id/typehere"
+        android:id="@+id/submitComments"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:padding="5dp"

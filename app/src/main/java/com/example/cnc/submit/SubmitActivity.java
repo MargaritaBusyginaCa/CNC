@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -29,7 +31,7 @@ import java.util.zip.ZipOutputStream;
 public class SubmitActivity extends AppCompatActivity {
 
     private static final int PICK_IMAGE = 100;
-
+    private Button submitBtn;
     MyListAdapter myAdapter;
     private ArrayList<Uri> elements = new ArrayList<>();
 
@@ -58,16 +60,26 @@ public class SubmitActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        Button submitBtn = findViewById(R.id.submitBtn);
+        submitBtn = findViewById(R.id.submitBtn);
+        submitBtn.setEnabled(false);
         submitBtn.setOnClickListener(click->{
-            final Intent emailIntent = new Intent (Intent.ACTION_SEND);
+            final Intent emailIntent = new Intent (Intent.ACTION_SEND_MULTIPLE);
             emailIntent.setType("plain/text");
             emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] { "email"});
             emailIntent.putExtra(Intent.EXTRA_SUBJECT, "assignment subject");
-            if (elements!=null) {
-                emailIntent.putExtra(Intent.EXTRA_STREAM, elements.get(0));
+            emailIntent.putExtra(Intent.EXTRA_STREAM,elements);
+          /*  if (elements!=null && elements.size()>=1) {
+                for(Uri u: elements){
+                    emailIntent.putExtra(Intent.EXTRA_STREAM, u);
+                }
+
+            }*/
+            EditText commentText = findViewById(R.id.submitComments);
+            String commentStr=commentText.getText().toString();
+            if(commentStr !=null && ! commentStr.trim().isEmpty()){
+                emailIntent.putExtra(Intent.EXTRA_TEXT, commentStr);
             }
-            emailIntent.putExtra(Intent.EXTRA_TEXT, " extra");
+
             this.startActivity(Intent.createChooser(emailIntent, "Sending email..."));
             /*Intent intent=new Intent(this, AccountActivity.class);
             startActivity(intent);*/
@@ -93,7 +105,7 @@ public class SubmitActivity extends AppCompatActivity {
         }catch (Exception e){
             Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG).show();
         }
-
+        toggleSubmitStatus();
             /*loadDataFromDatabase();
             imageUri = data.getData();
             imageView.setImageURI(imageUri);
@@ -125,23 +137,29 @@ public class SubmitActivity extends AppCompatActivity {
             //tv.setText( getItem(i)); //what goes in row i
             ImageView imgView= thisRow.findViewById(R.id.selectedImg);
             imgView.setImageURI(img);
+            ImageButton delImgBtn =thisRow.findViewById(R.id.delImgButton);
+            delImgBtn.setOnClickListener(click->{
+                elements.remove(getItem(i));
+                notifyDataSetChanged();
+                toggleSubmitStatus();
+            });
             return thisRow;
         }
     }
 
-    private ZipOutputStream makeZip(String name){
-        FileOutputStream dest=null;
-        try{
-            dest = new FileOutputStream(name);
-        }catch(FileNotFoundException ex){
-            Toast.makeText(this, "Something went wrong when creating zip", Toast.LENGTH_LONG).show();
+    private void toggleSubmitStatus() {
+        if(elements!=null && elements.size()>=1)
+        {
+            submitBtn.setEnabled(true);
         }
-        return new ZipOutputStream(new BufferedOutputStream(dest));
+        else
+        {
+            submitBtn.setEnabled(false);
+        }
     }
 
     private void loadData() {
-            elements.clear();
-   /*         elements.add("picture 1");
+            elements.clear();   /*         elements.add("picture 1");
             elements.add("picture 2");
             elements.add("picture 3");
             elements.add("picture 4");
