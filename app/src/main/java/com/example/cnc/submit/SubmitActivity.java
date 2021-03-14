@@ -160,11 +160,6 @@ public class SubmitActivity extends AppCompatActivity {
     }
 
     private void loadData() {
-            elements.clear();   /*         elements.add("picture 1");
-            elements.add("picture 2");
-            elements.add("picture 3");
-            elements.add("picture 4");
-            elements.add("picture 5");
-            elements.add("picture 6");
-     */   }
+            elements.clear();
+    }
 }
