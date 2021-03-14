@@ -20,6 +20,8 @@ import com.example.cnc.checklist.CheckListActivity;
 import com.example.cnc.orientation.OrientationActivity;
 import com.example.cnc.submit.SubmitActivity;
 
+import static com.example.cnc.checklist.ChecklistActivity_2.checklistcompleted;
+
 public class MainAssignmentActivity extends AppCompatActivity {
     Button bt_c1, bt_c2, bt_c3, bt_a1, bt_a2, bt_a3;
 
@@ -56,8 +58,14 @@ public class MainAssignmentActivity extends AppCompatActivity {
 
         bt_a1 = findViewById(R.id.assig1Button);
         bt_a1.setOnClickListener(click -> {
-            Intent intent = new Intent(this, Assignment1Activity.class);
-            startActivity(intent);
+            //if the cheklist was completed, it calls Intent object
+            if(checklistcompleted==true){
+                Intent intent = new Intent(this, Assignment1Activity.class);
+                startActivity(intent);
+            }else{
+                Toast.makeText(getApplicationContext(),"You have to complete the Cheklist 1 first",Toast.LENGTH_LONG).show();
+            }
+
         });
 
         bt_a2 = findViewById(R.id.assig2Button);

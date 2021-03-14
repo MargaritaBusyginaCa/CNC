@@ -51,6 +51,7 @@
         android:text="5. DO NOT TURN ON AND OFF WITHOUT WAITING 10 SECONDS IN BETWEEN"/>
 
     <Button
+        android:id="@+id/bt_submit_checklist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/cb_dont_4"
