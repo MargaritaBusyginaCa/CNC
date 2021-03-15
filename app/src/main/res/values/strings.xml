@@ -18,12 +18,11 @@
     <string name="SubmitViaEmail">Submit Through Email</string>
     <string name="SubmitViaMS">Submit Through Microsoft Forms</string>
 
-
     <!-- For Orientation : Lai Shan Law-->
     <string name="orientation">Orientation</string>
     <string name="exercise1Btn">Goto Exercise 1</string>
-    <string name="goSubmit">Yes! Submit</string>
-    <string name="notGoSubmit">Exit, NO! submit</string>
+    <string name="goSubmit">Submit</string>
+    <string name="notGoSubmit">Exit!</string>
     <string name="assigName">ASSIGNMENT</string>
     <string name="alertSubmitExercise1">You have not completed the Orientation Certificate!</string>
     <string name="alertSubmitExercise2">If you exit now, you will need to start over!</string>
@@ -32,6 +31,29 @@
     <string name="alertSubmitAssign2">If you exit now, you will need to start over from the Checklist!</string>
     <string name="wantExit">Do you want to exit?</string>
     <string name="logout">Log out</string>
+    <string name="submitTitle1">Title</string>
+    <string name="email_sub">Student :</string>
+    <string name="submitEmail">Email Address</string>
+    <string name="submitStudentID">StudentID</string>
+    <string name="startTime">Start Time: </string>
+    <string name="submitStartTime">N/A</string>
+    <string name="endTime">End Time: </string>
+    <string name="submitEndTime">End Time</string>
+    <string name="checklistTime">Checklist Time: </string>
+    <string name="submitChecklistTime">N/A</string>
+    <string name="desc">Status: </string>
+    <string name="description">Description</string>
+
+
+
+
+
+
+
+
+
+
+
 
 
     <!--For Login and Register by Ny Nguyen    -->

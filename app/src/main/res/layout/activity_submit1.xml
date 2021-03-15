@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/submitTitle1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/submitTitle1"
+        android:textSize="25dp"
+        android:textColor="#AD8888"/>
+
+    <LinearLayout
+        android:id="@+id/studentIDField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/submitTitle1"
+        android:weightSum="3">
+
+        <TextView
+            android:id="@+id/studentID"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:text="@string/studentID"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/submitStudentID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:layout_marginLeft="10dp"
+            android:hint="@string/submitStudentID"
+            android:textSize="15dp"
+            android:textColor="#7E7B7B"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/emailField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/studentIDField"
+        android:weightSum="3">
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:text="@string/email"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/submitEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:layout_marginLeft="10dp"
+            android:hint="@string/submitEmail"
+            android:textSize="15dp"
+            android:textColor="#7E7B7B"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ChecklistTimeField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/emailField"
+        >
+
+
+        <TextView
+            android:id="@+id/checklistTime"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:layout_marginLeft="10dp"
+            android:text="@string/checklistTime"
+            android:textSize="10dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/submitChecklistTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:layout_marginLeft="10dp"
+            android:hint="@string/submitChecklistTime"
+            android:textSize="10dp"
+            android:textColor="#7E7B7B"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/startTimeField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/ChecklistTimeField">
+
+
+        <TextView
+            android:id="@+id/startTime"
+            android:layout_width="25dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:layout_marginLeft="10dp"
+            android:text="@string/startTime"
+            android:textSize="10dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/submitStartTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:layout_marginLeft="10dp"
+            android:hint="@string/submitStartTime"
+            android:textSize="10dp"
+            android:textColor="#7E7B7B"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/endTimeField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/startTimeField">
+
+
+        <TextView
+            android:id="@+id/endTime"
+            android:layout_width="25dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:layout_marginLeft="10dp"
+            android:text="@string/endTime"
+            android:textSize="10dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/submitEndTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:layout_marginLeft="10dp"
+            android:hint="@string/submitEndTime"
+            android:textSize="10dp"
+            android:textColor="#7E7B7B"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/descField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/endTimeField">
+
+
+        <TextView
+            android:id="@+id/desc"
+            android:layout_width="25dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:layout_marginLeft="10dp"
+            android:text="@string/desc"
+            android:textSize="10dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/submitDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:layout_marginLeft="10dp"
+            android:hint="@string/description"
+            android:textSize="10dp"
+            android:textColor="#7E7B7B"/>
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/photos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_weight="1"
+        android:text="@string/select"
+        android:background="@color/orange"
+        android:layout_below="@+id/descField"
+        />
+
+    <TextView
+        android:id="@+id/sub_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:text="Files to submit"
+        android:layout_below="@+id/photos"
+        />
+
+    <ListView
+        android:id="@+id/theListView"
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:scrollbars="vertical"
+        android:layout_below="@+id/sub_title"
+        />
+
+    <TextView
+        android:id="@+id/comments_tx"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:text="@string/comments"
+        android:layout_above="@+id/frame"/>
+
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginVertical="3dp"
+        android:background="#000000"
+        android:layout_above="@+id/submitArea">
+
+    <EditText
+        android:id="@+id/typehere"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:padding="3dp"
+        android:scrollbars="vertical"
+        android:inputType="textMultiLine"
+        android:background="@android:color/white"
+        android:layout_margin="2dp"
+        android:maxLines="10" />
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/submitArea"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+       >
+
+
+        <Button
+            android:id="@+id/submitBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:text="@string/submit"
+            android:background="@color/orange"
+        />
+
+
+        <Button
+            android:id="@+id/cancelBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:text="@string/cancel"
+            android:background="@color/orange"/>
+    </LinearLayout>
+</RelativeLayout>
+

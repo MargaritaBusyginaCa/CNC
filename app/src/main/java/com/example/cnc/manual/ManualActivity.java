@@ -20,43 +20,18 @@ import java.util.List;
 
 public class ManualActivity extends AppCompatActivity {
     Button noSubmitBtn;
+    String studentID;
 
-    // Array of strings storing title names
-    String[] title = new String[] {
-            "Configuration",
-            "Operation mode",
-            "CNC screen 1",
-            "CNC screen 2",
-            "Operation 1",
-            "Operation 2",
-            "Operation 3",
-            "Editing 1",
-            "Editing 2",
-            "In/Output"
-    };
 
-    // Array of integers points to images stored in /res/drawable/
 
-    //here you have to give image name which you already pasted it in /res/drawable/
+    //pasted it in /res/drawable/
 
     int[] flags = new int[]{
             R.drawable.man_p1, R.drawable.man_p2, R.drawable.man_p3, R.drawable.man_p4, R.drawable.man_p5,
             R.drawable.man_p6,
     };
 
-    // Array of strings to store page number
-    String[] count = new String[]{
-            "p1",
-            "p2",
-            "p3",
-            "p4",
-            "p5",
-            "p6",
-            "p7",
-            "p8",
-            "p9",
-            "p10"
-    };
+
 
     /** Called when the activity is first created. */
     @Override
@@ -64,14 +39,15 @@ public class ManualActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.man_activity_main);
 
-        // Each row in the list stores title, page num and flag
+        Intent intentEmail = getIntent();
+        studentID = intentEmail.getStringExtra("ID");
+
+        // Each row in the list stores flag
         List<HashMap<String,String>> aList = new ArrayList<HashMap<String,String>>();
 
         for(int i=0;i<6;i++){
             HashMap<String, String> hm = new HashMap<String,String>();
-         //   hm.put("txt", "Title : " + title[i]);
-        //    hm.put("cur","Count : " + count[i]);
-            hm.put("flag", Integer.toString(flags[i]) );
+             hm.put("flag", Integer.toString(flags[i]) );
             aList.add(hm);
         }
 
@@ -83,7 +59,6 @@ public class ManualActivity extends AppCompatActivity {
        // int[] to = { R.id.flag,R.id.txt,R.id.cur};
         int[] to = { R.id.flag};
 
-        // Instantiating an adapter to store each items
         // R.layout.ori_listview_layout defines the layout of each item
         SimpleAdapter adapter = new SimpleAdapter(getBaseContext(), aList, R.layout.ori_listview_layout, from, to);
 
@@ -97,6 +72,7 @@ public class ManualActivity extends AppCompatActivity {
         noSubmitBtn = findViewById(R.id.exitBtn);
         noSubmitBtn.setOnClickListener(click->{
             Intent intent=new Intent(this, AccountActivity.class);
+            intent.putExtra("ID", studentID);
             startActivity(intent);
         });
     }

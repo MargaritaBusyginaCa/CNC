@@ -23,6 +23,7 @@ public class CheckListActivity extends AppCompatActivity {
     private Button arrow_next;
     private CheckBox cb_1, cb_2, cb_3, cb_4, cb_5, cb_6, cb_7;
     private ArrayList<CheckBox> checkBoxes;
+    String studentID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,8 @@ public class CheckListActivity extends AppCompatActivity {
         arrow_next=findViewById(R.id.bt_next);
         checkBoxes=new ArrayList<>();
 
+        Intent intentOri = getIntent();
+        studentID = intentOri.getStringExtra("ID");
 
         cb_1=findViewById(R.id.cb_1);
         cb_2=findViewById(R.id.cb_2);
@@ -70,6 +73,7 @@ public class CheckListActivity extends AppCompatActivity {
         arrow_next.setOnClickListener(click->{
             if(allChecked()){
                 Intent intent=new Intent(this, ChecklistActivity_2.class);
+                intent.putExtra("ID", studentID);
                 startActivity(intent);
 
             }else{

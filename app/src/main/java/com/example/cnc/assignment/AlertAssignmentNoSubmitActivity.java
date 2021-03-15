@@ -12,9 +12,7 @@ import com.example.cnc.orientation.OrientationActivity;
 
 public class AlertAssignmentNoSubmitActivity extends AppCompatActivity {
     Button exit_btn, cancel_btn;
-
-
-
+    String studentID;
 
 
     /** Called when the activity is first created. */
@@ -22,6 +20,10 @@ public class AlertAssignmentNoSubmitActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.assi_alert_assign_no_submit);
+
+        Intent intentAssmnt = getIntent();
+        studentID = intentAssmnt.getStringExtra("ID");
+
         init();
     }
 
@@ -30,6 +32,7 @@ public class AlertAssignmentNoSubmitActivity extends AppCompatActivity {
         exit_btn = findViewById(R.id.exitAnyway);
         exit_btn.setOnClickListener(click->{
             Intent intent=new Intent(this, AccountActivity.class);
+            intent.putExtra("ID", studentID);
             startActivity(intent);
         });
 

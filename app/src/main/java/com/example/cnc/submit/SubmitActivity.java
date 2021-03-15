@@ -19,6 +19,9 @@ import android.widget.Toast;
 
 import com.example.cnc.R;
 import com.example.cnc.loginPage.AccountActivity;
+import com.example.cnc.sql.DatabaseHelper;
+import com.example.cnc.sql.TimestampDBHelper;
+import com.example.cnc.supporters.User;
 
 import java.util.ArrayList;
 
@@ -34,6 +37,7 @@ public class SubmitActivity extends AppCompatActivity {
     MyListAdapter myAdapter;
     //save the selected pictures
     private ArrayList<Uri> elements = new ArrayList<>();
+    String studentID;
 
     @Override
     //display submit page
@@ -44,6 +48,7 @@ public class SubmitActivity extends AppCompatActivity {
         ListView myList = findViewById(R.id.theListView);
         myAdapter = new MyListAdapter();  //listView connect with adapter (adapter manage listView)
         myList.setAdapter(myAdapter);
+
 
         //--- Select photos ---
         Button SelectPhoto = findViewById(R.id.photos);  //find select photo button
@@ -78,7 +83,11 @@ public class SubmitActivity extends AppCompatActivity {
 
             this.startActivityForResult(Intent.createChooser(emailIntent, "Sending email..."), SEND_EMAIL);
 
+
+
         });
+
+
     }
 
     @Override

@@ -26,25 +26,12 @@ import java.util.HashMap;
 import java.util.List;
 
 public class OrientationActivity extends AppCompatActivity {
-    Button ex1Btn, ex2Btn;
+    Button ex1Btn, noSubmitBtn;
+    String studentID;
 
-    // Array of strings storing title names
-    String[] title = new String[] {
-            "Configuration",
-            "Operation mode",
-            "CNC screen 1",
-            "CNC screen 2",
-            "Operation 1",
-            "Operation 2",
-            "Operation 3",
-            "Editing 1",
-            "Editing 2",
-            "In/Output"
-    };
 
-    // Array of integers points to images stored in /res/drawable/
 
-    //here you have to give image name which you already pasted it in /res/drawable/
+    //images from /res/drawable/
 
     int[] flags = new int[]{
             R.drawable.ori_p1, R.drawable.ori_p2, R.drawable.ori_p3, R.drawable.ori_p4, R.drawable.ori_p5,
@@ -61,19 +48,7 @@ public class OrientationActivity extends AppCompatActivity {
         */
     };
 
-    // Array of strings to store page number
-    String[] count = new String[]{
-            "p1",
-            "p2",
-            "p3",
-            "p4",
-            "p5",
-            "p6",
-            "p7",
-            "p8",
-            "p9",
-            "p10"
-    };
+
 
     /** Called when the activity is first created. */
     @Override
@@ -81,26 +56,24 @@ public class OrientationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_orientation);
 
-        // Each row in the list stores title, page num and flag
+        Intent intentEmail = getIntent();
+        studentID = intentEmail.getStringExtra("ID");
+
+        // Each row in the list stores flag
         List<HashMap<String,String>> aList = new ArrayList<HashMap<String,String>>();
 
         for(int i=0;i<17;i++){
             HashMap<String, String> hm = new HashMap<String,String>();
-         //   hm.put("txt", "Title : " + title[i]);
-        //    hm.put("cur","Count : " + count[i]);
             hm.put("flag", Integer.toString(flags[i]) );
             aList.add(hm);
         }
 
         // Keys used in Hashmap
-        //String[] from = { "flag","txt","cur" };
         String[] from = { "flag"};
 
         // Ids of views in listview_layout
-       // int[] to = { R.id.flag,R.id.txt,R.id.cur};
         int[] to = { R.id.flag};
 
-        // Instantiating an adapter to store each items
         // R.layout.ori_listview_layout defines the layout of each item
         SimpleAdapter adapter = new SimpleAdapter(getBaseContext(), aList, R.layout.ori_listview_layout, from, to);
 
@@ -121,15 +94,27 @@ public class OrientationActivity extends AppCompatActivity {
         ex1Btn = footer.findViewById(R.id.ex1Button);
         ex1Btn.setOnClickListener(click->{
             Intent intent=new Intent(OrientationActivity.this, Exercise1Activity.class);
+            intent.putExtra("ID", studentID);
             startActivity(intent);
         });
 
+        //--- No submit ---
+        noSubmitBtn = footer.findViewById(R.id.exitNotSubmit);
+        noSubmitBtn.setOnClickListener(click -> {
+            Intent intent = new Intent(this, AlertExerciseNoSubmitActivity.class);
+            intent.putExtra("ID", studentID);
+            startActivity(intent);
+        });
+/*
         //--- Exercise 2 ---
         ex2Btn = footer.findViewById(R.id.ex2Button);
         ex2Btn.setOnClickListener(click->{
             Intent intent=new Intent(OrientationActivity.this, Exercise2Activity.class);
+            intent.putExtra("ID_ORI", studentID);
             startActivity(intent);
          });
+
+*/
 
 
 /*

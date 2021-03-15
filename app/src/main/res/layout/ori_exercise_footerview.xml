@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/ex1Button"
-            android:text="Goto exercise 1"
+            android:text="Start Question 1"
             android:layout_margin="10dp"
             android:clickable="true"
             android:background="#2fd6ff"/>
@@ -24,8 +24,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:id="@+id/ex2Button"
-             android:text="Goto exercise 2"
+            android:id="@+id/exitNotSubmit"
+             android:text="Exit"
             android:layout_margin="10dp"
             android:clickable="true"
             android:background="#00cafb"/>

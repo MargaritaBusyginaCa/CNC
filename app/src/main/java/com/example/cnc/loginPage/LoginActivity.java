@@ -14,8 +14,13 @@ import com.example.cnc.R;
 import com.example.cnc.loginPage.AccountActivity;
 import com.example.cnc.main.MainActivity;
 import com.example.cnc.sql.DatabaseHelper;
+import com.example.cnc.submit.SubmitActivity1;
 import com.example.cnc.supporters.InputValidation;
+import com.example.cnc.supporters.User;
 import com.google.android.material.snackbar.Snackbar;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by NyNguyen on Feb 6, 2021
@@ -38,6 +43,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private InputValidation inputValidation;
     private DatabaseHelper databaseHelper;
+
+    public List<User> users = new ArrayList<>();
+    String email, studentID;
+    int index = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,10 +130,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
         if (databaseHelper.checkUser(textEmail.getText().toString().trim()
                 , textPassword.getText().toString().trim())){
-            Intent intentAccount = new Intent(getApplicationContext(), AccountActivity.class);
-            intentAccount.putExtra("EMAIL",textEmail.getText().toString().trim());
-            emptyInputEditText();
-            startActivity(intentAccount);
+           Intent intentAccount = new Intent(getApplicationContext(), AccountActivity.class);
+           //intentAccount.putExtra("EMAIL",textEmail.getText().toString().trim());
+            // retrieve student ID from database
+            email = textEmail.getText().toString().trim();
+            studentID = getStudentID(email);
+            intentAccount.putExtra("ID", studentID);
+           emptyInputEditText();
+           startActivity(intentAccount);
 
         }else {
             // Snack Bar to show success message that record is wrong
@@ -138,6 +151,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void emptyInputEditText() {
         textEmail.setText(null);
         textPassword.setText(null);
+    }
+
+    //--- retrieve student ID from database ---  by Lai Shan
+
+    private String getStudentID(String stuEmail) {
+        databaseHelper = new DatabaseHelper(this);
+        users = databaseHelper.getAllUser();
+        String stuID;
+
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).getEmail().equalsIgnoreCase(email)) {
+                index = i;
+                break;
+            }
+        }
+        stuID = users.get(index).getStudentID();
+        return stuID;
     }
 
 
