@@ -24,6 +24,8 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
+import static com.example.cnc.checklist.ChecklistActivity_2.checklistcompleted;
+
 public class Exercise2Activity extends AppCompatActivity {
     Button submitBtn, noSubmitBtn;
     String studentID, title, desc;
@@ -105,6 +107,7 @@ public class Exercise2Activity extends AppCompatActivity {
             intent.putExtra("DESC", desc);
             intent.putExtra("END_TS", timeStamp);
             intent.putExtra("E_CODE", "01");
+            checklistcompleted=true;
             startActivity(intent);
         });
 
