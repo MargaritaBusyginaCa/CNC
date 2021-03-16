@@ -108,7 +108,7 @@ public class Assignment1Activity extends AppCompatActivity {
             //add_Timestamp(studentID, "13", e_timestamp);
             //String ck_timestamp = tsGetFromDB(studentID, code);
             String desc = "Checklist 1 & Assignment 1 are completed.";
-            Intent intent = new Intent(this, SubmitActivity1.class);
+            Intent intent = new Intent(this, SubmitChoiceActivity.class);
 
             //Intent intent = new Intent(this, SubmitChoiceActivity.class);
             intent.putExtra("TITLE", "Assignment 1");
