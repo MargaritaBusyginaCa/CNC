@@ -5,11 +5,15 @@ package com.example.cnc.supporters;
  */
 
 public class Timestamp {
-
     private String studentID;
     private String assmntCode;
     private String timestamp;
 
+    public Timestamp(){
+        this.studentID = studentID;
+        this.assmntCode = assmntCode;
+        this.timestamp = timestamp;
+    }
 
     public String getStudentID() {
         return studentID;
@@ -26,6 +30,7 @@ public class Timestamp {
     22 = Assignment2 started
     23 = Assignment2 submitted
  */
+
     public String getAssmntCode() {
         return assmntCode;
     }

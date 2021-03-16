@@ -14,13 +14,20 @@ import com.example.cnc.R;
 import com.example.cnc.loginPage.AccountActivity;
 import com.example.cnc.main.MainActivity;
 import com.example.cnc.sql.DatabaseHelper;
-import com.example.cnc.submit.SubmitActivity1;
 import com.example.cnc.supporters.InputValidation;
 import com.example.cnc.supporters.User;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+import org.json.JSONObject;
 
 /**
  * Created by NyNguyen on Feb 6, 2021
@@ -52,8 +59,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-      // getSupportActionBar().hide();
-       // getActionBar().hide();
+        // getSupportActionBar().hide();
+        // getActionBar().hide();
 
         initViews();
         initListeners();
@@ -128,16 +135,75 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (!inputValidation.isFilled(textPassword, Password, getString(R.string.error_message_password))) {
             return;
         }
+        //-------------------------------------OLD version
         if (databaseHelper.checkUser(textEmail.getText().toString().trim()
                 , textPassword.getText().toString().trim())){
-           Intent intentAccount = new Intent(getApplicationContext(), AccountActivity.class);
-           //intentAccount.putExtra("EMAIL",textEmail.getText().toString().trim());
+            Intent intentAccount = new Intent(getApplicationContext(), AccountActivity.class);
+            //intentAccount.putExtra("EMAIL",textEmail.getText().toString().trim());
             // retrieve student ID from database
             email = textEmail.getText().toString().trim();
             studentID = getStudentID(email);
             intentAccount.putExtra("ID", studentID);
-           emptyInputEditText();
-           startActivity(intentAccount);
+            emptyInputEditText();
+            startActivity(intentAccount);
+    //------------------------------------------ NEW version
+        /*if (false && databaseHelper.checkUser(textEmail.getText().toString().trim()
+                , textPassword.getText().toString().trim())) {
+            Intent intentAccount = new Intent(getApplicationContext(), AccountActivity.class);
+            intentAccount.putExtra("EMAIL", textEmail.getText().toString().trim());
+            emptyInputEditText();
+            startActivity(intentAccount);
+        } */
+/*
+        if (true) {
+            // Instead, create a HTTP post to http://192.168.200.2/register
+            Thread thread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+
+                    try {
+                        String uri_params;
+                        uri_params = "student_email=" + textEmail.getText().toString().trim();
+                        uri_params += "&student_password=" + textPassword.getText().toString().trim();
+                        HttpURLConnection connection = (HttpURLConnection) new URL("http://10.0.2.2:8181/api/login/?" + uri_params).openConnection();
+                        connection.setRequestMethod("GET");
+
+                        int responseCode = connection.getResponseCode();
+                        if (responseCode == 200) {
+                            String response = "";
+                            Scanner scanner = new Scanner(connection.getInputStream());
+                            while (scanner.hasNextLine()) {
+                                response += scanner.nextLine();
+                                response += "\n";
+                            }
+                            scanner.close();
+                            Snackbar.make(ButtonLogin, "OK REST", Snackbar.LENGTH_LONG).show();
+                            Intent intentAccount = new Intent(getApplicationContext(), AccountActivity.class);
+                            //intentAccount.putExtra("EMAIL", textEmail.getText().toString().trim());
+                            // retrieve student ID from database
+                            email = textEmail.getText().toString().trim();
+                            studentID = getStudentID(email);
+                            intentAccount.putExtra("ID", studentID);
+
+                            emptyInputEditText();
+                            startActivity(intentAccount);
+                            //return response;
+                        } else {
+                            // Snack Bar to show success message that record is wrong
+                            Snackbar.make(ButtonLogin, getString(R.string.error_valid_email_password), Snackbar.LENGTH_LONG).show();
+                        }
+                    } catch (Exception ex) {
+                        //do exception handling here
+                        // Snack Bar to show success message that record is wrong
+                        Snackbar.make(ButtonLogin, "REST API Failed" + ex, Snackbar.LENGTH_LONG).show();
+                        ex.printStackTrace();
+                    }
+
+                }
+            });
+            thread.start();
+
+ */
 
         }else {
             // Snack Bar to show success message that record is wrong

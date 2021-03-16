@@ -130,25 +130,4 @@ public class Exercise1Activity extends AppCompatActivity {
         return timestamp;
     }
 
-
-    private void add_Ori_Timestamp(String sID, String code, String timestamp) {
-        dbHelper = new TimestampDBHelper(this);
-        //dbHelper.check();
-        ts = new Timestamp();
-
-        ts.setStudentID(sID);
-        ts.setAssmntCode(code);
-        ts.setTimestamp(timestamp);
-
-        if (dbHelper.isExist(sID, code)){
-            dbHelper.updateTimestamp(ts);
-        }else {
-            dbHelper.addTimestamp(ts);
-        }
-
-
-    }
-
-
-
 }

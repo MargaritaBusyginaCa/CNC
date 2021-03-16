@@ -33,12 +33,11 @@ public class TimestampDBHelper extends SQLiteOpenHelper {
 
     // create table
     private String CREATE_TIMESTAMP_TABLE =
-            "CREATE TABLE " + TABLE_TIMESTAMP + "("
-                    + COLUMN_STUDENT_ID + " INTEGER PRIMARY KEY,"
+            "CREATE TABLE IF NOT EXISTS " + TABLE_TIMESTAMP + "("
+                    + COLUMN_STUDENT_ID + " INTEGER PRIMARY KEY ,"
                     + COLUMN_ASSMNT_CODE + " TEXT,"
                     + COLUMN_TIMESTAMP + " TEXT"
-                  //  + "PRIMARY KEY (" + COLUMN_STUDENT_ID + ", " + COLUMN_ASSMNT_CODE + ")"
-                  //  + "PRIMARY KEY (" + COLUMN_STUDENT_ID + ")"
+                    //+ " PRIMARY KEY (" + COLUMN_STUDENT_ID + ", " + COLUMN_ASSMNT_CODE + ")"
                     + ")";
 
     // drop table
@@ -150,6 +149,7 @@ public class TimestampDBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         // delete timestamp record by id
         db.delete(TABLE_TIMESTAMP, COLUMN_STUDENT_ID + " = ? AND " + COLUMN_ASSMNT_CODE + " = ?",
+       // db.delete(TABLE_TIMESTAMP, COLUMN_STUDENT_ID + " = ?",
                 new String[]{String.valueOf(timestamp.getStudentID())});
         db.close();
     }

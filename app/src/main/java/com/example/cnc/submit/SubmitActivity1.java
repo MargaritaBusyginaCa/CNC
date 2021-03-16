@@ -84,7 +84,7 @@ public class SubmitActivity1 extends AppCompatActivity {
             }
         }
         email = users.get(index).getEmail();
-        //--- retrieve timestamps from database
+         //--- retrieve timestamps from database
         /*
         tsDBHelper = new TimestampDBHelper(this);
         ori_TS = tsDBHelper.getTimestamp(studentID, "00");
@@ -121,6 +121,7 @@ public class SubmitActivity1 extends AppCompatActivity {
 
         submitBtn = findViewById(R.id.submitBtn);
         submitBtn.setOnClickListener(click->{
+
             if (code_ck == null){
                 add_Timestamp(studentID, code_e , e_timestamp);
             }else {
@@ -142,19 +143,19 @@ public class SubmitActivity1 extends AppCompatActivity {
         tsDBHelper = new TimestampDBHelper(this);
 
         ts_new = new Timestamp();
-
-        ts_new.setStudentID(sID);
+        String priKey = sID + code;
+        ts_new.setStudentID(priKey);
         ts_new.setAssmntCode(code);
         ts_new.setTimestamp(timestamp);
 
-        if (tsDBHelper.isExist(sID, code)){
+        if (tsDBHelper.isExist(priKey, code)){
             tsDBHelper.updateTimestamp(ts_new);
         }else {
             tsDBHelper.addTimestamp(ts_new);
         }
 
     }
-
+    
 
 
 

@@ -18,7 +18,19 @@ import com.example.cnc.supporters.InputValidation;
 import com.example.cnc.supporters.User;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.Scanner;
 
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.Scanner;
+import org.json.JSONObject;
+import java.security.MessageDigest;
 /**
  * Created by NyNguyen on Feb 6, 2021
  */
@@ -52,7 +64,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         //getSupportActionBar().hide();
-       // getActionBar().hide();
+        // getActionBar().hide();
 
         initViews();
         initListeners();
@@ -126,7 +138,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     }
 
     /**
-     * This method is to validate the input text fields and post data to SQLite
+     * This method is to validate the input text fields and post data to database
      */
     private void postDataToSQLite() {
         if (!inputValidation.isFilled(textStudentID, StudentID, getString(R.string.error_message_studentID))) {
@@ -143,6 +155,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             return;
         }
 
+
         if (!databaseHelper.checkUser(textEmail.getText().toString().trim())) {
 
             user.setStudentID(textStudentID.getText().toString().trim());
@@ -153,8 +166,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
             // Snack Bar to show success message that record saved successfully
             Snackbar.make(ButtonRegister, getString(R.string.success_message), Snackbar.LENGTH_LONG).show();
-           /* // Toast message
-            Toast.makeText(getApplicationContext(),"Registration successful", Toast.LENGTH_SHORT).show();*/
+            // Toast message
+           // Toast.makeText(getApplicationContext(),"Registration successful", Toast.LENGTH_SHORT).show();
             emptyInputEditText();
 
 
@@ -163,7 +176,53 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             Snackbar.make(ButtonRegister, getString(R.string.unsuccess_message), Snackbar.LENGTH_LONG).show();
         }
 
+        // Instead, create a HTTP post to http://192.168.200.2/register
+       /*
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
 
+                try {
+                    String uri_params;
+                    uri_params = "student_id=" + textStudentID.getText().toString().trim();
+                    uri_params += "&student_email=" + textEmail.getText().toString().trim();
+                    uri_params += "&student_password=" + textPassword.getText().toString().trim();
+
+                    HttpURLConnection connection = (HttpURLConnection) new URL("http://10.0.2.2:8181/api/register/?" + uri_params).openConnection();
+                    connection.setRequestMethod("GET");
+                    int responseCode = connection.getResponseCode();
+                    if (responseCode == 200) {
+                        String response = "";
+                        Scanner scanner = new Scanner(connection.getInputStream());
+                        while (scanner.hasNextLine()) {
+                            response += scanner.nextLine();
+                            response += "\n";
+                        }
+                        scanner.close();
+                        // Snack Bar to show success message that record saved successfully
+                        Snackbar.make(ButtonRegister, getString(R.string.success_message), Snackbar.LENGTH_LONG).show();
+                        emptyInputEditText();
+                        //return response;
+                    } else if (responseCode == 409) {
+                        // Snack Bar to show error message that record already exists (either email exists, or studentID exists)
+                        Snackbar.make(ButtonRegister, getString(R.string.unsuccess_message), Snackbar.LENGTH_LONG).show();
+
+                    } else {
+                        // Snack Bar to show success message that record is wrong
+                        Snackbar.make(ButtonRegister, "Error" + connection.getResponseMessage() , Snackbar.LENGTH_LONG).show();
+                    }
+                } catch (Exception ex) {
+                    //do exception handling here
+                    // Snack Bar to show success message that record is wrong
+                    Snackbar.make(ButtonRegister, "REST API Failed" + ex, Snackbar.LENGTH_LONG).show();
+                    ex.printStackTrace();
+                }
+
+            }
+        });
+
+        thread.start();
+*/
     }
 
     /**

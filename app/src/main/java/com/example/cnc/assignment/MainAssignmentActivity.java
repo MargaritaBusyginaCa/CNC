@@ -47,9 +47,8 @@ public class MainAssignmentActivity extends AppCompatActivity {
         // Checklist 1
         bt_c1=findViewById(R.id.check1Button);
         bt_c1.setOnClickListener(click->{
-            code = "00";
-//            if((isCompleted(studentID, code)) == true){
-            if(checklistcompleted==true){
+            code = "01";
+            if((isCompleted(studentID, code)) == true){
                 String s_timestamp = getTimestamp();
                 Intent intent=new Intent(this, CheckListActivity.class);
                 intent.putExtra("ID", studentID);
@@ -126,8 +125,8 @@ public class MainAssignmentActivity extends AppCompatActivity {
     // -- check status from the database
     private boolean isCompleted(String id, String code) {
         dbHelper = new TimestampDBHelper(this);
-
-        return (dbHelper.isExist(id, code));
+        String priKey = id + code;
+        return (dbHelper.isExist(priKey, code));
         //String ts = dbHelper.getTimestamp(id, code);
     }
 
