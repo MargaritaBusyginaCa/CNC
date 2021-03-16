@@ -13,17 +13,44 @@ import com.example.cnc.submit.SubmitActivity;
 public class SubmitChoiceActivity extends AppCompatActivity {
 private Button email;
 private Button ms_form;
+    String title, studentID, s_timestamp, e_timestamp, desc, ck_timestamp;
+    String code_ck = null;
+    String code_s, code_e;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_submit_choice);
 
+        //----- get the info from the previous activity
+        Intent intentFrPreActivity = getIntent();
+
+        title = intentFrPreActivity.getStringExtra("TITLE");
+        studentID = intentFrPreActivity.getStringExtra("ID");
+        ck_timestamp = intentFrPreActivity.getStringExtra("CK_TS");
+        s_timestamp = intentFrPreActivity.getStringExtra("START_TS");
+        e_timestamp = intentFrPreActivity.getStringExtra("END_TS");
+        desc = intentFrPreActivity.getStringExtra("DESC");
+        code_ck = intentFrPreActivity.getStringExtra("CK_CODE");
+        code_s = intentFrPreActivity.getStringExtra("S_CODE");
+        code_e = intentFrPreActivity.getStringExtra("E_CODE");
+
         email=findViewById(R.id.bt_submit_email);
         ms_form=findViewById(R.id.bt_submit_ms);
 
         email.setOnClickListener(click->{
-            Intent intent=new Intent(this, SubmitActivity.class);
+            Intent intent = new Intent(this, SubmitActivity1.class);
+            intent.putExtra("TITLE", title);
+            intent.putExtra("ID", studentID);
+            intent.putExtra("DESC", desc);
+            intent.putExtra("CK_TS", ck_timestamp);
+            intent.putExtra("START_TS", s_timestamp);
+            intent.putExtra("END_TS", e_timestamp);
+            intent.putExtra("CK_CODE", code_ck);
+            intent.putExtra("S_CODE", code_s);
+            intent.putExtra("E_CODE", code_e);
+            startActivity(intent);
             startActivity(intent);
         });
 

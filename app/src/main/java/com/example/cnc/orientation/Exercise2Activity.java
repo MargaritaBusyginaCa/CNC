@@ -10,6 +10,7 @@ import com.example.cnc.sql.DatabaseHelper;
 import com.example.cnc.sql.TimestampDBHelper;
 import com.example.cnc.submit.SubmitActivity;
 import com.example.cnc.submit.SubmitActivity1;
+import com.example.cnc.submit.SubmitChoiceActivity;
 import com.example.cnc.supporters.Timestamp;
 import com.example.cnc.supporters.User;
 
@@ -99,7 +100,8 @@ public class Exercise2Activity extends AppCompatActivity {
         submitBtn.setOnClickListener(click -> {
             String timeStamp = getNewTimestamp();
             //add_Timestamp(studentID, "00", timeStamp);
-            Intent intent = new Intent(this, SubmitActivity1.class);
+            //Intent intent = new Intent(this, SubmitActivity1.class);
+            Intent intent = new Intent(this, SubmitChoiceActivity.class);
             intent.putExtra("TITLE", "Orientation");
             intent.putExtra("ID", studentID);
             intent.putExtra("DESC", desc);
