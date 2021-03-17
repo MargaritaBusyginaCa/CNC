@@ -76,8 +76,20 @@
     <string name="error_message_password">Enter Valid Password </string>
     <string name="error_password_match">Password Does Not Matches</string>
     <string name="success_message">Registration Successful</string>
-    <string name="unsuccess_message">Registration unsuccessful, please try again!</string>
+    <string name="unsuccess_message">Registration unsuccessful (ID/Email exists). Please try again!</string>
     <string name="error_valid_email_password">Wrong Email or Password, please try again!</string>
+    <string name="verification_code">Verification Code</string>
+    <string name="verify">Verify</string>
+    <string name="hint_verification_code">6-digit number </string>
+    <string name="text_resend_verification_code">Resend Verification Code</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="text_reset_password">Forgot Password? Reset it</string>
 
+    <!--    REST API SERVER URL/ADDRESS -->
+    <!-- use the below one when you are using actual Pixel 3 device connecting through home wifi -->
+    <!--    <string name="rest_url">http://192.168.2.200:8181/api/</string>-->
+
+    <!-- use the below for virtual device running on the pc -->
+    <string name="rest_url">http://10.0.2.2:8181/api/</string>
 
 </resources>

@@ -84,7 +84,7 @@ public class SubmitActivity1 extends AppCompatActivity {
             }
         }
         email = users.get(index).getEmail();
-         //--- retrieve timestamps from database
+        //--- retrieve timestamps from database
         /*
         tsDBHelper = new TimestampDBHelper(this);
         ori_TS = tsDBHelper.getTimestamp(studentID, "00");
@@ -153,9 +153,8 @@ public class SubmitActivity1 extends AppCompatActivity {
         }else {
             tsDBHelper.addTimestamp(ts_new);
         }
-
     }
-    
+
 
 
 

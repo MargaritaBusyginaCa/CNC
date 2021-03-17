@@ -54,7 +54,7 @@
         android:ems="10"
         android:layout_marginTop="11dp"
         android:gravity="left"
-       android:textAllCaps="false"/>
+        android:textAllCaps="false"/>
 
 
 
@@ -81,11 +81,20 @@
         android:layout_marginTop="13dp"
         android:gravity="center" />
 
-
-
+    <TextView
+        android:id="@+id/ResetPasswordLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/RegisterLink"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="13dp"
+        android:gravity="center"
+        android:text="@string/text_reset_password"
+        android:textSize="18sp"
+        android:textStyle="bold|italic" />
 
 
 </RelativeLayout>
     <!--android:backgroundTint="@color/colorButton"-->
-   <!-- android:background="@color/colorBackground"-->
-   <!-- android:textColor="@android:color/white"-->
+    <!-- android:background="@color/colorBackground"-->
+    <!-- android:textColor="@android:color/white"-->

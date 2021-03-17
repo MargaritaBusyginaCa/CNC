@@ -11,8 +11,8 @@ import com.example.cnc.R;
 import com.example.cnc.submit.SubmitActivity;
 
 public class SubmitChoiceActivity extends AppCompatActivity {
-private Button email;
-private Button ms_form;
+    private Button email;
+    private Button ms_form;
     String title, studentID, s_timestamp, e_timestamp, desc, ck_timestamp;
     String code_ck = null;
     String code_s, code_e;

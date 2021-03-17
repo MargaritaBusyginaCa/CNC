@@ -7,7 +7,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,15 +21,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
 
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.util.Scanner;
-import org.json.JSONObject;
-import java.security.MessageDigest;
 /**
  * Created by NyNguyen on Feb 6, 2021
  */
@@ -59,6 +49,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private DatabaseHelper databaseHelper;
     private User user;
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +61,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         initListeners();
         initObjects();
     }
+
+    public static String User_Email = "";
+    public static String User_Password = "";
 
     /**
      * This method is to initialize views
@@ -109,6 +103,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         inputValidation = new InputValidation(activity);
         databaseHelper = new DatabaseHelper(activity);
         user = new User();
+        databaseHelper.getAllUser();
     }
 
 
@@ -122,7 +117,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         switch (v.getId()) {
 
             case R.id.ButtonRegister:
-                postDataToSQLite();
+                doRegister();
                 // Navigate to MainActivity
                /* Intent intentGoTo = new Intent(getApplicationContext(), GoToActivity.class);
                 startActivity(intentGoTo);*/
@@ -140,7 +135,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     /**
      * This method is to validate the input text fields and post data to database
      */
-    private void postDataToSQLite() {
+    private void doRegister() {
         if (!inputValidation.isFilled(textStudentID, StudentID, getString(R.string.error_message_studentID))) {
             return;
         }
@@ -156,28 +151,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
 
 
-        if (!databaseHelper.checkUser(textEmail.getText().toString().trim())) {
-
-            user.setStudentID(textStudentID.getText().toString().trim());
-            user.setEmail(textEmail.getText().toString().trim());
-            user.setPassword(textPassword.getText().toString().trim());
-
-            databaseHelper.addUser(user);
-
-            // Snack Bar to show success message that record saved successfully
-            Snackbar.make(ButtonRegister, getString(R.string.success_message), Snackbar.LENGTH_LONG).show();
-            // Toast message
-           // Toast.makeText(getApplicationContext(),"Registration successful", Toast.LENGTH_SHORT).show();
-            emptyInputEditText();
-
-
-        } else {
-            // Snack Bar to show error message that record already exists
-            Snackbar.make(ButtonRegister, getString(R.string.unsuccess_message), Snackbar.LENGTH_LONG).show();
-        }
-
-        // Instead, create a HTTP post to http://192.168.200.2/register
-       /*
+        // Create a HTTP post to http://192.168.200.2/register
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -187,8 +161,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     uri_params = "student_id=" + textStudentID.getText().toString().trim();
                     uri_params += "&student_email=" + textEmail.getText().toString().trim();
                     uri_params += "&student_password=" + textPassword.getText().toString().trim();
-
-                    HttpURLConnection connection = (HttpURLConnection) new URL("http://10.0.2.2:8181/api/register/?" + uri_params).openConnection();
+                    String rest_url = getString(R.string.rest_url) + "register/?";
+                    //HttpURLConnection connection = (HttpURLConnection) new URL("http://10.0.2.2:8181/api/register/?" + uri_params).openConnection();
+                    HttpURLConnection connection = (HttpURLConnection) new URL(rest_url + uri_params).openConnection();
                     connection.setRequestMethod("GET");
                     int responseCode = connection.getResponseCode();
                     if (responseCode == 200) {
@@ -199,21 +174,37 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                             response += "\n";
                         }
                         scanner.close();
+
                         // Snack Bar to show success message that record saved successfully
                         Snackbar.make(ButtonRegister, getString(R.string.success_message), Snackbar.LENGTH_LONG).show();
+                        // passing user info into sqlite:
+                        user.setStudentID(textStudentID.getText().toString().trim());
+                        user.setEmail(textEmail.getText().toString().trim());
+                        user.setPassword(textPassword.getText().toString().trim());// we don't need store password in sqlite
+                        databaseHelper.addUser(user);
+
+                        Intent intentVerification = new Intent(getApplicationContext(), VerificationActivity.class);
+                        intentVerification.putExtra("EXTRA_RESET_PASSWORD", false);
+                        //pass student_email and student_password
+                        intentVerification.putExtra("EXTRA_STUDENT_EMAIL", textEmail.getText().toString().trim());
+                        //intentVerification.putExtra("EXTRA_STUDENT_PASSWORD", textPassword.getText().toString().trim());
+
                         emptyInputEditText();
+                        startActivity(intentVerification);
+
                         //return response;
                     } else if (responseCode == 409) {
                         // Snack Bar to show error message that record already exists (either email exists, or studentID exists)
                         Snackbar.make(ButtonRegister, getString(R.string.unsuccess_message), Snackbar.LENGTH_LONG).show();
 
                     } else {
-                        // Snack Bar to show success message that record is wrong
+                        // Snack Bar to show message that record is wrong
                         Snackbar.make(ButtonRegister, "Error" + connection.getResponseMessage() , Snackbar.LENGTH_LONG).show();
                     }
-                } catch (Exception ex) {
                     //do exception handling here
-                    // Snack Bar to show success message that record is wrong
+                } catch (Exception ex) {
+
+                    // Snack Bar to show message that record is wrong
                     Snackbar.make(ButtonRegister, "REST API Failed" + ex, Snackbar.LENGTH_LONG).show();
                     ex.printStackTrace();
                 }
@@ -222,7 +213,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         });
 
         thread.start();
-*/
+
     }
 
     /**
@@ -234,4 +225,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         textPassword.setText(null);
         textConfirmPassword.setText(null);
     }
+
+
 }

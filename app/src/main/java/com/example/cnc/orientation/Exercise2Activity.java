@@ -6,6 +6,8 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cnc.R;
+import com.example.cnc.loginPage.AccountActivity;
+import com.example.cnc.loginPage.LoginActivity;
 import com.example.cnc.sql.DatabaseHelper;
 import com.example.cnc.sql.TimestampDBHelper;
 import com.example.cnc.submit.SubmitActivity;
@@ -30,15 +32,16 @@ public class Exercise2Activity extends AppCompatActivity {
     String studentID, title, desc;
     private TimestampDBHelper dbHelper;
     Timestamp ts_new;
+    public static boolean orientationCompleted;
 
 
     //images from /res/drawable/
 
     int[] flags = new int[]{
 
-                 R.drawable.ori_p27, R.drawable.ori_p28, R.drawable.ori_p29, R.drawable.ori_p30,
-                 R.drawable.ori_p31, R.drawable.ori_p32, R.drawable.ori_p33, R.drawable.ori_p34,
-                 R.drawable.ori_p35, R.drawable.ori_p36a, R.drawable.ori_endex2,
+            R.drawable.ori_p27, R.drawable.ori_p28, R.drawable.ori_p29, R.drawable.ori_p30,
+            R.drawable.ori_p31, R.drawable.ori_p32, R.drawable.ori_p33, R.drawable.ori_p34,
+            R.drawable.ori_p35, R.drawable.ori_p36a, R.drawable.ori_endex2,
     };
 
     /** Called when the activity is first created. */
@@ -62,7 +65,7 @@ public class Exercise2Activity extends AppCompatActivity {
 
         for(int i=0;i<11;i++){
             HashMap<String, String> hm = new HashMap<String,String>();
-             hm.put("flag", Integer.toString(flags[i]) );
+            hm.put("flag", Integer.toString(flags[i]) );
             aList.add(hm);
         }
 
@@ -107,6 +110,7 @@ public class Exercise2Activity extends AppCompatActivity {
             intent.putExtra("DESC", desc);
             intent.putExtra("END_TS", timeStamp);
             intent.putExtra("E_CODE", "01");
+            orientationCompleted=true;
             startActivity(intent);
         });
 
@@ -127,19 +131,15 @@ public class Exercise2Activity extends AppCompatActivity {
         dbHelper = new TimestampDBHelper(this);
         //dbHelper.check();
         ts_new = new Timestamp();
-
         ts_new.setStudentID(sID);
         ts_new.setAssmntCode(code);
         ts_new.setTimestamp(timestamp);
-
         if (dbHelper.isExist(sID, code)){
             dbHelper.updateTimestamp(ts_new);
         }else {
             dbHelper.addTimestamp(ts_new);
         }
-
     }
-
      */
 
 }
