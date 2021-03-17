@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_verification"
+    tools:context=".loginPage.VerificationActivity"
+    style="@style/activity_activation">
+
+
+    <TextView
+        android:id="@+id/ResendVerificationCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ButtonResetPassword"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="13dp"
+        android:gravity="center"
+        android:text="@string/text_resend_verification_code"
+        android:textSize="18sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/VerificationCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="253dp"
+        android:gravity="start"
+        android:text="@string/verification_code"
+        android:textSize="18sp"
+        android:textStyle="bold|italic" />
+
+    <EditText
+        android:id="@+id/textVerificationCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/VerificationCode"
+        android:autofillHints=""
+        android:ems="10"
+        android:gravity="start"
+        android:hint="@string/hint_verification_code"
+        android:inputType="text"
+        android:maxLines="1"
+        android:textSize="18sp"
+        android:textStyle="bold|italic" />
+
+
+    <Button
+        android:id="@+id/ButtonResetPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textVerificationCode"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="18dp"
+        android:text="@string/verify"
+        android:textSize="18sp"
+        android:textStyle="bold|italic" />
+
+
+</RelativeLayout>
+    <!--android:backgroundTint="@color/colorButton"-->
+   <!-- android:background="@color/colorBackground"-->
+   <!-- android:textColor="@android:color/white"-->
