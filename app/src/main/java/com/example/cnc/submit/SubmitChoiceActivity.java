@@ -11,8 +11,8 @@ import com.example.cnc.R;
 import com.example.cnc.submit.SubmitActivity;
 
 public class SubmitChoiceActivity extends AppCompatActivity {
-private Button email;
-private Button ms_form;
+    private Button email;
+    private Button ms_form;
     String title, studentID, s_timestamp, e_timestamp, desc, ck_timestamp;
     String code_ck = null;
     String code_s, code_e;
@@ -40,7 +40,7 @@ private Button ms_form;
         ms_form=findViewById(R.id.bt_submit_ms);
 
         email.setOnClickListener(click->{
-            Intent intent = new Intent(this, SubmitActivity1.class);
+            Intent intent = new Intent(this, SubmitActivity.class);
             intent.putExtra("TITLE", title);
             intent.putExtra("ID", studentID);
             intent.putExtra("DESC", desc);

@@ -7,6 +7,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by NyNguyen on Feb 10, 2021
@@ -34,6 +35,7 @@ public class InputValidation {
      */
     public boolean isFilled(EditText inputText, TextView textView, String message) {
         String value = inputText.getText().toString().trim();
+
         if (value.isEmpty()) {
             // textView.setError(message);
             inputText.setError(message);
@@ -59,9 +61,16 @@ public class InputValidation {
      */
     public boolean isEmail(EditText inputText, TextView textView, String message) {
         String value = inputText.getText().toString().trim();
-        if (value.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(value).matches()) {
+        String emailPattern = ".*@algonquinlive\\.com";
+//        if (value.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(value).matches()) {
+        if (value.isEmpty()) {
             //textView.setError(message);
             inputText.setError(message);
+            hideKeyboardFrom(inputText);
+            return false;
+            //only algonquin email ar
+        }else if (!value.matches(emailPattern)){
+            inputText.setError("Email address should be an algonquin's email");
             hideKeyboardFrom(inputText);
             return false;
         } else {

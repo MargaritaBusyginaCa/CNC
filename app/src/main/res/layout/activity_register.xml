@@ -57,29 +57,43 @@
         android:gravity="left" />
 
     <TextView
-        android:text="@string/password"
         android:id="@+id/Password"
-        android:textSize="18sp"
-        android:textStyle="bold|italic"
-        android:layout_below="@+id/textEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/textEmail"
         android:layout_marginTop="13dp"
-        android:gravity="left" />
+        android:gravity="left"
+        android:text="@string/password"
+        android:textSize="18sp"
+        android:textStyle="bold|italic" />
+
+    <EditText
+        android:id="@+id/textConfirmPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ConfirmPassword"
+        android:layout_marginTop="11dp"
+        android:ems="10"
+        android:gravity="left"
+        android:hint="@string/hint_password"
+        android:inputType="textPassword"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:textStyle="normal|bold" />
 
     <EditText
         android:id="@+id/textPassword"
-        android:hint="@string/hint_password"
-        android:textSize="18sp"
-        android:textStyle="normal|bold"
-        android:inputType="textPassword"
-        android:layout_below="@+id/Password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
+        android:layout_below="@+id/Password"
         android:layout_marginTop="11dp"
+        android:ems="10"
         android:gravity="left"
-        android:textAllCaps="false"/>
+        android:hint="@string/hint_password"
+        android:inputType="textPassword"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:textStyle="normal|bold" />
 
     <TextView
         android:text="@string/confirm_password"
@@ -91,20 +105,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="13dp"
         android:gravity="left" />
-
-    <EditText
-        android:id="@+id/textConfirmPassword"
-        android:hint="@string/hint_password"
-        android:textSize="18sp"
-        android:textStyle="normal|bold"
-        android:inputType="textPassword"
-        android:layout_below="@+id/ConfirmPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:layout_marginTop="11dp"
-        android:gravity="left"
-        android:textAllCaps="false" />
 
     <Button
         android:text="@string/text_register"

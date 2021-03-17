@@ -7,24 +7,14 @@
 
     tools:context=".loginPage.AccountActivity">
 
-    <Button
-        android:id="@+id/manual_bt"
-        android:layout_width="168dp"
-        android:layout_height="64dp"
-        android:layout_marginLeft="120dp"
-        android:layout_marginTop="120dp"
-         android:text="@string/Manual"
-        android:background="@color/orange"
-        />
 
     <Button
         android:id="@+id/orientation_bt"
         android:layout_width="168dp"
         android:layout_height="64dp"
         android:layout_marginLeft="120dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="120dp"
         android:text="@string/orientation"
-        android:layout_below="@+id/manual_bt"
         android:background="@color/orange"/>
 
     <Button
@@ -38,7 +28,6 @@
         android:background="@color/orange"/>
 
     <!-- this submission button will be deleted -->
- <!--
     <Button
         android:id="@+id/submission_bt"
         android:layout_width="168dp"
@@ -49,27 +38,26 @@
         android:text="@string/Submissions"
         android:background="@color/orange"
         />
--->
+
+    <Button
+        android:id="@+id/manual_bt"
+        android:layout_width="168dp"
+        android:layout_height="64dp"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/submission_bt"
+        android:text="@string/Manual"
+        android:background="@color/orange"
+        />
+
     <Button
         android:id="@+id/logout_bt"
         android:layout_width="168dp"
         android:layout_height="64dp"
         android:layout_marginLeft="120dp"
         android:layout_marginTop="20dp"
-        android:layout_below="@+id/assignments_bt"
+        android:layout_below="@+id/manual_bt"
         android:text="@string/logout"
         android:background="@color/orange"
         />
-
-    <EditText
-        android:id="@+id/editTextEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_marginLeft="10dp"
-        android:hint="@string/submitStudentID"
-        android:textSize="20dp"
-        android:textColor="#7E7B7B"/>
-
-
 </RelativeLayout>

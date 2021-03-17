@@ -23,6 +23,7 @@ import com.example.cnc.submit.SubmitActivity;
 import com.example.cnc.supporters.Timestamp;
 
 import static com.example.cnc.checklist.ChecklistActivity_2.checklistcompleted;
+import static com.example.cnc.orientation.Exercise2Activity.orientationCompleted;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -48,7 +49,9 @@ public class MainAssignmentActivity extends AppCompatActivity {
         bt_c1=findViewById(R.id.check1Button);
         bt_c1.setOnClickListener(click->{
             code = "01";
-            if((isCompleted(studentID, code)) == true){
+//            if((isCompleted(studentID, code)) == true){
+            if(orientationCompleted==true){
+
                 String s_timestamp = getTimestamp();
                 Intent intent=new Intent(this, CheckListActivity.class);
                 intent.putExtra("ID", studentID);
