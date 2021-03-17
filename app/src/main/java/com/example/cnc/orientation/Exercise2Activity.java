@@ -104,7 +104,7 @@ public class Exercise2Activity extends AppCompatActivity {
             String timeStamp = getNewTimestamp();
             //add_Timestamp(studentID, "00", timeStamp);
             //Intent intent = new Intent(this, SubmitActivity1.class);
-            Intent intent = new Intent(this, AccountActivity.class);
+            Intent intent = new Intent(this, SubmitChoiceActivity.class);
             intent.putExtra("TITLE", "Orientation");
             intent.putExtra("ID", studentID);
             intent.putExtra("DESC", desc);

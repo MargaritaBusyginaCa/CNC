@@ -153,7 +153,6 @@ public class SubmitActivity1 extends AppCompatActivity {
         }else {
             tsDBHelper.addTimestamp(ts_new);
         }
-
     }
 
 

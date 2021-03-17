@@ -14,9 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat">
-    <!--android:theme="@style/Theme.CNC">-->
-    <activity android:name=".submit.SubmitChoiceActivity" />
-<!-- Checklist by Rita -->
+        <!--android:theme="@style/Theme.CNC">-->
+        <activity android:name=".submit.SubmitChoiceActivity" />
+        <!-- Checklist by Rita -->
         <activity android:name=".checklist.ChecklistActivity_2" />
         <activity android:name=".checklist.CheckListActivity" />
         <!-- Manual, Orientation and Assignment by Lai Shan Law -->

@@ -13,10 +13,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.cnc.R;
 import com.example.cnc.sql.DatabaseHelper;
 import com.example.cnc.supporters.InputValidation;
+import com.example.cnc.supporters.User;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -42,6 +45,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private InputValidation inputValidation;
     private DatabaseHelper databaseHelper;
+
+    public List<User> users = new ArrayList<>();
+    String email_def, studentID_def;
+    int index = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -165,6 +172,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             Snackbar.make(ButtonLogin, "OK REST", Snackbar.LENGTH_LONG).show();
                             Intent intentAccount = new Intent(getApplicationContext(), AccountActivity.class);
                             intentAccount.putExtra("EMAIL", textEmail.getText().toString().trim());
+                            //don't delete it!
+                            email_def = textEmail.getText().toString().trim();
+                            studentID_def = getStudentID(email_def);
+                            intentAccount.putExtra("ID", studentID_def);
+                            //--------------
                             emptyInputEditText();
                             startActivity(intentAccount);
                             //return response;
@@ -175,6 +187,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                              Set public variable for Activation Activity to access*/
                             User_Email = textEmail.getText().toString().trim();
                             User_Password = textPassword.getText().toString().trim();
+
 
                             Snackbar.make(ButtonLogin, "OK GOTO ACTIVATION", Snackbar.LENGTH_LONG).show();
 
@@ -281,6 +294,24 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         textEmail.setText(null);
         textPassword.setText(null);
     }
+
+    //--- retrieve student ID from database ---  by Lai Shan
+
+    private String getStudentID(String stuEmail) {
+        databaseHelper = new DatabaseHelper(this);
+        users = databaseHelper.getAllUser();
+        String stuID;
+
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).getEmail().equalsIgnoreCase(stuEmail)) {
+                index = i;
+                break;
+            }
+        }
+        stuID = users.get(index).getStudentID();
+        return stuID;
+    }
+
 
 
 }

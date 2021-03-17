@@ -49,6 +49,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private DatabaseHelper databaseHelper;
     private User user;
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -179,7 +180,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                         // passing user info into sqlite:
                         user.setStudentID(textStudentID.getText().toString().trim());
                         user.setEmail(textEmail.getText().toString().trim());
-//                        user.setPassword(textPassword.getText().toString().trim());// we don't need store password in sqlite
+                        user.setPassword(textPassword.getText().toString().trim());// we don't need store password in sqlite
                         databaseHelper.addUser(user);
 
                         Intent intentVerification = new Intent(getApplicationContext(), VerificationActivity.class);
@@ -224,4 +225,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         textPassword.setText(null);
         textConfirmPassword.setText(null);
     }
+
+
 }

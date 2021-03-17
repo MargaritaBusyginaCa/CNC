@@ -49,8 +49,9 @@ public class MainAssignmentActivity extends AppCompatActivity {
         bt_c1=findViewById(R.id.check1Button);
         bt_c1.setOnClickListener(click->{
             code = "01";
-//            if((isCompleted(studentID, code)) == true){
-            if(orientationCompleted==true){
+           if((isCompleted(studentID, code)) == true){
+            //don't use it!!
+            //if(orientationCompleted==true){
 
                 String s_timestamp = getTimestamp();
                 Intent intent=new Intent(this, CheckListActivity.class);
