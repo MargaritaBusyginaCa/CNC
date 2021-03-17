@@ -40,7 +40,7 @@ private Button ms_form;
         ms_form=findViewById(R.id.bt_submit_ms);
 
         email.setOnClickListener(click->{
-            Intent intent = new Intent(this, SubmitActivity1.class);
+            Intent intent = new Intent(this, SubmitActivity.class);
             intent.putExtra("TITLE", title);
             intent.putExtra("ID", studentID);
             intent.putExtra("DESC", desc);
