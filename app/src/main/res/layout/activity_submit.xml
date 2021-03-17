@@ -198,7 +198,7 @@
         android:layout_weight="1"
         android:text="@string/select"
         android:background="@color/orange"
-        android:layout_below="@+id/submittitle"
+        android:layout_below="@+id/descField"
         />
     <!--
         <TextView
@@ -247,6 +247,7 @@
             android:inputType="textMultiLine"
             android:background="@android:color/white"
             android:layout_margin="2dp"
+            android:textColor="@color/black"
             android:maxLines="10" />
 
     </FrameLayout>
