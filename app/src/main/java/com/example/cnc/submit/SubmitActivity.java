@@ -40,9 +40,13 @@ public class SubmitActivity extends AppCompatActivity {
     MyListAdapter myAdapter;
     //save the selected pictures
     private ArrayList<Uri> elements = new ArrayList<>();
+    //variable to store related information
     String title, studentID,ck_timestamp,s_timestamp,e_timestamp,desc,code_ck,code_s,code_e;
+    //Database helper to query students database
     private DatabaseHelper dbHelper;
+    //Database helper to query timestamp database
     private TimestampDBHelper tsDBHelper;
+    //current timestamp
     Timestamp ts_new;
 
     @Override
@@ -74,14 +78,17 @@ public class SubmitActivity extends AppCompatActivity {
         submitBtn = findViewById(R.id.submitBtn);  //find submit button
         submitBtn.setEnabled(false);  //if there has not pictures in the submit page, can not click submit button
         submitBtn.setOnClickListener(click->{  //click submit button
+
+            // Copied from SubmitActivity1 to update timestamp database
             if (code_ck == null){
-                add_Timestamp(studentID, code_e , e_timestamp);
+                add_Timestamp(studentID, code_e , e_timestamp);  //
             }else {
                 add_Timestamp(studentID, code_ck, ck_timestamp);
                 add_Timestamp(studentID, code_s, s_timestamp);
                 add_Timestamp(studentID, code_e, e_timestamp);
             }
             Toast.makeText(getApplicationContext(),"The timestamps have been saved",Toast.LENGTH_LONG).show();
+            // End of timestamp database
 
             final Intent emailIntent = new Intent (Intent.ACTION_SEND_MULTIPLE);//intent send email
             emailIntent.setType("plain/text");
@@ -89,6 +96,7 @@ public class SubmitActivity extends AppCompatActivity {
             emailIntent.putExtra(Intent.EXTRA_SUBJECT, title); //email subject
             emailIntent.putExtra(Intent.EXTRA_STREAM,elements); //email attachment
 
+            // Use task and timestamp information to create email body
             String emailBody="Student ID: " + studentID+"\n";
             emailBody+="Check list time: " +    ck_timestamp +"\n";
             emailBody+="Start time: " +    s_timestamp +"\n";
@@ -184,6 +192,8 @@ public class SubmitActivity extends AppCompatActivity {
     //Each time will clear data
     private void loadData() {
             elements.clear();
+
+            //copied from SubmitActivity1 to get information from calling Activity
         Intent intentFrPreActivity = getIntent();
 
         title = intentFrPreActivity.getStringExtra("TITLE");
