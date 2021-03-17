@@ -102,7 +102,10 @@ public class SubmitActivity extends AppCompatActivity {
             {
                 emailIntent.putExtra(Intent.EXTRA_TEXT,emailBody);
             }
+
             this.startActivityForResult(Intent.createChooser(emailIntent, "Sending email..."), SEND_EMAIL);
+
+
 
         });
 

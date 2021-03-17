@@ -198,7 +198,7 @@
         android:layout_weight="1"
         android:text="@string/select"
         android:background="@color/orange"
-        android:layout_below="@+id/descField"
+        android:layout_below="@+id/submittitle"
         />
     <!--
         <TextView
@@ -281,3 +281,4 @@
             android:background="@color/orange"/>
     </LinearLayout>
 </RelativeLayout>
+
