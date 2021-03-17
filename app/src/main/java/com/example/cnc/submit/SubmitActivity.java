@@ -21,6 +21,8 @@ import android.widget.Toast;
 import com.example.cnc.R;
 import com.example.cnc.loginPage.AccountActivity;
 import com.example.cnc.sql.DatabaseHelper;
+import com.example.cnc.sql.TimestampDBHelper;
+import com.example.cnc.supporters.Timestamp;
 import com.example.cnc.supporters.User;
 
 import java.util.ArrayList;
@@ -38,7 +40,10 @@ public class SubmitActivity extends AppCompatActivity {
     MyListAdapter myAdapter;
     //save the selected pictures
     private ArrayList<Uri> elements = new ArrayList<>();
-    String title, studentID,ck_timestamp,s_timestamp,e_timestamp,desc;
+    String title, studentID,ck_timestamp,s_timestamp,e_timestamp,desc,code_ck,code_s,code_e;
+    private DatabaseHelper dbHelper;
+    private TimestampDBHelper tsDBHelper;
+    Timestamp ts_new;
 
     @Override
     //display submit page
@@ -69,6 +74,15 @@ public class SubmitActivity extends AppCompatActivity {
         submitBtn = findViewById(R.id.submitBtn);  //find submit button
         submitBtn.setEnabled(false);  //if there has not pictures in the submit page, can not click submit button
         submitBtn.setOnClickListener(click->{  //click submit button
+            if (code_ck == null){
+                add_Timestamp(studentID, code_e , e_timestamp);
+            }else {
+                add_Timestamp(studentID, code_ck, ck_timestamp);
+                add_Timestamp(studentID, code_s, s_timestamp);
+                add_Timestamp(studentID, code_e, e_timestamp);
+            }
+            Toast.makeText(getApplicationContext(),"The timestamps have been saved",Toast.LENGTH_LONG).show();
+
             final Intent emailIntent = new Intent (Intent.ACTION_SEND_MULTIPLE);//intent send email
             emailIntent.setType("plain/text");
             emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] { "linlinfhl@gmail.com"});//default to email address
@@ -84,6 +98,9 @@ public class SubmitActivity extends AppCompatActivity {
             String commentStr=commentText.getText().toString();
             if(commentStr !=null && ! commentStr.trim().isEmpty()){
                 emailIntent.putExtra(Intent.EXTRA_TEXT,emailBody +commentStr);
+            }else
+            {
+                emailIntent.putExtra(Intent.EXTRA_TEXT,emailBody);
             }
             this.startActivityForResult(Intent.createChooser(emailIntent, "Sending email..."), SEND_EMAIL);
 
@@ -112,6 +129,7 @@ public class SubmitActivity extends AppCompatActivity {
             //if request code is send_email, then will back to AccountActivity(main page)
             if (requestCode == SEND_EMAIL) {
                 Intent intent=new Intent(this, AccountActivity.class);
+                intent.putExtra("ID", studentID);
                 startActivity(intent);
             }
 
@@ -174,9 +192,9 @@ public class SubmitActivity extends AppCompatActivity {
         s_timestamp = intentFrPreActivity.getStringExtra("START_TS");
         e_timestamp = intentFrPreActivity.getStringExtra("END_TS");
         desc = intentFrPreActivity.getStringExtra("DESC");
-        String code_ck = intentFrPreActivity.getStringExtra("CK_CODE");
-        String code_s = intentFrPreActivity.getStringExtra("S_CODE");
-        String code_e = intentFrPreActivity.getStringExtra("E_CODE");
+        code_ck = intentFrPreActivity.getStringExtra("CK_CODE");
+        code_s = intentFrPreActivity.getStringExtra("S_CODE");
+        code_e = intentFrPreActivity.getStringExtra("E_CODE");
 
 
         //--- retrieve email from database
@@ -206,6 +224,24 @@ public class SubmitActivity extends AppCompatActivity {
         typedTimestamp.setText(e_timestamp);
         TextView typeDesc = findViewById(R.id.submitDesc);
         typeDesc.setText(desc);
+
+    }
+
+    // -- save Timestamp into the database
+    private void add_Timestamp(String sID, String code, String timestamp) {
+        tsDBHelper = new TimestampDBHelper(this);
+
+        ts_new = new Timestamp();
+        String priKey = sID + code;
+        ts_new.setStudentID(priKey);
+        ts_new.setAssmntCode(code);
+        ts_new.setTimestamp(timestamp);
+
+        if (tsDBHelper.isExist(priKey, code)){
+            tsDBHelper.updateTimestamp(ts_new);
+        }else {
+            tsDBHelper.addTimestamp(ts_new);
+        }
 
     }
 }
