@@ -5,17 +5,20 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     tools:context=".main.EntranceActivity"
+    android:background="@drawable/app_background"
     android:layout_gravity="center">
 
     <TextView
         android:id="@+id/Welcome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
         android:text="@string/welcome"
         android:textSize="25dp"
-        android:textStyle="bold"
-        android:gravity="center"
-        />
+        android:textColor="@color/collegeGreen"
+        android:textStyle="bold" />
 
 
     <LinearLayout
@@ -32,17 +35,17 @@
 
         <Button
             android:id="@+id/registerButton"
-            android:text="@string/text_register"
-
-            android:textSize="14dp"
-            android:textStyle="bold|italic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:ignore="MissingConstraints"
             android:layout_margin="10dp"
             android:layout_weight="1"
+            android:background="@color/collegeGreen"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="@string/text_register"
+            android:textSize="14dp"
+            android:textStyle="bold|italic"
 
-            />
+            tools:ignore="MissingConstraints" />
 
         <Button
             android:id="@+id/loginButton"
@@ -54,6 +57,7 @@
             tools:ignore="MissingConstraints"
             android:layout_margin="10dp"
             android:layout_weight="1"
+            android:background="@color/collegeGreen"
             />
 
 

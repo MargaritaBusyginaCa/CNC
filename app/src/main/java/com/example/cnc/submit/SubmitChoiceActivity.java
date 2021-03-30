@@ -58,7 +58,7 @@ public class SubmitChoiceActivity extends AppCompatActivity {
             gotoUrl("https://forms.office.com/Pages/DesignPage.aspx?auth_pvr=OrgId&auth_upn=busy0001%40algonquinlive.com&origin=OfficeDotCom&lang=en-CA&route=LeftNav#FormId=JNkb7GoKqUqqicmAMWwESVtB4Pm0yv5Ojv2WVfBt2BJURVVGN0ZVUDIxWk1GTEZXR1IzVFo3QlZETi4u");
         });
     }
-
+//This method transfers to the MS forms web page
     private void gotoUrl(String urlPattern){
         Uri uri= Uri.parse(urlPattern);
         startActivity(new Intent(Intent.ACTION_VIEW, uri));

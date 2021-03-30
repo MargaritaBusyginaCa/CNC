@@ -4,19 +4,24 @@
     android:id="@+id/activity_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".loginPage.LoginActivity">
 
 
     <TextView
-        android:text="@string/email"
         android:id="@+id/Email"
-        android:textSize="18sp"
-        android:textStyle="bold|italic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="12dp"
-        android:gravity="left" />
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginRight="30dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="left"
+        android:text="@string/email"
+        android:textColor="@color/collegeGreen"
+        android:textSize="22sp"
+        android:textStyle="bold|italic" />
 
     <EditText
         android:id="@+id/textEmail"
@@ -29,18 +34,26 @@
         android:ems="10"
         android:inputType="text"
         android:maxLines="1"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:textColor="@color/asphaltGrey"
+        android:textColorHint="@color/Grey"
         android:gravity="left" />
 
     <TextView
-        android:text="@string/password"
         android:id="@+id/Password"
-        android:textSize="18sp"
-        android:textStyle="bold|italic"
-        android:layout_below="@+id/textEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
-        android:gravity="left" />
+        android:layout_below="@+id/textEmail"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="left"
+        android:text="@string/password"
+        android:textColor="@color/collegeGreen"
+        android:textSize="22sp"
+        android:textStyle="bold|italic" />
 
     <EditText
         android:id="@+id/textPassword"
@@ -52,7 +65,11 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
+        android:textColor="@color/asphaltGrey"
+        android:textColorHint="@color/Grey"
         android:layout_marginTop="11dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:gravity="left"
         android:textAllCaps="false"/>
 
@@ -67,7 +84,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginTop="18dp" />
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="25dp"
+        android:background="@color/collegeGreen"/>
 
     <TextView
         android:text="@string/text_not_member"
@@ -79,7 +99,8 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_marginTop="13dp"
-        android:gravity="center" />
+        android:gravity="center"
+        android:textColor="@color/Grey"/>
 
     <TextView
         android:id="@+id/ResetPasswordLink"
@@ -91,7 +112,16 @@
         android:gravity="center"
         android:text="@string/text_reset_password"
         android:textSize="18sp"
+        android:textColor="@color/Grey"
         android:textStyle="bold|italic" />
+
+    <ImageView
+        android:id="@+id/college_logo_login"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@+id/ResetPasswordLink"
+        android:layout_marginTop="228dp"
+        android:src="@drawable/college_logo" />
 
 
 </RelativeLayout>

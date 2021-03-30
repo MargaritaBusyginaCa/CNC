@@ -15,7 +15,7 @@
         android:layout_marginLeft="120dp"
         android:layout_marginTop="120dp"
         android:text="@string/orientation"
-        android:background="@color/orange"/>
+        android:background="@color/collegeGreen"/>
 
     <Button
         android:id="@+id/assignments_bt"
@@ -25,7 +25,7 @@
         android:layout_marginLeft="120dp"
         android:layout_marginTop="20dp"
         android:text="@string/Assignments"
-        android:background="@color/orange"/>
+        android:background="@color/collegeGreen"/>
 
     <!-- this submission button will be deleted -->
     <Button
@@ -36,7 +36,7 @@
         android:layout_marginTop="20dp"
         android:layout_below="@+id/assignments_bt"
         android:text="@string/Submissions"
-        android:background="@color/orange"
+        android:background="@color/collegeGreen"
         />
 
     <Button
@@ -47,7 +47,7 @@
         android:layout_marginTop="20dp"
         android:layout_below="@+id/submission_bt"
         android:text="@string/Manual"
-        android:background="@color/orange"
+        android:background="@color/collegeGreen"
         />
 
     <Button
@@ -58,6 +58,7 @@
         android:layout_marginTop="20dp"
         android:layout_below="@+id/manual_bt"
         android:text="@string/logout"
-        android:background="@color/orange"
+        android:textColor="@color/collegeGreen"
+        android:background="@color/white"
         />
 </RelativeLayout>
