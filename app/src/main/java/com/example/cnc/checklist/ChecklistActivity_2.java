@@ -44,7 +44,7 @@ public class ChecklistActivity_2 extends AppCompatActivity {
         checkBoxes2.add(cb_dont_4);
         // get student ID from previous activity
         Intent intentOri = getIntent();
-        studentID = intentOri.getStringExtra("ID");
+ //       studentID = intentOri.getStringExtra("ID");
 
         bt_submit = findViewById(R.id.bt_submit_checklist);
         bt_submit.setOnClickListener(click -> {
@@ -58,7 +58,7 @@ public class ChecklistActivity_2 extends AppCompatActivity {
                 checklistcompleted = true;
                 isCompleted(1);
                 Intent intent = new Intent(this, MainAssignmentActivity.class);
-                intent.putExtra("ID", studentID);
+     //           intent.putExtra("ID", studentID);
                 intent.putExtra("CK_TS", timeStamp);
                 startActivity(intent);
 

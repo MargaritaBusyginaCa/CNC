@@ -51,7 +51,7 @@ public class Exercise2Activity extends AppCompatActivity {
         setContentView(R.layout.ori_activity_exercise2);
 
         Intent intentOri = getIntent();
-        studentID = intentOri.getStringExtra("ID");
+ //       studentID = intentOri.getStringExtra("ID");
         desc = "Orientation Completed";
 
 
@@ -106,7 +106,7 @@ public class Exercise2Activity extends AppCompatActivity {
             //Intent intent = new Intent(this, SubmitActivity1.class);
             Intent intent = new Intent(this, SubmitChoiceActivity.class);
             intent.putExtra("TITLE", "Orientation");
-            intent.putExtra("ID", studentID);
+    //        intent.putExtra("ID", studentID);
             intent.putExtra("DESC", desc);
             intent.putExtra("END_TS", timeStamp);
             intent.putExtra("E_CODE", "01");

@@ -35,7 +35,7 @@ public class CheckListActivity extends AppCompatActivity {
         checkBoxes=new ArrayList<>();
 
         Intent intentOri = getIntent();
-        studentID = intentOri.getStringExtra("ID");
+//        studentID = intentOri.getStringExtra("ID");
 
         cb_1=findViewById(R.id.cb_1);
         cb_2=findViewById(R.id.cb_2);
@@ -73,7 +73,7 @@ public class CheckListActivity extends AppCompatActivity {
         arrow_next.setOnClickListener(click->{
             if(allChecked()){
                 Intent intent=new Intent(this, ChecklistActivity_2.class);
-                intent.putExtra("ID", studentID);
+  //              intent.putExtra("ID", studentID);
                 startActivity(intent);
 
             }else{

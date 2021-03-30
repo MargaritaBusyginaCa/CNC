@@ -56,8 +56,8 @@ public class OrientationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_orientation);
 
-        Intent intentEmail = getIntent();
-        studentID = intentEmail.getStringExtra("ID");
+//        Intent intentEmail = getIntent();
+//        studentID = intentEmail.getStringExtra("ID");
 
         // Each row in the list stores flag
         List<HashMap<String,String>> aList = new ArrayList<HashMap<String,String>>();
@@ -94,7 +94,7 @@ public class OrientationActivity extends AppCompatActivity {
         ex1Btn = footer.findViewById(R.id.ex1Button);
         ex1Btn.setOnClickListener(click->{
             Intent intent=new Intent(OrientationActivity.this, Exercise1Activity.class);
-            intent.putExtra("ID", studentID);
+ //           intent.putExtra("ID", studentID);
             startActivity(intent);
         });
 
@@ -102,7 +102,7 @@ public class OrientationActivity extends AppCompatActivity {
         noSubmitBtn = footer.findViewById(R.id.exitNotSubmit);
         noSubmitBtn.setOnClickListener(click -> {
             Intent intent = new Intent(this, AlertExerciseNoSubmitActivity.class);
-            intent.putExtra("ID", studentID);
+ //           intent.putExtra("ID", studentID);
             startActivity(intent);
         });
 /*

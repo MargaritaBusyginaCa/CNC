@@ -43,17 +43,7 @@
     <string name="submitChecklistTime">N/A</string>
     <string name="desc">Status: </string>
     <string name="description">Description</string>
-
-
-
-
-
-
-
-
-
-
-
+    <string name="admin">Administration</string>
 
 
     <!--For Login and Register by Ny Nguyen    -->

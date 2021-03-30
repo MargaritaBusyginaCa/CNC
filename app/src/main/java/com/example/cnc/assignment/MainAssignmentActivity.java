@@ -23,7 +23,7 @@ import com.example.cnc.submit.SubmitActivity;
 import com.example.cnc.supporters.Timestamp;
 
 import static com.example.cnc.checklist.ChecklistActivity_2.checklistcompleted;
-import static com.example.cnc.orientation.Exercise2Activity.orientationCompleted;
+import static com.example.cnc.loginPage.LoginActivity.studentID_def;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -39,8 +39,9 @@ public class MainAssignmentActivity extends AppCompatActivity {
         setContentView(R.layout.assi_activity_main);
 
         Intent intentOri = getIntent();
-        studentID = intentOri.getStringExtra("ID");
+ //       studentID = intentOri.getStringExtra("ID");
         ck1_ts = intentOri.getStringExtra("CK_TS");
+        studentID = studentID_def;
         init();
     }
 
@@ -55,7 +56,7 @@ public class MainAssignmentActivity extends AppCompatActivity {
 
                 String s_timestamp = getTimestamp();
                 Intent intent=new Intent(this, CheckListActivity.class);
-                intent.putExtra("ID", studentID);
+ //               intent.putExtra("ID", studentID);
                 startActivity(intent);
             }else{
                 Toast.makeText(getApplicationContext(),"You have to complete the Orientation first",Toast.LENGTH_LONG).show();
@@ -88,7 +89,7 @@ public class MainAssignmentActivity extends AppCompatActivity {
             if(checklistcompleted==true){
                 String s_timestamp = getTimestamp();
                 Intent intent = new Intent(this, Assignment1Activity.class);
-                intent.putExtra("ID", studentID);
+  //              intent.putExtra("ID", studentID);
                 intent.putExtra("CK_TS", ck1_ts);
                 intent.putExtra("START_TS", s_timestamp);
                 startActivity(intent);

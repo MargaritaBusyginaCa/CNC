@@ -27,6 +27,7 @@ import com.example.cnc.supporters.User;
 
 import java.util.ArrayList;
 import java.util.List;
+import static com.example.cnc.loginPage.LoginActivity.studentID_def;
 
 
 public class SubmitActivity extends AppCompatActivity {
@@ -137,7 +138,7 @@ public class SubmitActivity extends AppCompatActivity {
             //if request code is send_email, then will back to AccountActivity(main page)
             if (requestCode == SEND_EMAIL) {
                 Intent intent=new Intent(this, AccountActivity.class);
-                intent.putExtra("ID", studentID);
+ //               intent.putExtra("ID", studentID);
                 startActivity(intent);
             }
 
@@ -197,7 +198,8 @@ public class SubmitActivity extends AppCompatActivity {
         Intent intentFrPreActivity = getIntent();
 
         title = intentFrPreActivity.getStringExtra("TITLE");
-        studentID = intentFrPreActivity.getStringExtra("ID");
+   //     studentID = intentFrPreActivity.getStringExtra("ID");
+        studentID = studentID_def;
         ck_timestamp = intentFrPreActivity.getStringExtra("CK_TS");
         s_timestamp = intentFrPreActivity.getStringExtra("START_TS");
         e_timestamp = intentFrPreActivity.getStringExtra("END_TS");

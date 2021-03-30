@@ -153,7 +153,7 @@ public class VerificationActivity extends AppCompatActivity implements View.OnCl
 
                             } else {
                                 // else, log user in and display Account Activity page
-                                Intent intentAccount = new Intent(getApplicationContext(), AccountActivity.class);
+                                Intent intentAccount = new Intent(getApplicationContext(), LoginActivity.class);
                                 startActivity(intentAccount);
 
                                 //return response;

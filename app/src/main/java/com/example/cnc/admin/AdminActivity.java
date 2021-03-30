@@ -1,7 +1,7 @@
-package com.example.cnc.loginPage;
+package com.example.cnc.admin;
+
 import android.content.Intent;
 import android.os.Bundle;
-
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,6 +11,9 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cnc.R;
+import com.example.cnc.loginPage.AccountActivity;
+import com.example.cnc.loginPage.RegisterActivity;
+import com.example.cnc.loginPage.VerificationActivity;
 import com.example.cnc.sql.DatabaseHelper;
 import com.example.cnc.supporters.InputValidation;
 import com.example.cnc.supporters.User;
@@ -22,13 +25,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-/**
- * Created by NyNguyen on Feb 6, 2021
- */
 
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
-    private final AppCompatActivity activity = LoginActivity.this;
+public class AdminActivity extends AppCompatActivity implements View.OnClickListener {
+    private final AppCompatActivity activity = AdminActivity.this;
 
     private RelativeLayout loginView;
 
@@ -54,7 +54,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_admin);
         // getSupportActionBar().hide();
         // getActionBar().hide();
 

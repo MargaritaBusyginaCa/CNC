@@ -50,8 +50,8 @@ public class Exercise1Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ori_activity_exercise1);
 
-        Intent intentEmail = getIntent();
-        studentID = intentEmail.getStringExtra("ID");
+//        Intent intentEmail = getIntent();
+//        studentID = intentEmail.getStringExtra("ID");
 
         init();
     }
@@ -93,7 +93,7 @@ public class Exercise1Activity extends AppCompatActivity {
         noSubmitBtn = footer.findViewById(R.id.exitNotSubmit);
         noSubmitBtn.setOnClickListener(click -> {
             Intent intent = new Intent(this, AlertExerciseNoSubmitActivity.class);
-            intent.putExtra("ID", studentID);
+ //           intent.putExtra("ID", studentID);
             startActivity(intent);
         });
 
@@ -101,7 +101,7 @@ public class Exercise1Activity extends AppCompatActivity {
         ex2Btn = footer.findViewById(R.id.goToNext);
         ex2Btn.setOnClickListener(click->{
             Intent intent=new Intent(this, Exercise2Activity.class);
-            intent.putExtra("ID", studentID);
+  //          intent.putExtra("ID", studentID);
             startActivity(intent);
         });
 /*

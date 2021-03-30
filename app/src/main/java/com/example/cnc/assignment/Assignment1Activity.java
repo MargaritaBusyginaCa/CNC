@@ -48,7 +48,7 @@ public class Assignment1Activity extends AppCompatActivity {
         setContentView(R.layout.assi_activity_ass1);
 
         Intent intentAssmnt = getIntent();
-        studentID = intentAssmnt.getStringExtra("ID");
+  //      studentID = intentAssmnt.getStringExtra("ID");
         s_timestamp = intentAssmnt.getStringExtra("START_TS");
         ck_timestamp = intentAssmnt.getStringExtra("CK_TS");
 
@@ -94,7 +94,7 @@ public class Assignment1Activity extends AppCompatActivity {
         noSubmitBtn = footer.findViewById(R.id.exitNotSubmit);
         noSubmitBtn.setOnClickListener(click -> {
             Intent intent = new Intent(this, AlertAssignmentNoSubmitActivity.class);
-            intent.putExtra("ID", studentID);
+   //         intent.putExtra("ID", studentID);
             startActivity(intent);
         });
 
@@ -113,7 +113,7 @@ public class Assignment1Activity extends AppCompatActivity {
 
             //Intent intent = new Intent(this, SubmitChoiceActivity.class);
             intent.putExtra("TITLE", "Assignment 1");
-            intent.putExtra("ID", studentID);
+   //         intent.putExtra("ID", studentID);
             intent.putExtra("DESC", desc);
             intent.putExtra("CK_TS", ck_timestamp);
             intent.putExtra("START_TS", s_timestamp);
