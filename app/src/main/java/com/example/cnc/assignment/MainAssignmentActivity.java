@@ -39,7 +39,6 @@ public class MainAssignmentActivity extends AppCompatActivity {
         setContentView(R.layout.assi_activity_main);
 
         Intent intentOri = getIntent();
- //       studentID = intentOri.getStringExtra("ID");
         ck1_ts = intentOri.getStringExtra("CK_TS");
         studentID = studentID_def;
         init();
@@ -56,7 +55,6 @@ public class MainAssignmentActivity extends AppCompatActivity {
 
                 String s_timestamp = getTimestamp();
                 Intent intent=new Intent(this, CheckListActivity.class);
- //               intent.putExtra("ID", studentID);
                 startActivity(intent);
             }else{
                 Toast.makeText(getApplicationContext(),"You have to complete the Orientation first",Toast.LENGTH_LONG).show();
@@ -89,7 +87,6 @@ public class MainAssignmentActivity extends AppCompatActivity {
             if(checklistcompleted==true){
                 String s_timestamp = getTimestamp();
                 Intent intent = new Intent(this, Assignment1Activity.class);
-  //              intent.putExtra("ID", studentID);
                 intent.putExtra("CK_TS", ck1_ts);
                 intent.putExtra("START_TS", s_timestamp);
                 startActivity(intent);
@@ -101,8 +98,6 @@ public class MainAssignmentActivity extends AppCompatActivity {
         // Assignment 2
         bt_a2 = findViewById(R.id.assig2Button);
         bt_a2.setOnClickListener(click -> {
-            //    Intent intent = new Intent(this, Assignment2Activity.class);
-            //    startActivity(intent);
             Intent intent=new Intent(this, WarningNoAccessActivity.class);
             startActivity(intent);
         });

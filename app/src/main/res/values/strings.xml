@@ -44,6 +44,10 @@
     <string name="desc">Status: </string>
     <string name="description">Description</string>
     <string name="admin">Administration</string>
+    <string name="admin_changeEmail">The receiver’s email address : </string>
+    <string name="admin_changeEmail_bt">Want to change Email</string>
+    <string name="admin_editEmail">Receiver email address</string>
+
 
 
     <!--For Login and Register by Ny Nguyen    -->

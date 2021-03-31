@@ -27,25 +27,13 @@
         android:text="@string/Assignments"
         android:background="@color/collegeGreen"/>
 
-    <!-- this submission button will be deleted -->
-    <Button
-        android:id="@+id/submission_bt"
-        android:layout_width="168dp"
-        android:layout_height="64dp"
-        android:layout_marginLeft="120dp"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/assignments_bt"
-        android:text="@string/Submissions"
-        android:background="@color/collegeGreen"
-        />
-
     <Button
         android:id="@+id/manual_bt"
         android:layout_width="168dp"
         android:layout_height="64dp"
         android:layout_marginLeft="120dp"
         android:layout_marginTop="20dp"
-        android:layout_below="@+id/submission_bt"
+        android:layout_below="@+id/assignments_bt"
         android:text="@string/Manual"
         android:background="@color/collegeGreen"
         />

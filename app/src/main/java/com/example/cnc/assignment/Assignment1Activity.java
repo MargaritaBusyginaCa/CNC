@@ -29,7 +29,6 @@ public class Assignment1Activity extends AppCompatActivity {
     String code = "11";
     private TimestampDBHelper dbHelper;
     Timestamp ts_new;
-    //ChecklistActivity_2 ck2;
 
     //here you have to give image name which you already pasted it in /res/drawable/
 
@@ -48,8 +47,7 @@ public class Assignment1Activity extends AppCompatActivity {
         setContentView(R.layout.assi_activity_ass1);
 
         Intent intentAssmnt = getIntent();
-  //      studentID = intentAssmnt.getStringExtra("ID");
-        s_timestamp = intentAssmnt.getStringExtra("START_TS");
+         s_timestamp = intentAssmnt.getStringExtra("START_TS");
         ck_timestamp = intentAssmnt.getStringExtra("CK_TS");
 
         checklistcompleted = false;
@@ -73,7 +71,6 @@ public class Assignment1Activity extends AppCompatActivity {
         int[] to = { R.id.flag};
 
         // Instantiating an adapter to store each items
-        // R.layout.ori_listview_layout defines the layout of each item
         SimpleAdapter adapter = new SimpleAdapter(getBaseContext(), aList, R.layout.ori_listview_layout, from, to);
 
         ListView listView = ( ListView ) findViewById(R.id.ex1_listview);
@@ -94,7 +91,6 @@ public class Assignment1Activity extends AppCompatActivity {
         noSubmitBtn = footer.findViewById(R.id.exitNotSubmit);
         noSubmitBtn.setOnClickListener(click -> {
             Intent intent = new Intent(this, AlertAssignmentNoSubmitActivity.class);
-   //         intent.putExtra("ID", studentID);
             startActivity(intent);
         });
 
@@ -110,10 +106,7 @@ public class Assignment1Activity extends AppCompatActivity {
             String desc = "Checklist 1 & Assignment 1 are completed.";
             //Intent intent = new Intent(this, SubmitActivity1.class);
             Intent intent = new Intent(this, SubmitChoiceActivity.class);
-
-            //Intent intent = new Intent(this, SubmitChoiceActivity.class);
             intent.putExtra("TITLE", "Assignment 1");
-   //         intent.putExtra("ID", studentID);
             intent.putExtra("DESC", desc);
             intent.putExtra("CK_TS", ck_timestamp);
             intent.putExtra("START_TS", s_timestamp);

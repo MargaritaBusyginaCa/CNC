@@ -198,7 +198,6 @@ public class SubmitActivity extends AppCompatActivity {
         Intent intentFrPreActivity = getIntent();
 
         title = intentFrPreActivity.getStringExtra("TITLE");
-   //     studentID = intentFrPreActivity.getStringExtra("ID");
         studentID = studentID_def;
         ck_timestamp = intentFrPreActivity.getStringExtra("CK_TS");
         s_timestamp = intentFrPreActivity.getStringExtra("START_TS");

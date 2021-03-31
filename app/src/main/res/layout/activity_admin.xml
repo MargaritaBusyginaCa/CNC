@@ -1,97 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_login"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".loginPage.LoginActivity">
-
-
-    <TextView
-        android:text="@string/email"
-        android:id="@+id/Email"
-        android:textSize="18sp"
-        android:textStyle="bold|italic"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="12dp"
-        android:gravity="left" />
-
-    <EditText
-        android:id="@+id/textEmail"
-        android:hint="@string/hint_email"
-        android:textSize="18sp"
-        android:textStyle="bold|italic"
-        android:layout_below="@+id/Email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text"
-        android:maxLines="1"
-        android:gravity="left" />
-
-    <TextView
-        android:text="@string/password"
-        android:id="@+id/Password"
-        android:textSize="18sp"
-        android:textStyle="bold|italic"
-        android:layout_below="@+id/textEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
-        android:gravity="left" />
-
-    <EditText
-        android:id="@+id/textPassword"
-        android:hint="@string/hint_password"
-        android:textSize="18sp"
-        android:textStyle="normal|bold"
-        android:layout_below="@+id/Password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:layout_marginTop="11dp"
-        android:gravity="left"
-        android:textAllCaps="false"/>
-
-
+    android:layout_height="match_parent">
 
     <Button
-        android:text="@string/text_login"
-        android:id="@+id/ButtonLogin"
-        android:textSize="18sp"
-        android:textStyle="bold|italic"
-        android:layout_below="@+id/textPassword"
+        android:id="@+id/admin_changeEmail_bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:layout_marginLeft="20dp"
+        android:text="@string/admin_changeEmail_bt"
+        />
+    <TextView
+        android:id="@+id/admin_changeEmail"
+        android:text="@string/admin_changeEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="18dp" />
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/admin_changeEmail_bt"
+        />
 
-    <TextView
-        android:text="@string/text_not_member"
-        android:id="@+id/RegisterLink"
-        android:textSize="18sp"
-        android:textStyle="bold|italic"
-        android:layout_below="@+id/ButtonLogin"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/admin_editEmail"
+        android:hint="@string/admin_editEmail"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="13dp"
-        android:gravity="center" />
+        android:layout_marginLeft="20dp"
+        android:inputType="text"
+        android:layout_below="@+id/admin_changeEmail"
+        />
 
-    <TextView
-        android:id="@+id/ResetPasswordLink"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/admin_update"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/RegisterLink"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="13dp"
-        android:gravity="center"
-        android:text="@string/text_reset_password"
-        android:textSize="18sp"
-        android:textStyle="bold|italic" />
+        android:orientation="horizontal"
+        android:layout_below="@+id/admin_editEmail"
+        >
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/updateButton"
+            android:text="Update"
+            android:layout_margin="10dp"
+            android:clickable="true"
+            android:background="#2fd6ff"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/cancel"
+            android:text="Cancel"
+            android:layout_margin="10dp"
+            android:clickable="true"
+            android:background="#00cafb"/>
+    </LinearLayout>
 
 
 </RelativeLayout>

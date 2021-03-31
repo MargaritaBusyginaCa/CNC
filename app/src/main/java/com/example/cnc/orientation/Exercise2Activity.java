@@ -50,8 +50,6 @@ public class Exercise2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ori_activity_exercise2);
 
-        Intent intentOri = getIntent();
- //       studentID = intentOri.getStringExtra("ID");
         desc = "Orientation Completed";
 
 
@@ -93,7 +91,6 @@ public class Exercise2Activity extends AppCompatActivity {
         noSubmitBtn = footer.findViewById(R.id.exitNotSubmit);
         noSubmitBtn.setOnClickListener(click->{
             Intent intent=new Intent(this, AlertExerciseNoSubmitActivity.class);
-            intent.putExtra("ID", studentID);
             startActivity(intent);
         });
 
@@ -106,8 +103,7 @@ public class Exercise2Activity extends AppCompatActivity {
             //Intent intent = new Intent(this, SubmitActivity1.class);
             Intent intent = new Intent(this, SubmitChoiceActivity.class);
             intent.putExtra("TITLE", "Orientation");
-    //        intent.putExtra("ID", studentID);
-            intent.putExtra("DESC", desc);
+             intent.putExtra("DESC", desc);
             intent.putExtra("END_TS", timeStamp);
             intent.putExtra("E_CODE", "01");
             orientationCompleted=true;

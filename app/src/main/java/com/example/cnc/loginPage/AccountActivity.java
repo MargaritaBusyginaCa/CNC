@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.cnc.R;
+import com.example.cnc.admin.AdminActivity;
 import com.example.cnc.assignment.Assignment1Activity;
 import com.example.cnc.assignment.MainAssignmentActivity;
 import com.example.cnc.assignment.WarningNoAccessActivity;
@@ -34,65 +35,43 @@ public class AccountActivity extends AppCompatActivity {
 
         bt_orientation=findViewById(R.id.orientation_bt);
         bt_assignment=findViewById(R.id.assignments_bt);
-        bt_submit=findViewById(R.id.submission_bt);
         bt_manual=findViewById(R.id.manual_bt);
         bt_logout=findViewById(R.id.logout_bt);
         bt_admin=findViewById(R.id.admin_bt);
 
         if(studentID_def.equals(adminID)){
-        //if(studentID_def == "999999"){
-            bt_admin.setVisibility(View.VISIBLE);
+             bt_admin.setVisibility(View.VISIBLE);
         }else{
             bt_admin.setVisibility(View.GONE);
         }
-  //      Intent intentEmail = getIntent();
- //       studentID = intentEmail.getStringExtra("ID");
         init();
     }
 
     private void init() {
-       // bt_orientation=findViewById(R.id.orientation_bt);
-        bt_orientation.setOnClickListener(click->{
+         bt_orientation.setOnClickListener(click->{
 
             Intent intent=new Intent(this, OrientationActivity.class);
-//            intent.putExtra("ID", studentID);
            startActivity(intent);
         });
 
-    //    bt_assignment=findViewById(R.id.assignments_bt);
         bt_assignment.setOnClickListener(click->{
             Intent intent=new Intent(this, MainAssignmentActivity.class);
- //           intent.putExtra("ID", studentID);
             startActivity(intent);
         });
 
-        //The submission section will be removed from the main menu!
-
-   //     bt_submit=findViewById(R.id.submission_bt);
-        bt_submit.setOnClickListener(click->{
-            Intent intent=new Intent(this, SubmitActivity.class);
- //           intent.putExtra("ID", studentID);
-            startActivity(intent);
-        });
-
-
-  //      bt_manual=findViewById(R.id.manual_bt);
         bt_manual.setOnClickListener(click->{
             Intent intent=new Intent(this, ManualActivity.class);
-  //          intent.putExtra("ID", studentID);
             startActivity(intent);
         });
 
-  //      bt_logout=findViewById(R.id.logout_bt);
-        bt_logout.setOnClickListener(click->{
+         bt_logout.setOnClickListener(click->{
             Toast.makeText(this, "Bye!", Toast.LENGTH_LONG).show();
             Intent intent=new Intent(this, MainActivity.class);
             startActivity(intent);
         });
 
-  //      bt_admin=findViewById(R.id.admin_bt);
         bt_admin.setOnClickListener(click->{
-            Intent intent=new Intent(this, ManualActivity.class);
+            Intent intent=new Intent(this, AdminActivity.class);
             startActivity(intent);
         });
 

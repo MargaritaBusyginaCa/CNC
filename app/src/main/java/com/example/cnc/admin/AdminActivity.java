@@ -27,23 +27,11 @@ import java.util.Scanner;
 
 
 
-public class AdminActivity extends AppCompatActivity implements View.OnClickListener {
+public class AdminActivity extends AppCompatActivity{
     private final AppCompatActivity activity = AdminActivity.this;
+    Button bt_changeEmail, bt_update, bt_cancel;
+    String email;
 
-    private RelativeLayout loginView;
-
-    private TextView Email;
-    private TextView Password;
-
-    private EditText textEmail;
-    private EditText textPassword;
-
-    private Button ButtonLogin;
-    private TextView RegisterLink;
-
-    private TextView ResetPasswordLink;
-
-    private InputValidation inputValidation;
     private DatabaseHelper databaseHelper;
 
     public static String studentID_def;
@@ -55,264 +43,18 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
-        // getSupportActionBar().hide();
-        // getActionBar().hide();
 
-        initViews();
-        initListeners();
-        initObjects();
-
+        init();
     }
 
+    private void init() {
 
-    public static String User_Email = "";
-    public static String User_Password = "";
+        bt_changeEmail=findViewById(R.id.admin_changeEmail_bt);
+        bt_changeEmail.setOnClickListener(click->{
+       //    email =  getEmail(000000);
 
-    /**
-     * This method is to initialize views
-     */
-    private void initViews() {
-
-        loginView = (RelativeLayout) findViewById(R.id.activity_login);
-
-        Email = (TextView) findViewById(R.id.Email);
-        Password = (TextView) findViewById(R.id.Password);
-
-        textEmail = (EditText) findViewById(R.id.textEmail);
-        textPassword = (EditText) findViewById(R.id.textPassword);
-
-        ButtonLogin = (Button) findViewById(R.id.ButtonLogin);
-
-        RegisterLink = (TextView) findViewById(R.id.RegisterLink);
-
-        ResetPasswordLink = (TextView) findViewById(R.id.ResetPasswordLink);
-    }
-
-    /**
-     * This method is to initialize listeners
-     */
-    private void initListeners() {
-        ButtonLogin.setOnClickListener(this);
-        RegisterLink.setOnClickListener(this);
-        ResetPasswordLink.setOnClickListener(this);
-    }
-
-    /**
-     * This method is to initialize objects to be used
-     */
-    private void initObjects() {
-        databaseHelper = new DatabaseHelper(activity);
-        inputValidation = new InputValidation(activity);
+                });
 
     }
-
-    /**
-     * This implemented method is to listen the click on view
-     *
-     * @param v
-     */
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.ButtonLogin:
-                doVerify();
-                break;
-            case R.id.RegisterLink:
-                // Navigate to RegisterActivity
-                Intent intentRegister = new Intent(getApplicationContext(), RegisterActivity.class);
-                startActivity(intentRegister);
-                break;
-            // Navigate to ResetPasswordActivity
-            case R.id.ResetPasswordLink:
-                resetPassword();
-                break;
-        }
-    }
-
-
-
-    /**
-     * This method is to validate the input text fields and verify login credentials from SQLite
-     */
-    private void doVerify() {
-
-        if (!inputValidation.isEmail(textEmail, Email, getString(R.string.error_message_email))) {
-            return;
-        }
-        if (!inputValidation.isFilled(textPassword, Password, getString(R.string.error_message_password))) {
-            return;
-        }
-
-
-        if (true) {
-            // Instead, create a HTTP post to http://192.168.200.2/register
-            Thread thread = new Thread(new Runnable() {
-                @Override
-                public void run() {
-
-                    try {
-                        String uri_params;
-
-                        uri_params = "student_email=" + textEmail.getText().toString().trim();
-                        uri_params += "&student_password=" + textPassword.getText().toString().trim();
-                        String rest_url = getString(R.string.rest_url) + "login/?";
-                        //HttpURLConnection connection = (HttpURLConnection) new URL("http://10.0.2.2:8181/api/login/?" + uri_params).openConnection();
-                        HttpURLConnection connection = (HttpURLConnection) new URL(rest_url + uri_params).openConnection();
-                        connection.setRequestMethod("GET");
-
-                        int responseCode = connection.getResponseCode();
-
-                        if (responseCode == 200) {
-                            String response = "";
-                            Scanner scanner = new Scanner(connection.getInputStream());
-                            while (scanner.hasNextLine()) {
-                                response += scanner.nextLine();
-                                response += "\n";
-                            }
-                            scanner.close();
-                            Snackbar.make(ButtonLogin, "OK REST", Snackbar.LENGTH_LONG).show();
-                            Intent intentAccount = new Intent(getApplicationContext(), AccountActivity.class);
-                            intentAccount.putExtra("EMAIL", textEmail.getText().toString().trim());
-                            //don't delete it!
-                            email_def = textEmail.getText().toString().trim();
-                            studentID_def = getStudentID(email_def);
-                            intentAccount.putExtra("ID", studentID_def);
-                            //--------------
-                            emptyInputEditText();
-                            startActivity(intentAccount);
-                            //return response;
-                        } else if(responseCode == 302) {
-                            /* Activation is required.
-                             Snack Bar to show success message that record is wrong
-
-                             Set public variable for Activation Activity to access*/
-                            User_Email = textEmail.getText().toString().trim();
-                            User_Password = textPassword.getText().toString().trim();
-
-
-                            Snackbar.make(ButtonLogin, "OK GOTO ACTIVATION", Snackbar.LENGTH_LONG).show();
-
-                            Intent intentActivation = new Intent(getApplicationContext(), VerificationActivity.class);
-
-                            //pass student_email and student_password
-                            intentActivation.putExtra("EXTRA_STUDENT_EMAIL", textEmail.getText().toString().trim());
-
-                            startActivity(intentActivation);
-                        } else {
-                            // Snack Bar to show success message that record is wrong
-                            Snackbar.make(ButtonLogin, getString(R.string.error_valid_email_password), Snackbar.LENGTH_LONG).show();
-                        }
-                        //do exception handling here
-                    } catch (Exception ex) {
-
-                        // Snack Bar to show unsuccessful message that record is wrong
-                        Snackbar.make(ButtonLogin, "REST API Failed" + ex, Snackbar.LENGTH_LONG).show();
-                        ex.printStackTrace();
-                    }
-
-                }
-            });
-            thread.start();
-        }else {
-            // Snack Bar to show unsuccessful message that record is wrong
-            Snackbar.make(ButtonLogin, getString(R.string.error_valid_email_password), Snackbar.LENGTH_LONG).show();
-        }
-    }
-
-    private void resetPassword() {
-        //Make sure email address is entered
-        if (!inputValidation.isEmail(textEmail, Email, getString(R.string.error_message_email))) {
-            Snackbar.make(ButtonLogin, "Missing/invalid email address. Please enter your email address", Snackbar.LENGTH_LONG).show();
-            return;
-        }
-
-        //Empty password field as we don't need this for password reset
-        textPassword.setText(null);
-        if (true) {
-            /*call API to check email address. If found, then 302 is returned. Else, 404 is returned. No 2XX will be ever returned
-             Instead, create a HTTP post to http://192.168.200.2/register*/
-            Thread thread = new Thread(new Runnable() {
-                @Override
-                public void run() {
-
-                    try {
-                        String uri_params;
-
-                        uri_params = "student_email=" + textEmail.getText().toString().trim();
-                        uri_params += "&student_password=";
-                        uri_params += "&reset_password=true";
-                        String rest_url = getString(R.string.rest_url) + "login/?";
-                        //HttpURLConnection connection = (HttpURLConnection) new URL("http://10.0.2.2:8181/api/login/?" + uri_params).openConnection();
-                        HttpURLConnection connection = (HttpURLConnection) new URL(rest_url + uri_params).openConnection();
-                        connection.setRequestMethod("GET");
-
-                        int responseCode = connection.getResponseCode();
-
-                        if(responseCode == 302) {
-                           /*  Activation is required.
-                             Snack Bar to show message that record is wrong
-
-                             Set public variable for Activation Activity to access*/
-                            User_Email = textEmail.getText().toString().trim();
-                            User_Password = textPassword.getText().toString().trim();
-
-                            Snackbar.make(ButtonLogin, "OK GOTO ACTIVATION", Snackbar.LENGTH_LONG).show();
-                            // Navigate to RegisterActivity
-                            Intent intentVerification = new Intent(getApplicationContext(), VerificationActivity.class);
-                            intentVerification.putExtra("EXTRA_RESET_PASSWORD", true);
-                            //pass student_email. Student password is blank
-                            intentVerification.putExtra("EXTRA_STUDENT_EMAIL", textEmail.getText().toString().trim());
-
-                            emptyInputEditText();
-                            startActivity(intentVerification);
-
-                        } else {
-                            // Snack Bar to show message that record is wrong
-                            Snackbar.make(ButtonLogin, getString(R.string.error_valid_email_password), Snackbar.LENGTH_LONG).show();
-                        }
-                        //do exception handling here
-                    } catch (Exception ex) {
-                        // Snack Bar to show message that record is wrong
-                        Snackbar.make(ButtonLogin, "REST API Failed" + ex, Snackbar.LENGTH_LONG).show();
-                        ex.printStackTrace();
-                    }
-
-                }
-            });
-            thread.start();
-        }else {
-            // Snack Bar to show message that record is wrong
-            Snackbar.make(ButtonLogin, getString(R.string.error_valid_email_password), Snackbar.LENGTH_LONG).show();
-        }
-
-    }
-
-
-    /**
-     * This method is to empty all input edit text
-     */
-    private void emptyInputEditText() {
-        textEmail.setText(null);
-        textPassword.setText(null);
-    }
-
-    //--- retrieve student ID from database ---  by Lai Shan
-
-    private String getStudentID(String stuEmail) {
-        databaseHelper = new DatabaseHelper(this);
-        users = databaseHelper.getAllUser();
-        String stuID;
-
-        for (int i = 0; i < users.size(); i++) {
-            if (users.get(i).getEmail().equalsIgnoreCase(stuEmail)) {
-                index = i;
-                break;
-            }
-        }
-        stuID = users.get(index).getStudentID();
-        return stuID;
-    }
-
-
 
 }

@@ -10,6 +10,8 @@ import android.widget.Button;
 import com.example.cnc.R;
 import com.example.cnc.submit.SubmitActivity;
 
+import static com.example.cnc.loginPage.LoginActivity.studentID_def;
+
 public class SubmitChoiceActivity extends AppCompatActivity {
     private Button email;
     private Button ms_form;
@@ -27,7 +29,7 @@ public class SubmitChoiceActivity extends AppCompatActivity {
         Intent intentFrPreActivity = getIntent();
 
         title = intentFrPreActivity.getStringExtra("TITLE");
-        studentID = intentFrPreActivity.getStringExtra("ID");
+        studentID = studentID_def;
         ck_timestamp = intentFrPreActivity.getStringExtra("CK_TS");
         s_timestamp = intentFrPreActivity.getStringExtra("START_TS");
         e_timestamp = intentFrPreActivity.getStringExtra("END_TS");

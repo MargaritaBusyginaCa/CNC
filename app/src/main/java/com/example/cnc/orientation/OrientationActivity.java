@@ -27,8 +27,6 @@ import java.util.List;
 
 public class OrientationActivity extends AppCompatActivity {
     Button ex1Btn, noSubmitBtn;
-    String studentID;
-
 
 
     //images from /res/drawable/
@@ -56,8 +54,6 @@ public class OrientationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_orientation);
 
-//        Intent intentEmail = getIntent();
-//        studentID = intentEmail.getStringExtra("ID");
 
         // Each row in the list stores flag
         List<HashMap<String,String>> aList = new ArrayList<HashMap<String,String>>();
@@ -94,7 +90,6 @@ public class OrientationActivity extends AppCompatActivity {
         ex1Btn = footer.findViewById(R.id.ex1Button);
         ex1Btn.setOnClickListener(click->{
             Intent intent=new Intent(OrientationActivity.this, Exercise1Activity.class);
- //           intent.putExtra("ID", studentID);
             startActivity(intent);
         });
 
@@ -102,34 +97,9 @@ public class OrientationActivity extends AppCompatActivity {
         noSubmitBtn = footer.findViewById(R.id.exitNotSubmit);
         noSubmitBtn.setOnClickListener(click -> {
             Intent intent = new Intent(this, AlertExerciseNoSubmitActivity.class);
- //           intent.putExtra("ID", studentID);
             startActivity(intent);
         });
-/*
-        //--- Exercise 2 ---
-        ex2Btn = footer.findViewById(R.id.ex2Button);
-        ex2Btn.setOnClickListener(click->{
-            Intent intent=new Intent(OrientationActivity.this, Exercise2Activity.class);
-            intent.putExtra("ID_ORI", studentID);
-            startActivity(intent);
-         });
 
-*/
-
-
-/*
-        //   listView.addFooterView(ex1Btn);
-        TextView footer = new TextView(this);
-        footer.setGravity(Gravity.CENTER);
-        footer.setTextSize(30);
-        footer.setText("Footer");
-        if ( footer != null ) {
-            listView.addFooterView(footer);
-        } else {
-            throw new NullPointerException("footer is null");
-        }
-
-*/
     }
 /*
     //TOOLBAR, inflate the Menu resource
