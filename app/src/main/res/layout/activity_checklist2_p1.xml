@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".checklist.CheckListActivity">
+    tools:context=".checklist.Checklist2Activity">
 
 
     <!--    <com.github.barteksc.pdfviewer.PDFView-->
@@ -19,7 +19,7 @@
         android:textColor="@color/white"
         android:textAlignment="center"
         android:layout_marginTop="0dp"
-        android:text="@string/Dos"
+        android:text="@string/Dos2"
         android:background="@color/orange"
         android:layout_width="match_parent"
         android:layout_height="40dp"

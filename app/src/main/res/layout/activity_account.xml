@@ -39,12 +39,23 @@
         />
 
     <Button
-        android:id="@+id/logout_bt"
+        android:id="@+id/status_bt"
         android:layout_width="168dp"
         android:layout_height="64dp"
         android:layout_marginLeft="120dp"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/manual_bt"
+        android:text="@string/Status"
+        android:background="@color/collegeGreen"
+        />
+
+    <Button
+        android:id="@+id/logout_bt"
+        android:layout_width="168dp"
+        android:layout_height="64dp"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/status_bt"
         android:text="@string/logout"
         android:textColor="@color/collegeGreen"
         android:background="@color/white"

@@ -3,7 +3,6 @@ package com.example.cnc.loginPage;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,19 +11,16 @@ import android.widget.Toast;
 
 import com.example.cnc.R;
 import com.example.cnc.admin.AdminActivity;
-import com.example.cnc.assignment.Assignment1Activity;
 import com.example.cnc.assignment.MainAssignmentActivity;
-import com.example.cnc.assignment.WarningNoAccessActivity;
 import com.example.cnc.main.MainActivity;
 import com.example.cnc.manual.ManualActivity;
 import com.example.cnc.orientation.OrientationActivity;
-import com.example.cnc.submit.SubmitActivity;
+import com.example.cnc.status.StatusActivity;
 
-import static com.example.cnc.checklist.ChecklistActivity_2.checklistcompleted;
 import static com.example.cnc.loginPage.LoginActivity.studentID_def;
 
 public class AccountActivity extends AppCompatActivity {
-    Button bt_orientation, bt_assignment, bt_submit, bt_manual, bt_logout, bt_admin;
+    Button bt_orientation, bt_assignment, bt_submit, bt_manual, bt_status, bt_logout, bt_admin;
     String adminID = "999999";
 
 
@@ -36,6 +32,7 @@ public class AccountActivity extends AppCompatActivity {
         bt_orientation=findViewById(R.id.orientation_bt);
         bt_assignment=findViewById(R.id.assignments_bt);
         bt_manual=findViewById(R.id.manual_bt);
+        bt_status=findViewById(R.id.status_bt);
         bt_logout=findViewById(R.id.logout_bt);
         bt_admin=findViewById(R.id.admin_bt);
 
@@ -61,6 +58,11 @@ public class AccountActivity extends AppCompatActivity {
 
         bt_manual.setOnClickListener(click->{
             Intent intent=new Intent(this, ManualActivity.class);
+            startActivity(intent);
+        });
+
+        bt_status.setOnClickListener(click->{
+            Intent intent=new Intent(this, StatusActivity.class);
             startActivity(intent);
         });
 

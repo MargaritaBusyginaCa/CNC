@@ -194,7 +194,8 @@ public class SubmitActivity extends AppCompatActivity {
     private void loadData() {
             elements.clear();
 
-            //copied from SubmitActivity1 to get information from calling Activity
+
+        //copied from SubmitActivity1 to get information from calling Activity
         Intent intentFrPreActivity = getIntent();
 
         title = intentFrPreActivity.getStringExtra("TITLE");
@@ -206,7 +207,6 @@ public class SubmitActivity extends AppCompatActivity {
         code_ck = intentFrPreActivity.getStringExtra("CK_CODE");
         code_s = intentFrPreActivity.getStringExtra("S_CODE");
         code_e = intentFrPreActivity.getStringExtra("E_CODE");
-
 
         //--- retrieve email from database
         DatabaseHelper dbHelper = new DatabaseHelper(this);

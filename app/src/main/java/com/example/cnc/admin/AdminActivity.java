@@ -24,6 +24,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import static com.example.cnc.loginPage.LoginActivity.studentID_def;
 
 
 
@@ -34,7 +35,6 @@ public class AdminActivity extends AppCompatActivity{
 
     private DatabaseHelper databaseHelper;
 
-    public static String studentID_def;
     public List<User> users = new ArrayList<>();
     String email_def;
     int index = -1;
@@ -49,7 +49,7 @@ public class AdminActivity extends AppCompatActivity{
 
     private void init() {
 
-        bt_changeEmail=findViewById(R.id.admin_changeEmail_bt);
+        bt_changeEmail=findViewById(R.id.admin_getEmail_bt);
         bt_changeEmail.setOnClickListener(click->{
        //    email =  getEmail(000000);
 

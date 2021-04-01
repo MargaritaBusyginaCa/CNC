@@ -10,15 +10,12 @@ import android.widget.Toast;
 
 import com.example.cnc.R;
 import com.example.cnc.assignment.MainAssignmentActivity;
-import com.example.cnc.loginPage.AccountActivity;
-import com.example.cnc.sql.TimestampDBHelper;
-import com.example.cnc.supporters.Timestamp;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class ChecklistActivity_2 extends AppCompatActivity {
+public class Checklist1Activity_2 extends AppCompatActivity {
     public static boolean checklistcompleted;
     Button bt_submit;
     private CheckBox cb_dont_1, cb_dont_2, cb_dont_3, cb_dont_4;
@@ -28,7 +25,7 @@ public class ChecklistActivity_2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_checklist_2);
+        setContentView(R.layout.activity_checklist1_p2);
         cb_dont_1 = findViewById(R.id.cb_dont_1);
         cb_dont_2 = findViewById(R.id.cb_dont_2);
         cb_dont_3 = findViewById(R.id.cb_dont_3);

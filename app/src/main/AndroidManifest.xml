@@ -17,8 +17,10 @@
         <!--android:theme="@style/Theme.CNC">-->
         <activity android:name=".submit.SubmitChoiceActivity" />
         <!-- Checklist by Rita -->
-        <activity android:name=".checklist.ChecklistActivity_2" />
-        <activity android:name=".checklist.CheckListActivity" />
+        <activity android:name=".checklist.Checklist1Activity_2" />
+        <activity android:name=".checklist.Checklist1Activity" />
+        <activity android:name=".checklist.Checklist2Activity_2" />
+        <activity android:name=".checklist.Checklist2Activity" />
         <!-- Manual, Orientation and Assignment by Lai Shan Law -->
         <activity android:name=".orientation.OrientationActivity" />
         <activity android:name=".orientation.Exercise1Activity" />
@@ -26,10 +28,13 @@
         <activity android:name=".orientation.AlertExerciseNoSubmitActivity" />
         <activity android:name=".assignment.AlertAssignmentNoSubmitActivity" />
         <activity android:name=".assignment.Assignment1Activity" />
+        <activity android:name=".assignment.Assignment2Activity" />
         <activity android:name=".assignment.MainAssignmentActivity" />
         <activity android:name=".assignment.WarningNoAccessActivity" />
         <activity android:name=".manual.ManualActivity" />
         <activity android:name=".submit.SubmitActivity1" />
+        <activity android:name=".admin.AdminActivity" />
+        <activity android:name=".status.StatusActivity" />
         <!-- Submission by Ny Huilin -->
         <activity android:name=".submit.SubmitActivity" />
         <!-- Login & Register by Ny Nguyen -->

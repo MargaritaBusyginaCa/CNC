@@ -13,7 +13,6 @@ import com.example.cnc.R;
 import com.example.cnc.sql.TimestampDBHelper;
 import com.example.cnc.submit.SubmitChoiceActivity;
 import com.example.cnc.supporters.Timestamp;
-import static com.example.cnc.checklist.Checklist1Activity_2.checklistcompleted;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -21,18 +20,19 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
-public class Assignment1Activity extends AppCompatActivity {
+import static com.example.cnc.checklist.Checklist2Activity_2.checklist2completed;
+
+public class Assignment2Activity extends AppCompatActivity {
     Button submitBtn, noSubmitBtn;
-    String studentID, s_timestamp, ck_timestamp, ts;
-    String code = "11";
+    String s_timestamp, ck_timestamp, ts;
     private TimestampDBHelper dbHelper;
     Timestamp ts_new;
 
     //here you have to give image name which you already pasted it in /res/drawable/
 
     int[] flags = new int[]{
-            R.drawable.assi_ass1_header, R.drawable.man_p1, R.drawable.man_p2, R.drawable.man_p3, R.drawable.man_p4, R.drawable.man_p5,
-            R.drawable.man_p6, R.drawable.assi_end,
+            R.drawable.assi_ass2_header, R.drawable.ass2_p1, R.drawable.ass2_p2, R.drawable.ass2_p3, R.drawable.ass2_p4, R.drawable.ass2_p5,
+            R.drawable.ass2_p6, R.drawable.ass2_p7, R.drawable.ass2_p8,R.drawable.assi_end,
     };
 
 
@@ -41,13 +41,13 @@ public class Assignment1Activity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.assi_activity_ass1);
+        setContentView(R.layout.assi_activity_ass2);
 
         Intent intentAssmnt = getIntent();
+         s_timestamp = intentAssmnt.getStringExtra("START_TS");
         ck_timestamp = intentAssmnt.getStringExtra("CK_TS");
-        s_timestamp = intentAssmnt.getStringExtra("START_TS");
 
-        checklistcompleted = false;
+        checklist2completed = false;
         init();
     }
 
@@ -55,7 +55,7 @@ public class Assignment1Activity extends AppCompatActivity {
         // Each row in the list stores title, page num and flag
         List<HashMap<String,String>> aList = new ArrayList<HashMap<String,String>>();
 
-        for(int i=0;i<8;i++){
+        for(int i=0;i<10;i++){
             HashMap<String, String> hm = new HashMap<String,String>();
              hm.put("flag", Integer.toString(flags[i]) );
             aList.add(hm);
@@ -100,17 +100,17 @@ public class Assignment1Activity extends AppCompatActivity {
             //add_Timestamp(studentID, "12", s_timestamp);
             //add_Timestamp(studentID, "13", e_timestamp);
             //String ck_timestamp = tsGetFromDB(studentID, code);
-            String desc = "Checklist 1 & Assignment 1 are completed.";
+            String desc = "Checklist 2 & Assignment 2 are completed.";
             //Intent intent = new Intent(this, SubmitActivity1.class);
             Intent intent = new Intent(this, SubmitChoiceActivity.class);
-            intent.putExtra("TITLE", "Assignment 1");
+            intent.putExtra("TITLE", "Assignment 2");
             intent.putExtra("DESC", desc);
             intent.putExtra("CK_TS", ck_timestamp);
             intent.putExtra("START_TS", s_timestamp);
             intent.putExtra("END_TS", e_timestamp);
-            intent.putExtra("CK_CODE", "11");
-            intent.putExtra("S_CODE", "12");
-            intent.putExtra("E_CODE", "13");
+            intent.putExtra("CK_CODE", "21");
+            intent.putExtra("S_CODE", "22");
+            intent.putExtra("E_CODE", "23");
             startActivity(intent);
         });
     }

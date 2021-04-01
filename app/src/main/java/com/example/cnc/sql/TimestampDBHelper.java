@@ -167,14 +167,15 @@ public class TimestampDBHelper extends SQLiteOpenHelper {
 
         // selection criteria
         String selection = COLUMN_STUDENT_ID + " = ? AND " + COLUMN_ASSMNT_CODE + " = ?";
+       // String selection = COLUMN_STUDENT_ID + " = ?";
 
         // selection argument
-        String[] selectionArgs = {id, code};
+        String[] selectionArgs = {id};
 
         // query timestamp table with condition
         /**
          * SQL query equivalent to this query function is
-         * SELECT student_id FROM timestamp WHERE student_id = '123456789';
+         * SELECT timestamp FROM timestamp WHERE student_id = '123456789';
          */
         Cursor cursor = db.query(TABLE_TIMESTAMP, //Table to query
                 columns,                    //columns to return
@@ -184,8 +185,9 @@ public class TimestampDBHelper extends SQLiteOpenHelper {
                 null,                      //filter by row groups
                 null);                      //The sort order
 
-        int index = cursor.getColumnIndex(COLUMN_TIMESTAMP);
-        String ts = cursor.getString(index);
+      //  int index = cursor.getColumnIndex(COLUMN_TIMESTAMP);
+     //   String ts = cursor.getString(index);
+        String ts =cursor.getString(cursor.getColumnIndex(COLUMN_TIMESTAMP));
         cursor.close();
         db.close();
 
