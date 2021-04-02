@@ -5,13 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -24,12 +27,28 @@ import com.example.cnc.sql.DatabaseHelper;
 import com.example.cnc.sql.TimestampDBHelper;
 import com.example.cnc.supporters.Timestamp;
 import com.example.cnc.supporters.User;
+import com.google.android.material.snackbar.Snackbar;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class SubmitActivity extends AppCompatActivity {
+    //To identify which original activity is calling for submit.
+    // called from orientation.
+    public static final int FOR_ORIENTATION=1000;
+
+    //called from assignment
+    public static final int FOR_ASSIGNMENT=2000;
+
     //Identified intent request code for select pictures
     private static final int PICK_IMAGE = 100;
     //Identified intent request code for send email
@@ -41,7 +60,8 @@ public class SubmitActivity extends AppCompatActivity {
     //save the selected pictures
     private ArrayList<Uri> elements = new ArrayList<>();
     //variable to store related information
-    String title, studentID,ck_timestamp,s_timestamp,e_timestamp,desc,code_ck,code_s,code_e;
+    String title, studentID, ck_timestamp,s_timestamp,e_timestamp,desc,code_ck,code_s,code_e;
+    String assignmentId, taskId, time_stamp;
     //Database helper to query students database
     private DatabaseHelper dbHelper;
     //Database helper to query timestamp database
@@ -55,7 +75,7 @@ public class SubmitActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_submit);  //from layout to find listView
         loadData();  //find the data
-        ListView myList = findViewById(R.id.theListView);
+        GridView myList = findViewById(R.id.theListView);
         myAdapter = new MyListAdapter();  //listView connect with adapter (adapter manage listView)
         myList.setAdapter(myAdapter);
 
@@ -78,7 +98,7 @@ public class SubmitActivity extends AppCompatActivity {
         submitBtn = findViewById(R.id.submitBtn);  //find submit button
         submitBtn.setEnabled(false);  //if there has not pictures in the submit page, can not click submit button
         submitBtn.setOnClickListener(click->{  //click submit button
-
+            UpdateServer("STRIG");
             // Copied from SubmitActivity1 to update timestamp database
             if (code_ck == null){
                 add_Timestamp(studentID, code_e , e_timestamp);  //
@@ -87,6 +107,7 @@ public class SubmitActivity extends AppCompatActivity {
                 add_Timestamp(studentID, code_s, s_timestamp);
                 add_Timestamp(studentID, code_e, e_timestamp);
             }
+
             Toast.makeText(getApplicationContext(),"The timestamps have been saved",Toast.LENGTH_LONG).show();
             // End of timestamp database
 
@@ -191,13 +212,22 @@ public class SubmitActivity extends AppCompatActivity {
 
     //Each time will clear data
     private void loadData() {
-            elements.clear();
+        elements.clear();
+        title="Title";
+        assignmentId="1";
+        studentID="40941329";
+        time_stamp="2021-03-19 20:00:00";
+
+        if(true){
+            return;
+        }
 
             //copied from SubmitActivity1 to get information from calling Activity
         Intent intentFrPreActivity = getIntent();
 
         title = intentFrPreActivity.getStringExtra("TITLE");
         studentID = intentFrPreActivity.getStringExtra("ID");
+        assignmentId="1";
         ck_timestamp = intentFrPreActivity.getStringExtra("CK_TS");
         s_timestamp = intentFrPreActivity.getStringExtra("START_TS");
         e_timestamp = intentFrPreActivity.getStringExtra("END_TS");
@@ -254,4 +284,44 @@ public class SubmitActivity extends AppCompatActivity {
         }
 
     }
+
+    private class ServerQuery extends AsyncTask< String, Integer, String> {
+
+        //Type3                      Type1
+        public String doInBackground(String... args) {
+
+            try{
+
+                String uri_params;
+                taskId="0";
+                uri_params = "student_id=" + studentID;
+                uri_params += "&assignment_id=" + assignmentId;
+                uri_params += "&task_id=" + taskId;
+                uri_params += "&time_stamp=" + time_stamp;
+                String rest_url = getString(R.string.rest_url) + "task/?";
+                //HttpURLConnection connection = (HttpURLConnection) new URL("http://10.0.2.2:8181/api/login/?" + uri_params).openConnection();
+                HttpURLConnection connection = (HttpURLConnection) new URL(rest_url + uri_params).openConnection();
+                connection.setRequestMethod("POST");
+
+                int responseCode = connection.getResponseCode();
+
+                if (responseCode == 200) {}
+
+            }catch(Exception ex){
+                int i=0;
+            }
+
+            publishProgress(100);
+
+            return "Done";
+        }
+
+    }
+    private void UpdateServer(String searchStr){
+
+        ServerQuery req = new ServerQuery(); //creates a background thread
+        req.execute("http://www.recipepuppy.com/api/?q=" +searchStr); //Type 1
+
+    }
 }
+

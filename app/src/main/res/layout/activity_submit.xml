@@ -212,11 +212,12 @@
             android:layout_below="@+id/photos"
             />
     -->
-    <ListView
+    <GridView
         android:id="@+id/theListView"
         android:layout_width="wrap_content"
         android:layout_height="350dp"
         android:scrollbars="vertical"
+        android:numColumns="3"
         android:layout_below="@+id/photos" />
 
     <TextView
