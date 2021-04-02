@@ -29,7 +29,6 @@ import java.util.zip.ZipOutputStream;
 
 public class Exercise1Activity extends AppCompatActivity {
     Button submitBtn, noSubmitBtn, ex2Btn;
-    String studentID;
     private TimestampDBHelper dbHelper;
     Timestamp ts;
 
@@ -49,9 +48,6 @@ public class Exercise1Activity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ori_activity_exercise1);
-
-        Intent intentEmail = getIntent();
-        studentID = intentEmail.getStringExtra("ID");
 
         init();
     }
@@ -93,7 +89,6 @@ public class Exercise1Activity extends AppCompatActivity {
         noSubmitBtn = footer.findViewById(R.id.exitNotSubmit);
         noSubmitBtn.setOnClickListener(click -> {
             Intent intent = new Intent(this, AlertExerciseNoSubmitActivity.class);
-            intent.putExtra("ID", studentID);
             startActivity(intent);
         });
 
@@ -101,24 +96,9 @@ public class Exercise1Activity extends AppCompatActivity {
         ex2Btn = footer.findViewById(R.id.goToNext);
         ex2Btn.setOnClickListener(click->{
             Intent intent=new Intent(this, Exercise2Activity.class);
-            intent.putExtra("ID", studentID);
             startActivity(intent);
         });
-/*
-        //--- submit ---
-        //---Passing title & student to submission page --
-        submitBtn = footer.findViewById(R.id.goToSubmit);
-        submitBtn.setOnClickListener(click -> {
-            String timeStamp = getTimestamp();
-            add_Ori_Timestamp(studentID, "00", timeStamp);
-            Intent intent = new Intent(this, SubmitActivity1.class);
-            intent.putExtra("TITLE", "Orientation");
-            intent.putExtra("ID", studentID);
-            intent.putExtra("STARTTIME", "N/A");
-            intent.putExtra("ENDTIME", timeStamp);
-            startActivity(intent);
-        });
-*/
+
 
     }
     private String getTimestamp(){

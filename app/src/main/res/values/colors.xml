@@ -10,4 +10,10 @@
     <color name="orange">#fb8500</color>
     <color name="exitNoSave">#ff0000</color>
     <color name="exitSubmit">#00ffaa</color>
+    <color name="pastelYellow">#ffd166</color>
+    <color name="seaBlue">#4ea8de</color>
+    <color name="pastelOrangeLight">#ee6c4d</color>
+    <color name="asphaltGrey">#343a40</color>
+    <color name="Grey">#6c757d</color>
+    <color name="collegeGreen">#006442</color>
 </resources>

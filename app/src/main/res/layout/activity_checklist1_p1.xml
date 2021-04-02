@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".checklist.Checklist1Activity">
+
+
+    <!--    <com.github.barteksc.pdfviewer.PDFView-->
+    <!--      android:id="@+id/pdfView"-->
+    <!--        android:layout_marginTop="30dp"-->
+    <!--        android:layout_marginBottom="30dp"-->
+    <!--      android:layout_width="match_parent"-->
+    <!--      android:layout_height="match_parent"/>-->
+    <TextView
+        android:id="@+id/dos"
+        android:textSize="27dp"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:layout_marginTop="0dp"
+        android:text="@string/Dos1"
+        android:background="@color/orange"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        />
+    <CheckBox
+        android:id="@+id/cb_1"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/dos"
+        android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="1.WASH YOUR HANDS"/>
+
+    <CheckBox
+        android:id="@+id/cb_2"
+        android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/cb_1"
+        android:text="2.READ THE “CNC SIMULATOR ORIENTATION” FILE"/>
+
+    <TextView
+        android:id="@+id/tv_watch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cb_2"
+        android:layout_marginLeft="70dp"
+        android:text="Watch the following 4 videos (each less than 10 min)"/>
+
+    <TextView
+        android:id="@+id/tv_video_one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_watch"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="70dp"
+        android:textColor="@color/purple_700"
+        android:text="CNC Simulator Introduction – part 1"
+        />
+    <TextView
+        android:id="@+id/tv_video_two"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_video_one"
+        android:layout_marginLeft="70dp"
+        android:textColor="@color/purple_700"
+        android:text="CNC Simulator Introduction – part 2"
+        />
+    <TextView
+        android:id="@+id/tv_video_three"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_video_two"
+        android:layout_marginLeft="70dp"
+        android:textColor="@color/purple_700"
+        android:text="CNC Simulator Introduction – part 3"
+        />
+    <TextView
+        android:id="@+id/tv_video_four"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_video_three"
+        android:layout_marginLeft="70dp"
+        android:textColor="@color/purple_700"
+        android:text="CNC Simulator Introduction – part 4"
+        />
+
+    <CheckBox
+        android:id="@+id/cb_3"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/tv_video_four"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:text="3.WATCH THE 3 VIDEOS"/>
+    <TextView
+        android:id="@+id/tv_3_vid_instructions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cb_3"
+        android:layout_marginLeft="70dp"
+        android:layout_marginRight="20dp"
+        android:text="The videos are based on a sample file G-Code accessible on the Brightspace: O1001.nc file
+You can also download the TXT file and then “save as…” it as an O1001.nc file"/>
+
+    <CheckBox
+        android:id="@+id/cb_4"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/cb_3"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="71dp"
+        android:text="4.COPY THE NC FILE ON YOUR USB"
+        />
+    <TextView
+        android:id="@+id/tv_now"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cb_4"
+        android:layout_marginLeft="70dp"
+        android:layout_marginRight="20dp"
+        android:text="Now you can go back to page 18 of the CNC Simulation Orientation file and follow the steps described there and repeated on the 3 posted videos"/>
+
+
+    <CheckBox
+        android:id="@+id/cb_5"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/tv_now"
+        android:layout_marginLeft="20dp"
+        android:text="MAKE SURE YOU KEEP 2 METER DISTANCE ALL THE TIME"
+        />
+    <CheckBox
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cb_6"
+        android:layout_below="@+id/cb_5"
+        android:layout_marginLeft="20dp"
+        android:text="WHEN YOU ARE DONE PLEASE CLEAN THE KEYS BY A WIPE AVAILABLE IN T213 AS YOU DO FOR OTHER LABS"
+        />
+    <CheckBox
+        android:id="@+id/cb_7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/cb_6"
+        android:text="TURN OFF THE SIMULATOR"/>
+
+    <Button
+        android:id="@+id/bt_next"
+        android:layout_marginTop="10dp"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:background="@color/orange"
+        android:text="Next"
+        android:textColor="@color/white"
+        android:layout_toRightOf="@+id/cb_7"
+        android:layout_below="@+id/cb_6"
+        android:layout_marginLeft="80dp"
+
+        />
+</RelativeLayout>

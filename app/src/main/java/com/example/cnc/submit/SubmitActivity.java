@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +38,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import static com.example.cnc.loginPage.LoginActivity.studentID_def;
 
 
 public class SubmitActivity extends AppCompatActivity {
@@ -98,7 +98,7 @@ public class SubmitActivity extends AppCompatActivity {
         submitBtn = findViewById(R.id.submitBtn);  //find submit button
         submitBtn.setEnabled(false);  //if there has not pictures in the submit page, can not click submit button
         submitBtn.setOnClickListener(click->{  //click submit button
-            UpdateServer("STRIG");
+
             // Copied from SubmitActivity1 to update timestamp database
             if (code_ck == null){
                 add_Timestamp(studentID, code_e , e_timestamp);  //
@@ -107,7 +107,6 @@ public class SubmitActivity extends AppCompatActivity {
                 add_Timestamp(studentID, code_s, s_timestamp);
                 add_Timestamp(studentID, code_e, e_timestamp);
             }
-
             Toast.makeText(getApplicationContext(),"The timestamps have been saved",Toast.LENGTH_LONG).show();
             // End of timestamp database
 
@@ -226,8 +225,7 @@ public class SubmitActivity extends AppCompatActivity {
         Intent intentFrPreActivity = getIntent();
 
         title = intentFrPreActivity.getStringExtra("TITLE");
-        studentID = intentFrPreActivity.getStringExtra("ID");
-        assignmentId="1";
+        studentID = studentID_def;
         ck_timestamp = intentFrPreActivity.getStringExtra("CK_TS");
         s_timestamp = intentFrPreActivity.getStringExtra("START_TS");
         e_timestamp = intentFrPreActivity.getStringExtra("END_TS");

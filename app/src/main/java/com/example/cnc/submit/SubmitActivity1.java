@@ -35,8 +35,7 @@ public class SubmitActivity1 extends AppCompatActivity {
     Button noSubmitBtn, submitBtn;
     Button SelectPhoto;
     private static final int PICK_IMAGE = 100;
-    //-- added by Lai Shan --
-    private DatabaseHelper dbHelper;
+      private DatabaseHelper dbHelper;
     private TimestampDBHelper tsDBHelper;
     Timestamp ts_new;
 
@@ -56,11 +55,7 @@ public class SubmitActivity1 extends AppCompatActivity {
         ListView myList = findViewById(R.id.theListView);
 
 
-        //-----TIMESTAMP -------- by Lai Shan Law -------------------
-        // String ori_TS, checklist_TS, assmnt_start_TS, assmnt_end_TS;
-
-        //----- get the info from the previous activity
-        Intent intentFrPreActivity = getIntent();
+         Intent intentFrPreActivity = getIntent();
 
         title = intentFrPreActivity.getStringExtra("TITLE");
         studentID = intentFrPreActivity.getStringExtra("ID");

@@ -10,6 +10,8 @@ import android.widget.Button;
 import com.example.cnc.R;
 import com.example.cnc.submit.SubmitActivity;
 
+import static com.example.cnc.loginPage.LoginActivity.studentID_def;
+
 public class SubmitChoiceActivity extends AppCompatActivity {
     private Button email;
     private Button ms_form;
@@ -27,7 +29,7 @@ public class SubmitChoiceActivity extends AppCompatActivity {
         Intent intentFrPreActivity = getIntent();
 
         title = intentFrPreActivity.getStringExtra("TITLE");
-        studentID = intentFrPreActivity.getStringExtra("ID");
+        studentID = studentID_def;
         ck_timestamp = intentFrPreActivity.getStringExtra("CK_TS");
         s_timestamp = intentFrPreActivity.getStringExtra("START_TS");
         e_timestamp = intentFrPreActivity.getStringExtra("END_TS");
@@ -58,7 +60,7 @@ public class SubmitChoiceActivity extends AppCompatActivity {
             gotoUrl("https://forms.office.com/Pages/DesignPage.aspx?auth_pvr=OrgId&auth_upn=busy0001%40algonquinlive.com&origin=OfficeDotCom&lang=en-CA&route=LeftNav#FormId=JNkb7GoKqUqqicmAMWwESVtB4Pm0yv5Ojv2WVfBt2BJURVVGN0ZVUDIxWk1GTEZXR1IzVFo3QlZETi4u");
         });
     }
-
+//This method transfers to the MS forms web page
     private void gotoUrl(String urlPattern){
         Uri uri= Uri.parse(urlPattern);
         startActivity(new Intent(Intent.ACTION_VIEW, uri));

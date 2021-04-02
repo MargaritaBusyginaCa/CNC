@@ -9,11 +9,13 @@
     <string name="CheckList">Check List</string>
     <string name="Submissions">Submissions</string>
     <string name="Manual">CNC Manual</string>
+    <string name="Status">My Status</string>
     <string name="submit">submit</string>
     <string name="cancel">cancel</string>
     <string name="comments">comments</string>
-    <string name="Dos">Checklist</string>
-    <string name="Donts">Donts</string>
+    <string name="Dos1">Checklist 1 - DO\'S</string>
+    <string name="Donts">DON\'T\'S</string>
+    <string name="Dos2">Checklist 2 - DO\'S</string>
     <string name="select">select photos</string>
     <string name="SubmitViaEmail">Submit Through Email</string>
     <string name="SubmitViaMS">Submit Through Microsoft Forms</string>
@@ -43,15 +45,11 @@
     <string name="submitChecklistTime">N/A</string>
     <string name="desc">Status: </string>
     <string name="description">Description</string>
-
-
-
-
-
-
-
-
-
+    <string name="admin">Administration</string>
+    <string name="admin_changeEmail">The receiver\’s email address : </string>
+    <string name="admin_getEmail_bt">Get the Current Receiver Email Address</string>
+    <string name="admin_editEmail">Receiver email address</string>
+    <string name="hint_status">Not Submitted</string>
 
 
 

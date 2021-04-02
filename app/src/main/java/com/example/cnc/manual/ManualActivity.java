@@ -39,8 +39,6 @@ public class ManualActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.man_activity_main);
 
-        Intent intentEmail = getIntent();
-        studentID = intentEmail.getStringExtra("ID");
 
         // Each row in the list stores flag
         List<HashMap<String,String>> aList = new ArrayList<HashMap<String,String>>();
@@ -52,12 +50,9 @@ public class ManualActivity extends AppCompatActivity {
         }
 
         // Keys used in Hashmap
-        //String[] from = { "flag","txt","cur" };
         String[] from = { "flag"};
 
-        // Ids of views in listview_layout
-       // int[] to = { R.id.flag,R.id.txt,R.id.cur};
-        int[] to = { R.id.flag};
+         int[] to = { R.id.flag};
 
         // R.layout.ori_listview_layout defines the layout of each item
         SimpleAdapter adapter = new SimpleAdapter(getBaseContext(), aList, R.layout.ori_listview_layout, from, to);
@@ -72,8 +67,7 @@ public class ManualActivity extends AppCompatActivity {
         noSubmitBtn = findViewById(R.id.exitBtn);
         noSubmitBtn.setOnClickListener(click->{
             Intent intent=new Intent(this, AccountActivity.class);
-            intent.putExtra("ID", studentID);
-            startActivity(intent);
+             startActivity(intent);
         });
     }
 }

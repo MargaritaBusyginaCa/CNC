@@ -20,6 +20,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@+id/submittitle"
+        android:paddingTop="5dp"
         android:weightSum="3">
 
         <TextView
@@ -32,7 +33,7 @@
             android:textSize="15dp"
             android:textStyle="bold" />
 
-        <EditText
+        <TextView
             android:id="@+id/submitStudentID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -49,6 +50,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@+id/studentIDField"
+        android:paddingTop="5dp"
         android:weightSum="3">
 
         <TextView
@@ -61,7 +63,7 @@
             android:textSize="15dp"
             android:textStyle="bold" />
 
-        <EditText
+        <TextView
             android:id="@+id/submitEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -78,27 +80,28 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@+id/emailField"
+        android:paddingTop="5dp"
         >
 
 
         <TextView
             android:id="@+id/checklistTime"
-            android:layout_width="20dp"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:layout_marginLeft="10dp"
             android:text="@string/checklistTime"
-            android:textSize="10dp"
+            android:textSize="15dp"
             android:textStyle="bold" />
 
-        <EditText
+        <TextView
             android:id="@+id/submitChecklistTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1.5"
             android:layout_marginLeft="10dp"
             android:hint="@string/submitChecklistTime"
-            android:textSize="10dp"
+            android:textSize="15dp"
             android:textColor="#7E7B7B"/>
 
     </LinearLayout>
@@ -107,27 +110,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_below="@+id/ChecklistTimeField">
+        android:layout_below="@+id/ChecklistTimeField"
+        android:paddingTop="5dp">
 
 
         <TextView
             android:id="@+id/startTime"
-            android:layout_width="25dp"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:layout_marginLeft="10dp"
             android:text="@string/startTime"
-            android:textSize="10dp"
+            android:textSize="15dp"
             android:textStyle="bold" />
 
-        <EditText
+        <TextView
             android:id="@+id/submitStartTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1.5"
             android:layout_marginLeft="10dp"
             android:hint="@string/submitStartTime"
-            android:textSize="10dp"
+            android:textSize="15dp"
             android:textColor="#7E7B7B"/>
 
     </LinearLayout>
@@ -136,27 +140,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_below="@+id/startTimeField">
+        android:layout_below="@+id/startTimeField"
+        android:paddingTop="5dp">
 
 
         <TextView
             android:id="@+id/endTime"
-            android:layout_width="25dp"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:layout_marginLeft="10dp"
             android:text="@string/endTime"
-            android:textSize="10dp"
+            android:textSize="15dp"
             android:textStyle="bold" />
 
-        <EditText
+        <TextView
             android:id="@+id/submitEndTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1.5"
             android:layout_marginLeft="10dp"
             android:hint="@string/submitEndTime"
-            android:textSize="10dp"
+            android:textSize="15dp"
             android:textColor="#7E7B7B"/>
 
     </LinearLayout>
@@ -165,27 +170,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_below="@+id/endTimeField">
+        android:layout_below="@+id/endTimeField"
+        android:paddingTop="5dp">
 
 
         <TextView
             android:id="@+id/desc"
-            android:layout_width="25dp"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:layout_marginLeft="10dp"
             android:text="@string/desc"
-            android:textSize="10dp"
+            android:textSize="15dp"
             android:textStyle="bold" />
 
-        <EditText
+        <TextView
             android:id="@+id/submitDesc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1.5"
             android:layout_marginLeft="10dp"
             android:hint="@string/description"
-            android:textSize="10dp"
+            android:textSize="15dp"
             android:textColor="#7E7B7B"/>
 
     </LinearLayout>

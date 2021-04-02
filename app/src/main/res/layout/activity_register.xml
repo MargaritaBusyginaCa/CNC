@@ -5,6 +5,7 @@
     android:id="@+id/activity_register"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".loginPage.RegisterActivity">
 
     <TextView
@@ -15,7 +16,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="12dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        android:textColor="@color/collegeGreen"
         android:gravity="left" />
 
 
@@ -28,6 +32,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:textColor="@color/asphaltGrey"
+        android:textColorHint="@color/Grey"
         android:inputType="text"
         android:maxLines="1"
         android:gravity="left" />
@@ -40,7 +48,10 @@
         android:layout_below="@+id/textStudentID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:textColor="@color/collegeGreen"
         android:gravity="left" />
 
     <EditText
@@ -53,6 +64,10 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="text"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:textColor="@color/asphaltGrey"
+        android:textColorHint="@color/Grey"
         android:maxLines="1"
         android:gravity="left" />
 
@@ -61,9 +76,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textEmail"
-        android:layout_marginTop="13dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
         android:gravity="left"
         android:text="@string/password"
+        android:textColor="@color/collegeGreen"
         android:textSize="18sp"
         android:textStyle="bold|italic" />
 
@@ -72,11 +90,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ConfirmPassword"
-        android:layout_marginTop="11dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:ems="10"
         android:gravity="left"
         android:hint="@string/hint_password"
         android:inputType="textPassword"
+        android:textColor="@color/asphaltGrey"
+        android:textColorHint="@color/Grey"
         android:textAllCaps="false"
         android:textSize="18sp"
         android:textStyle="normal|bold" />
@@ -86,11 +107,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/Password"
-        android:layout_marginTop="11dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:ems="10"
         android:gravity="left"
         android:hint="@string/hint_password"
         android:inputType="textPassword"
+        android:textColor="@color/asphaltGrey"
+        android:textColorHint="@color/Grey"
         android:textAllCaps="false"
         android:textSize="18sp"
         android:textStyle="normal|bold" />
@@ -103,7 +127,10 @@
         android:layout_below="@+id/textPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/collegeGreen"
+        android:layout_marginRight="30dp"
         android:gravity="left" />
 
     <Button
@@ -115,7 +142,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginTop="18dp" />
+        android:background="@color/collegeGreen"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="25dp" />
 
     <TextView
         android:text="@string/text_already_member"
@@ -127,8 +157,16 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_marginTop="13dp"
+        android:textColor="@color/asphaltGrey"
         android:gravity="center" />
 
+    <ImageView
+        android:id="@+id/college_logo_register"
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        android:layout_below="@+id/LoginLink"
+        android:layout_marginTop="166dp"
+        android:src="@drawable/college_logo" />
 
 
 </RelativeLayout>

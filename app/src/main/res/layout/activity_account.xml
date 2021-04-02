@@ -15,7 +15,7 @@
         android:layout_marginLeft="120dp"
         android:layout_marginTop="120dp"
         android:text="@string/orientation"
-        android:background="@color/orange"/>
+        android:background="@color/collegeGreen"/>
 
     <Button
         android:id="@+id/assignments_bt"
@@ -25,19 +25,7 @@
         android:layout_marginLeft="120dp"
         android:layout_marginTop="20dp"
         android:text="@string/Assignments"
-        android:background="@color/orange"/>
-
-    <!-- this submission button will be deleted -->
-    <Button
-        android:id="@+id/submission_bt"
-        android:layout_width="168dp"
-        android:layout_height="64dp"
-        android:layout_marginLeft="120dp"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/assignments_bt"
-        android:text="@string/Submissions"
-        android:background="@color/orange"
-        />
+        android:background="@color/collegeGreen"/>
 
     <Button
         android:id="@+id/manual_bt"
@@ -45,9 +33,20 @@
         android:layout_height="64dp"
         android:layout_marginLeft="120dp"
         android:layout_marginTop="20dp"
-        android:layout_below="@+id/submission_bt"
+        android:layout_below="@+id/assignments_bt"
         android:text="@string/Manual"
-        android:background="@color/orange"
+        android:background="@color/collegeGreen"
+        />
+
+    <Button
+        android:id="@+id/status_bt"
+        android:layout_width="168dp"
+        android:layout_height="64dp"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/manual_bt"
+        android:text="@string/Status"
+        android:background="@color/collegeGreen"
         />
 
     <Button
@@ -56,8 +55,21 @@
         android:layout_height="64dp"
         android:layout_marginLeft="120dp"
         android:layout_marginTop="20dp"
-        android:layout_below="@+id/manual_bt"
+        android:layout_below="@+id/status_bt"
         android:text="@string/logout"
-        android:background="@color/orange"
+        android:textColor="@color/collegeGreen"
+        android:background="@color/white"
         />
+    <Button
+        android:id="@+id/admin_bt"
+        android:layout_width="168dp"
+        android:layout_height="64dp"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/logout_bt"
+        android:text="@string/admin"
+        android:background="@color/teal_200"
+        />
+
+
 </RelativeLayout>

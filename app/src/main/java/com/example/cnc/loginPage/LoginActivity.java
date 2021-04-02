@@ -46,8 +46,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private InputValidation inputValidation;
     private DatabaseHelper databaseHelper;
 
+    public static String studentID_def;
     public List<User> users = new ArrayList<>();
-    String email_def, studentID_def;
+    String email_def;
     int index = -1;
 
     @Override

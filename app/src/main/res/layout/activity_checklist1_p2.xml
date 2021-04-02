@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".checklist.Checklist1Activity_2">
+
+    <TextView
+        android:id="@+id/donts"
+        android:textSize="27dp"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:layout_marginTop="0dp"
+        android:text="@string/Donts"
+        android:background="@color/orange"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        />
+    <CheckBox
+        android:id="@+id/cb_dont_1"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/donts"
+        android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="1.NO FOOD IN THE LAB"/>
+    <CheckBox
+        android:id="@+id/cb_dont_2"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/cb_dont_1"
+        android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="2.DO NOT LEAVE THE SIMULATOR ON"/>
+    <CheckBox
+        android:id="@+id/cb_dont_3"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/cb_dont_2"
+        android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="4. NO ONE LEFT ALONE IN THE LAB"/>
+    <CheckBox
+        android:id="@+id/cb_dont_4"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/cb_dont_3"
+        android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="5. DO NOT TURN ON AND OFF WITHOUT WAITING 10 SECONDS IN BETWEEN"/>
+
+    <Button
+        android:id="@+id/bt_submit_checklist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cb_dont_4"
+        android:background="@color/orange"
+        android:textColor="@color/white"
+        android:text="@string/submit"
+        />
+
+</RelativeLayout>
