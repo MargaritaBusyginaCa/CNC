@@ -135,19 +135,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
      * This method is to validate the input text fields and verify login credentials from SQLite
      */
     private void doVerify() {
-        Intent intentAccount = new Intent(getApplicationContext(), AccountActivity.class);
-        intentAccount.putExtra("EMAIL", "a@a.com");
-        //don't delete it!
-        email_def = textEmail.getText().toString().trim();
-        //studentID_def = getStudentID(email_def);
-        intentAccount.putExtra("ID", "12345");
-        //--------------
-        //emptyInputEditText();
-        startActivity(intentAccount);
-        if(true){
-            return;
-        }
-
 
         if (!inputValidation.isEmail(textEmail, Email, getString(R.string.error_message_email))) {
             return;

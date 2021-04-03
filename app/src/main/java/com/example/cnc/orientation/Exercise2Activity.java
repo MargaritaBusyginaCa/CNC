@@ -103,7 +103,7 @@ public class Exercise2Activity extends AppCompatActivity {
             //Intent intent = new Intent(this, SubmitActivity1.class);
             Intent intent = new Intent(this, SubmitChoiceActivity.class);
             intent.putExtra("TITLE", "Orientation");
-             intent.putExtra("DESC", desc);
+            intent.putExtra("DESC", desc);
             intent.putExtra("END_TS", timeStamp);
             intent.putExtra("E_CODE", "01");
             orientationCompleted=true;

@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,12 +43,6 @@ import static com.example.cnc.loginPage.LoginActivity.studentID_def;
 
 
 public class SubmitActivity extends AppCompatActivity {
-    //To identify which original activity is calling for submit.
-    // called from orientation.
-    public static final int FOR_ORIENTATION=1000;
-
-    //called from assignment
-    public static final int FOR_ASSIGNMENT=2000;
 
     //Identified intent request code for select pictures
     private static final int PICK_IMAGE = 100;
@@ -61,7 +56,7 @@ public class SubmitActivity extends AppCompatActivity {
     private ArrayList<Uri> elements = new ArrayList<>();
     //variable to store related information
     String title, studentID, ck_timestamp,s_timestamp,e_timestamp,desc,code_ck,code_s,code_e;
-    String assignmentId, taskId, time_stamp;
+    String assignmentId;
     //Database helper to query students database
     private DatabaseHelper dbHelper;
     //Database helper to query timestamp database
@@ -99,27 +94,33 @@ public class SubmitActivity extends AppCompatActivity {
         submitBtn.setEnabled(false);  //if there has not pictures in the submit page, can not click submit button
         submitBtn.setOnClickListener(click->{  //click submit button
 
-            // Copied from SubmitActivity1 to update timestamp database
-            if (code_ck == null){
-                add_Timestamp(studentID, code_e , e_timestamp);  //
-            }else {
-                add_Timestamp(studentID, code_ck, ck_timestamp);
-                add_Timestamp(studentID, code_s, s_timestamp);
-                add_Timestamp(studentID, code_e, e_timestamp);
-            }
-            Toast.makeText(getApplicationContext(),"The timestamps have been saved",Toast.LENGTH_LONG).show();
-            // End of timestamp database
 
             final Intent emailIntent = new Intent (Intent.ACTION_SEND_MULTIPLE);//intent send email
             emailIntent.setType("plain/text");
             emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] { "linlinfhl@gmail.com"});//default to email address
             emailIntent.putExtra(Intent.EXTRA_SUBJECT, title); //email subject
             emailIntent.putExtra(Intent.EXTRA_STREAM,elements); //email attachment
-
             // Use task and timestamp information to create email body
             String emailBody="Student ID: " + studentID+"\n";
-            emailBody+="Check list time: " +    ck_timestamp +"\n";
-            emailBody+="Start time: " +    s_timestamp +"\n";
+
+            // Copied from SubmitActivity1 to update timestamp database
+            if (code_ck == null){
+                add_Timestamp(studentID, code_e , e_timestamp);  //
+                UpdateServer(studentID,assignmentId,code_e,e_timestamp);
+            }else {
+                add_Timestamp(studentID, code_ck, ck_timestamp);
+                UpdateServer(studentID,assignmentId,code_ck,ck_timestamp);
+                add_Timestamp(studentID, code_s, s_timestamp);
+                UpdateServer(studentID,assignmentId,code_s,s_timestamp);
+                add_Timestamp(studentID, code_e, e_timestamp);
+                UpdateServer(studentID,assignmentId,code_e,e_timestamp);
+                emailBody+="Check list time: " +    ck_timestamp +"\n";
+                emailBody+="Start time: " +    s_timestamp +"\n";
+            }
+            Toast.makeText(getApplicationContext(),"The timestamps have been saved",Toast.LENGTH_LONG).show();
+
+
+            // End of timestamp database
             emailBody+="End time: " +    e_timestamp +"\n";
             emailBody+="Status: " +    desc+ "\n";
             EditText commentText = findViewById(R.id.submitComments);
@@ -212,52 +213,40 @@ public class SubmitActivity extends AppCompatActivity {
     //Each time will clear data
     private void loadData() {
         elements.clear();
-        title="Title";
-        assignmentId="1";
-        studentID="40941329";
-        time_stamp="2021-03-19 20:00:00";
 
-        if(true){
-            return;
-        }
-
-            //copied from SubmitActivity1 to get information from calling Activity
-        Intent intentFrPreActivity = getIntent();
-
-        title = intentFrPreActivity.getStringExtra("TITLE");
         studentID = studentID_def;
-        ck_timestamp = intentFrPreActivity.getStringExtra("CK_TS");
-        s_timestamp = intentFrPreActivity.getStringExtra("START_TS");
-        e_timestamp = intentFrPreActivity.getStringExtra("END_TS");
-        desc = intentFrPreActivity.getStringExtra("DESC");
-        code_ck = intentFrPreActivity.getStringExtra("CK_CODE");
-        code_s = intentFrPreActivity.getStringExtra("S_CODE");
+        //determine the calling activity.
+        Intent intentFrPreActivity = getIntent();
+        title=intentFrPreActivity.getStringExtra("TITLE");
         code_e = intentFrPreActivity.getStringExtra("E_CODE");
+        desc = intentFrPreActivity.getStringExtra("DESC");
 
+        LinearLayout checklistField = findViewById(R.id.ChecklistTimeField);
+        checklistField.setVisibility(View.GONE);
 
-        //--- retrieve email from database
-        DatabaseHelper dbHelper = new DatabaseHelper(this);
-       List<User> users = dbHelper.getAllUser();
-       Integer index=0;
-        for (int i = 0; i < users.size(); i++) {
-            if (users.get(i).getStudentID().equalsIgnoreCase(studentID)) {
-                index = i;
-                break;
-            }
+        LinearLayout stimestampField = findViewById(R.id.startTimeField);
+        stimestampField.setVisibility(View.GONE);
+        e_timestamp= intentFrPreActivity.getStringExtra("END_TS");
+        code_ck = intentFrPreActivity.getStringExtra("CK_CODE");
+        assignmentId="0";
+        if(code_ck != null){
+            ck_timestamp = intentFrPreActivity.getStringExtra("CK_TS");
+            s_timestamp = intentFrPreActivity.getStringExtra("START_TS");
+            code_s = intentFrPreActivity.getStringExtra("S_CODE");
+            assignmentId=code_e.substring(0,1);
+            checklistField.setVisibility(View.VISIBLE);
+            TextView typedchecklist=findViewById(R.id.submitChecklistTime);
+            typedchecklist.setText(ck_timestamp);
+            stimestampField.setVisibility(View.VISIBLE);
+            TextView typed_S_Timestamp=findViewById(R.id.submitStartTime);
+            typed_S_Timestamp.setText(s_timestamp);
         }
-        String email = users.get(index).getEmail();
 
         //----- display ----
         TextView typedTitle = findViewById(R.id.submittitle);
         typedTitle.setText(title);
         TextView typedStudent = findViewById(R.id.submitStudentID);
         typedStudent.setText(studentID);
-        TextView typedEmail = findViewById(R.id.submitEmail);
-        typedEmail.setText(email);
-        TextView typedchecklist = findViewById(R.id.submitChecklistTime);
-        typedchecklist.setText(ck_timestamp);
-        TextView typed_S_Timestamp = findViewById(R.id.submitStartTime);
-        typed_S_Timestamp.setText(s_timestamp);
         TextView typedTimestamp = findViewById(R.id.submitEndTime);
         typedTimestamp.setText(e_timestamp);
         TextView typeDesc = findViewById(R.id.submitDesc);
@@ -285,40 +274,38 @@ public class SubmitActivity extends AppCompatActivity {
 
     private class ServerQuery extends AsyncTask< String, Integer, String> {
 
-        //Type3                      Type1
         public String doInBackground(String... args) {
 
             try{
-
-                String uri_params;
-                taskId="0";
-                uri_params = "student_id=" + studentID;
-                uri_params += "&assignment_id=" + assignmentId;
-                uri_params += "&task_id=" + taskId;
-                uri_params += "&time_stamp=" + time_stamp;
-                String rest_url = getString(R.string.rest_url) + "task/?";
-                //HttpURLConnection connection = (HttpURLConnection) new URL("http://10.0.2.2:8181/api/login/?" + uri_params).openConnection();
-                HttpURLConnection connection = (HttpURLConnection) new URL(rest_url + uri_params).openConnection();
+                HttpURLConnection connection = (HttpURLConnection) new URL(args[0] ).openConnection();
                 connection.setRequestMethod("POST");
-
                 int responseCode = connection.getResponseCode();
 
-                if (responseCode == 200) {}
+                if (responseCode == 200) {
+                    return "done";
+                }
+                else
+                {
+                    return "Updating server failed.";
+                }
 
             }catch(Exception ex){
-                int i=0;
+                return "Error!!! updating server database.";
             }
 
-            publishProgress(100);
-
-            return "Done";
         }
 
     }
-    private void UpdateServer(String searchStr){
+
+    private void UpdateServer(String student_id, String assignment_id, String task_id, String time_stamp){
+        String uri_params;
+        uri_params = "student_id=" + student_id;
+        uri_params += "&assignment_id=" + assignment_id;
+        uri_params += "&task_id=" + task_id;
+        uri_params += "&time_stamp=" + time_stamp;
 
         ServerQuery req = new ServerQuery(); //creates a background thread
-        req.execute("http://www.recipepuppy.com/api/?q=" +searchStr); //Type 1
+        req.execute(getString(R.string.rest_url) + "task/?"+uri_params);
 
     }
 }
