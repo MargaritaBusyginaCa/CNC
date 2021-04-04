@@ -34,6 +34,8 @@
         <activity android:name=".manual.ManualActivity" />
         <activity android:name=".submit.SubmitActivity1" />
         <activity android:name=".admin.AdminActivity" />
+        <activity android:name=".admin.AdminEmailActivity" />
+        <activity android:name=".admin.AdminReportActivity" />
         <activity android:name=".status.StatusActivity" />
         <!-- Submission by Ny Huilin -->
         <activity android:name=".submit.SubmitActivity" />

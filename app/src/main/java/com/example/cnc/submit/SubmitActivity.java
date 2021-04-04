@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cnc.R;
+import com.example.cnc.admin.AdminEmailActivity;
 import com.example.cnc.loginPage.AccountActivity;
 import com.example.cnc.sql.DatabaseHelper;
 import com.example.cnc.sql.TimestampDBHelper;
@@ -30,6 +31,7 @@ import com.example.cnc.supporters.User;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -39,6 +41,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+
 import static com.example.cnc.loginPage.LoginActivity.studentID_def;
 
 
@@ -57,6 +61,7 @@ public class SubmitActivity extends AppCompatActivity {
     //variable to store related information
     String title, studentID, ck_timestamp,s_timestamp,e_timestamp,desc,code_ck,code_s,code_e;
     String assignmentId;
+    String prof_email;
     //Database helper to query students database
     private DatabaseHelper dbHelper;
     //Database helper to query timestamp database
@@ -135,7 +140,9 @@ public class SubmitActivity extends AppCompatActivity {
 
         });
 
-
+        //---- Get Prof email
+        String prof_id = "0";
+        getEmail(prof_id);
     }
 
     @Override
@@ -254,7 +261,7 @@ public class SubmitActivity extends AppCompatActivity {
 
     }
 
-    // -- save Timestamp into the database
+    // -- save Timestamp into the SQLite database
     private void add_Timestamp(String sID, String code, String timestamp) {
         tsDBHelper = new TimestampDBHelper(this);
 
@@ -286,11 +293,11 @@ public class SubmitActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    return "Updating server failed.";
+                    return (getString(R.string.error_valid_email_password));
                 }
 
             }catch(Exception ex){
-                return "Error!!! updating server database.";
+                return "REST API Failed";
             }
 
         }
@@ -307,6 +314,56 @@ public class SubmitActivity extends AppCompatActivity {
         ServerQuery req = new ServerQuery(); //creates a background thread
         req.execute(getString(R.string.rest_url) + "task/?"+uri_params);
 
+    }
+//-------------Get email----
+    private class ServerGet extends AsyncTask< String, Integer, String> {
+
+        public String doInBackground(String... args) {
+
+            try{
+                HttpURLConnection connection = (HttpURLConnection) new URL(args[0] ).openConnection();
+                connection.setRequestMethod("GET");
+                int responseCode = connection.getResponseCode();
+
+                if (responseCode == 200) {
+                    String response = "";
+                    String token;
+                    Scanner scanner = new Scanner(connection.getInputStream());
+                    while (scanner.hasNextLine()) {
+                        response += scanner.nextLine();
+                        response += "\n";
+                    }
+                    scanner.close();
+
+                    try {
+
+                        JSONObject obj = new JSONObject(response);
+                        token = obj.keys().next();
+                        prof_email = obj.getString(token);
+                        System.out.println("-->Submission page: Prof email " + prof_email);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    return "done";
+                }
+                else
+                {
+                    return (getString(R.string.invalid_student_id));
+                }
+
+            }catch(Exception ex){
+                return "Error!!! Unable to get the email from server.";
+            }
+       }
+    }
+
+    private void getEmail(String id){
+        String uri_params;
+        uri_params = "student_id=" + id;
+
+        ServerGet req = new ServerGet(); //creates a background thread
+        req.execute(getString(R.string.rest_url) + "get_email/?"+uri_params);
     }
 }
 

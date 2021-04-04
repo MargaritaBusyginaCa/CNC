@@ -46,10 +46,14 @@
     <string name="desc">Status: </string>
     <string name="description">Description</string>
     <string name="admin">Administration</string>
-    <string name="admin_changeEmail">The receiver\’s email address : </string>
-    <string name="admin_getEmail_bt">Get the Current Receiver Email Address</string>
+    <string name="admin_changeEmail">Assginment will be sent to the following email address : </string>
+    <string name="admin_getEmail_bt">Set the assignment submission location</string>
     <string name="admin_editEmail">Receiver email address</string>
+    <string name="admin_report_bt">Get The Assignment Status </string>
     <string name="hint_status">Not Submitted</string>
+    <string name="invalid_student_id">Invalid ID!</string>
+
+
 
 
 
