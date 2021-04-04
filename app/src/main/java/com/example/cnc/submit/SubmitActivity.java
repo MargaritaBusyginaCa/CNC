@@ -75,6 +75,11 @@ public class SubmitActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_submit);  //from layout to find listView
         loadData();  //find the data
+
+        //---- Get Prof email
+        String prof_id = "0";
+        getEmail(prof_id);
+
         GridView myList = findViewById(R.id.theListView);
         myAdapter = new MyListAdapter();  //listView connect with adapter (adapter manage listView)
         myList.setAdapter(myAdapter);
@@ -102,7 +107,7 @@ public class SubmitActivity extends AppCompatActivity {
 
             final Intent emailIntent = new Intent (Intent.ACTION_SEND_MULTIPLE);//intent send email
             emailIntent.setType("plain/text");
-            emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] { "linlinfhl@gmail.com"});//default to email address
+            emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] { prof_email});//default to email address
             emailIntent.putExtra(Intent.EXTRA_SUBJECT, title); //email subject
             emailIntent.putExtra(Intent.EXTRA_STREAM,elements); //email attachment
             // Use task and timestamp information to create email body
@@ -140,9 +145,7 @@ public class SubmitActivity extends AppCompatActivity {
 
         });
 
-        //---- Get Prof email
-        String prof_id = "0";
-        getEmail(prof_id);
+
     }
 
     @Override
