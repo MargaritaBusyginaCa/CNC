@@ -104,7 +104,8 @@ public class StatusActivity extends AppCompatActivity{
     private String getTsFromDB(String id, String code) {
         tsDBHelper = new TimestampDBHelper(this);
         String priKey = id + code;
-      //  return (tsDBHelper.getTimestamp(priKey, code));
+        return (tsDBHelper.getTSFromIntDB(priKey, code));
+      /*
         if(tsDBHelper.isExist(priKey, code)) {
             List<Timestamp> ts = tsDBHelper.getAllRecords();
             Integer index = 0;
@@ -119,6 +120,8 @@ public class StatusActivity extends AppCompatActivity{
         }else {
             return null;
         }
+        */
+
     }
 
 
