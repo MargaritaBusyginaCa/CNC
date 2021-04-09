@@ -76,7 +76,7 @@ public class SubmitActivity extends AppCompatActivity {
         setContentView(R.layout.activity_submit);  //from layout to find listView
         loadData();  //find the data
 
-        //---- Get Prof email
+        //from server database to get Prof email
         String prof_id = "0";
         getEmail(prof_id);
 
@@ -107,41 +107,41 @@ public class SubmitActivity extends AppCompatActivity {
 
             final Intent emailIntent = new Intent (Intent.ACTION_SEND_MULTIPLE);//intent send email
             emailIntent.setType("plain/text");
-            emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] { prof_email});//default to email address
+            emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] { prof_email});//send to prof email
             emailIntent.putExtra(Intent.EXTRA_SUBJECT, title); //email subject
             emailIntent.putExtra(Intent.EXTRA_STREAM,elements); //email attachment
             // Use task and timestamp information to create email body
             String emailBody="Student ID: " + studentID+"\n";
 
             // Copied from SubmitActivity1 to update timestamp database
-            if (code_ck == null){
-                add_Timestamp(studentID, code_e , e_timestamp);  //
-                UpdateServer(studentID,assignmentId,code_e,e_timestamp);
-            }else {
-                add_Timestamp(studentID, code_ck, ck_timestamp);
-                UpdateServer(studentID,assignmentId,code_ck,ck_timestamp);
-                add_Timestamp(studentID, code_s, s_timestamp);
-                UpdateServer(studentID,assignmentId,code_s,s_timestamp);
-                add_Timestamp(studentID, code_e, e_timestamp);
-                UpdateServer(studentID,assignmentId,code_e,e_timestamp);
-                emailBody+="Check list time: " +    ck_timestamp +"\n";
+            if (code_ck == null){ //if checklist code is null, that means is come from orientation not assignment
+                add_Timestamp(studentID, code_e , e_timestamp);  //update local database orientation timestamp
+                UpdateServer(studentID,assignmentId,code_e,e_timestamp); //update server orientation timestamp
+            }else { //is from assignment
+                add_Timestamp(studentID, code_ck, ck_timestamp);  //update local database
+                UpdateServer(studentID,assignmentId,code_ck,ck_timestamp);  //update server database
+                add_Timestamp(studentID, code_s, s_timestamp);  //update local database
+                UpdateServer(studentID,assignmentId,code_s,s_timestamp);  //update server database
+                add_Timestamp(studentID, code_e, e_timestamp);  //update local database
+                UpdateServer(studentID,assignmentId,code_e,e_timestamp);  //update server database
+                emailBody+="Check list time: " +    ck_timestamp +"\n"; //if from assignment, il will add two more timestamp (checklist, start time)
                 emailBody+="Start time: " +    s_timestamp +"\n";
             }
             Toast.makeText(getApplicationContext(),"The timestamps have been saved",Toast.LENGTH_LONG).show();
 
 
             // End of timestamp database
-            emailBody+="End time: " +    e_timestamp +"\n";
-            emailBody+="Status: " +    desc+ "\n";
-            EditText commentText = findViewById(R.id.submitComments);
-            String commentStr=commentText.getText().toString();
-            if(commentStr !=null && ! commentStr.trim().isEmpty()){
-                emailIntent.putExtra(Intent.EXTRA_TEXT,emailBody +commentStr);
+            emailBody+="End time: " +    e_timestamp +"\n";  //There must be end time and status in either orientation or assignment
+            emailBody+="Status: " +    desc+ "\n";  //desc: like Checklist 1 & Assignment 1 are completed.
+            EditText commentText = findViewById(R.id.submitComments);  //if has comments, it will add to email; if not, email will have not comments
+            String commentStr=commentText.getText().toString();  //read comments to commentStr
+            if(commentStr !=null && ! commentStr.trim().isEmpty()){  //if comments are not null and are not all space in it
+                emailIntent.putExtra(Intent.EXTRA_TEXT,emailBody +commentStr);  //it will add to email body
             }else
             {
-                emailIntent.putExtra(Intent.EXTRA_TEXT,emailBody);
+                emailIntent.putExtra(Intent.EXTRA_TEXT,emailBody);  //otherwise, no comments in email body
             }
-            this.startActivityForResult(Intent.createChooser(emailIntent, "Sending email..."), SEND_EMAIL);
+            this.startActivityForResult(Intent.createChooser(emailIntent, "Sending email..."), SEND_EMAIL);  //send email
 
         });
 
@@ -224,36 +224,36 @@ public class SubmitActivity extends AppCompatActivity {
     private void loadData() {
         elements.clear();
 
-        studentID = studentID_def;
+        studentID = studentID_def;  //studentID_def save in login, I have to get studentID_def to save in StudentID
         //determine the calling activity.
         Intent intentFrPreActivity = getIntent();
-        title=intentFrPreActivity.getStringExtra("TITLE");
+        title=intentFrPreActivity.getStringExtra("TITLE");  //from intent to get title, code_e and desc
         code_e = intentFrPreActivity.getStringExtra("E_CODE");
         desc = intentFrPreActivity.getStringExtra("DESC");
 
-        LinearLayout checklistField = findViewById(R.id.ChecklistTimeField);
-        checklistField.setVisibility(View.GONE);
+        LinearLayout checklistField = findViewById(R.id.ChecklistTimeField);  //display checklist timestamp
+        checklistField.setVisibility(View.GONE);  //if from orientation to submit page, we do not need checklist timestamp, so we use GONE to hide
 
-        LinearLayout stimestampField = findViewById(R.id.startTimeField);
-        stimestampField.setVisibility(View.GONE);
-        e_timestamp= intentFrPreActivity.getStringExtra("END_TS");
+        LinearLayout stimestampField = findViewById(R.id.startTimeField);  //display start timestamp
+        stimestampField.setVisibility(View.GONE); //if from orientation to submit page, we do not need start timestamp, so we use GONE to hide
+        e_timestamp= intentFrPreActivity.getStringExtra("END_TS");  //from intent to get end timestamp and checklist code
         code_ck = intentFrPreActivity.getStringExtra("CK_CODE");
         assignmentId="0";
-        if(code_ck != null){
-            ck_timestamp = intentFrPreActivity.getStringExtra("CK_TS");
+        if(code_ck != null){  //if checklist code are not null, il will from assignment
+            ck_timestamp = intentFrPreActivity.getStringExtra("CK_TS");  //we will get checklist, start and status timestamp
             s_timestamp = intentFrPreActivity.getStringExtra("START_TS");
             code_s = intentFrPreActivity.getStringExtra("S_CODE");
-            assignmentId=code_e.substring(0,1);
-            checklistField.setVisibility(View.VISIBLE);
+            assignmentId=code_e.substring(0,1); //In database, assignment id is(11,12,13 or 21,22,23),we only need the first number,then we will know that which assignment will display(0是从0位开始算，然后拿1位）
+            checklistField.setVisibility(View.VISIBLE); //it should be display timestamps that before use GONE to hide
             TextView typedchecklist=findViewById(R.id.submitChecklistTime);
             typedchecklist.setText(ck_timestamp);
             stimestampField.setVisibility(View.VISIBLE);
             TextView typed_S_Timestamp=findViewById(R.id.submitStartTime);
-            typed_S_Timestamp.setText(s_timestamp);
+            typed_S_Timestamp.setText(s_timestamp);  //will display all timestamps
         }
 
         //----- display ----
-        TextView typedTitle = findViewById(R.id.submittitle);
+        TextView typedTitle = findViewById(R.id.submittitle);  //it will display title,ID,timestamps,desc
         typedTitle.setText(title);
         TextView typedStudent = findViewById(R.id.submitStudentID);
         typedStudent.setText(studentID);
@@ -265,16 +265,16 @@ public class SubmitActivity extends AppCompatActivity {
     }
 
     // -- save Timestamp into the SQLite database
-    private void add_Timestamp(String sID, String code, String timestamp) {
-        tsDBHelper = new TimestampDBHelper(this);
+    private void add_Timestamp(String sID, String code, String timestamp) { //add the SQLite database
+        tsDBHelper = new TimestampDBHelper(this); //new instance of timestampDBHelper, because I have to use function of timestampDBHelper
 
-        ts_new = new Timestamp();
-        String priKey = sID + code;
-        ts_new.setStudentID(priKey);
+        ts_new = new Timestamp();  //I have to use class of Timestamp, so have to has new instance named ts_new
+        String priKey = sID + code;  //primary key is studentID + assignment code
+        ts_new.setStudentID(priKey);  //get studentID, AssignmentCode and timestamp values to ts_new.
         ts_new.setAssmntCode(code);
         ts_new.setTimestamp(timestamp);
 
-        if (tsDBHelper.isExist(priKey, code)){
+        if (tsDBHelper.isExist(priKey, code)){  //if studentID and code are exist, will update timestamp, otherwise will add new timestamp
             tsDBHelper.updateTimestamp(ts_new);
         }else {
             tsDBHelper.addTimestamp(ts_new);
@@ -283,22 +283,23 @@ public class SubmitActivity extends AppCompatActivity {
     }
 
     private class ServerQuery extends AsyncTask< String, Integer, String> {
-
+        //AsyncTask to run on a background thread
         public String doInBackground(String... args) {
-
+            // Post timestamp to server
             try{
-                HttpURLConnection connection = (HttpURLConnection) new URL(args[0] ).openConnection();
+                HttpURLConnection connection = (HttpURLConnection) new URL(args[0] ).openConnection(); //REST URL
                 connection.setRequestMethod("POST");
-                int responseCode = connection.getResponseCode();
-
+                int responseCode = connection.getResponseCode(); //get response code
+                // if response code is 200
                 if (responseCode == 200) {
-                    return "done";
+                    return "done";  //query success
                 }
-                else
+                else  //if response code is not 200
                 {
                     return (getString(R.string.error_valid_email_password));
                 }
 
+            //if anything wrong, will not success to post timestamp
             }catch(Exception ex){
                 return "REST API Failed";
             }
@@ -307,8 +308,10 @@ public class SubmitActivity extends AppCompatActivity {
 
     }
 
+    //Post timestamp to server
     private void UpdateServer(String student_id, String assignment_id, String task_id, String time_stamp){
         String uri_params;
+        //prepare REST API parameter
         uri_params = "student_id=" + student_id;
         uri_params += "&assignment_id=" + assignment_id;
         uri_params += "&task_id=" + task_id;
@@ -320,15 +323,17 @@ public class SubmitActivity extends AppCompatActivity {
     }
 //-------------Get email----
     private class ServerGet extends AsyncTask< String, Integer, String> {
-
+    //AsyncTask to run on a background thread
         public String doInBackground(String... args) {
 
+            // query server to get email
             try{
-                HttpURLConnection connection = (HttpURLConnection) new URL(args[0] ).openConnection();
+                HttpURLConnection connection = (HttpURLConnection) new URL(args[0] ).openConnection(); //REST URL
                 connection.setRequestMethod("GET");
-                int responseCode = connection.getResponseCode();
+                int responseCode = connection.getResponseCode();  //Server response code
 
-                if (responseCode == 200) {
+                if (responseCode == 200) {  // successful
+                    // read Server return message
                     String response = "";
                     String token;
                     Scanner scanner = new Scanner(connection.getInputStream());
@@ -339,12 +344,14 @@ public class SubmitActivity extends AppCompatActivity {
                     scanner.close();
 
                     try {
-
+                        //Convert String to JSON
                         JSONObject obj = new JSONObject(response);
                         token = obj.keys().next();
+                        //get email
                         prof_email = obj.getString(token);
                         System.out.println("-->Submission page: Prof email " + prof_email);
 
+                        //exception handler
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -352,21 +359,25 @@ public class SubmitActivity extends AppCompatActivity {
                 }
                 else
                 {
+                    //if response code not success
                     return (getString(R.string.invalid_student_id));
                 }
 
+                //is anything wrong
             }catch(Exception ex){
                 return "Error!!! Unable to get the email from server.";
             }
        }
     }
 
-    private void getEmail(String id){
+    private void getEmail(String id){  //query server to get Professor email
+        //parameter for query email
         String uri_params;
         uri_params = "student_id=" + id;
 
-        ServerGet req = new ServerGet(); //creates a background thread
-        req.execute(getString(R.string.rest_url) + "get_email/?"+uri_params);
+        //new instance of ServerGet Class
+        ServerGet req = new ServerGet();
+        req.execute(getString(R.string.rest_url) + "get_email/?"+uri_params); //REST API to get professor email
     }
 }
 
