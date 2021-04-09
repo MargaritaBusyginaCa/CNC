@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".status.StatusActivity"
+    >
+    <Button
+        android:id="@+id/admin_report_bt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/admin_report_bt"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        />
+
+
+    <LinearLayout
+        android:id="@+id/numberField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/admin_report_bt"
+        android:layout_marginTop="56dp"
+        android:layout_marginLeft="20dp"
+        android:weightSum="3">
+
+        <TextView
+            android:id="@+id/totalStudent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:text="Total Number of Student : "
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/totalNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:layout_marginLeft="10dp"
+            android:hint="0"
+            android:textSize="20dp"
+            android:textColor="#7E7B7B"/>
+    </LinearLayout>
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_below="@+id/numberField"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="5dp"
+        android:layout_centerHorizontal="true"
+        >
+
+        <TableRow
+            android:id="@+id/tr_header"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/admin_tableborder"
+            android:padding="5dp"
+            >
+            <TextView
+                android:id="@+id/tv_product"
+                android:text="Assignment Type"
+                android:textStyle="bold"
+                android:background="#44443b"
+                android:paddingRight="5dp"
+                android:textSize="20dp"
+                />
+            <TextView
+                android:id="@+id/tv_author"
+                android:text="# of Student"
+                android:textStyle="bold"
+                android:background="#44443b"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:textSize="20dp"
+
+                />
+
+        </TableRow>
+        <TableRow
+            android:id="@+id/tr_item_1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/admin_tableborder"
+            android:padding="5dp"
+            >
+            <TextView
+                android:id="@+id/orientation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Orientation Certificate "
+                android:paddingRight="5dp"
+                android:background="#5f5f53"
+                android:textSize="20dp"
+                />
+            <TextView
+                android:id="@+id/ori_timestamp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="0"
+                android:layout_gravity="center"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:textSize="20dp"
+                />
+
+        </TableRow>
+        <TableRow
+            android:id="@+id/tr_item_2"
+            android:background="@drawable/admin_tableborder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            >
+            <TextView
+                android:id="@+id/assignment_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:text="Lab Assignment 1"
+                android:background="#5f5f53"
+                android:textSize="20dp"
+                />
+           <TextView
+                android:id="@+id/a1_timestamp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="0"
+                android:layout_gravity="center"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:textSize="20dp"/>
+
+        </TableRow>
+        <TableRow
+            android:id="@+id/tr_item_3"
+            android:background="@drawable/admin_tableborder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            >
+            <TextView
+                android:id="@+id/assignment_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lab Assignment 2"
+                android:paddingRight="5dp"
+                android:background="#5f5f53"
+                android:textSize="20dp"
+                />
+            <TextView
+                android:id="@+id/a2_timestamp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="0"
+                android:layout_gravity="center"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:textSize="20dp"
+                />
+        </TableRow>
+
+    </TableLayout>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:id="@+id/exit"
+        android:text="Exit"
+        android:layout_margin="10dp"
+        android:clickable="true"
+        android:background="#00cafb"
+        android:layout_alignParentBottom="true"
+        />
+</RelativeLayout>

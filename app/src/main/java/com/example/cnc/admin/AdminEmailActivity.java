@@ -1,11 +1,15 @@
 package com.example.cnc.admin;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cnc.R;
@@ -63,10 +67,36 @@ public class AdminEmailActivity extends AppCompatActivity{
             updateEmail();
             System.out.println("-->AdminEmail page: line60 " + update_email);
             updateEmailSQLite(rece_id, update_email, prof_pwd);
+            //-------Alert--------
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+            builder.setTitle("The Email has been updated.");
+            builder.setMessage("Exit the page?");
+
+            builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent intent=new Intent(getApplicationContext(), AdminActivity.class);
+                    startActivity(intent);
+
+                    dialog.dismiss();
+                }
+            });
+
+           builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // Do nothing
+                    dialog.dismiss();
+                }
+            });
+            AlertDialog alert = builder.create();
+            alert.show();
 
         });
 
-        //--- No submit ---
+        //--- Exit ---
         bt_cancel = findViewById(R.id.cancel);
         bt_cancel.setOnClickListener(click->{
             Intent intent=new Intent(this, AdminActivity.class);
@@ -105,7 +135,6 @@ public class AdminEmailActivity extends AppCompatActivity{
                         }
                         scanner.close();
                         //--------
-                        Snackbar.make(bt_update, "The Email has been updated.", Snackbar.LENGTH_LONG).show();
                         System.out.println("-->AdminEmail page - updated Email : response " + response);
 
                         String jsonString = response;
@@ -115,19 +144,14 @@ public class AdminEmailActivity extends AppCompatActivity{
                             token = obj.keys().next();
                             String result = obj.getString(token);
                             System.out.println("--> AdminEmail page - updated Email : result " + result);
-
-                            Intent intentAccount = new Intent(getApplicationContext(), AdminActivity.class);
-                            startActivity(intentAccount);
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
 
                     } else {
-                        // Snack Bar to show success message that record is wrong
                         Snackbar.make(bt_update, "Error!! unable to updated", Snackbar.LENGTH_LONG).show();
                     }
-                    //do exception handling here
+
                 } catch (Exception ex) {
 
                     // Snack Bar to show unsuccessful message that record is wrong

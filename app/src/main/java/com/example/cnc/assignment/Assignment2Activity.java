@@ -123,7 +123,7 @@ public class Assignment2Activity extends AppCompatActivity {
         String timestamp = df.format(calendar.getTime());
         return timestamp;
     }
-
+/*
     // -- get timestamp from the database
     private String tsGetFromDB(String id, String code) {
 
@@ -131,6 +131,8 @@ public class Assignment2Activity extends AppCompatActivity {
         return (ts = dbHelper.getTimestamp((id+code), code));
 
     }
+    */
+
 /*
     // -- save Timestamp into the database
     private void add_Timestamp(String sID, String code, String timestamp) {

@@ -153,21 +153,32 @@ public class TimestampDBHelper extends SQLiteOpenHelper {
                 new String[]{String.valueOf(timestamp.getStudentID())});
         db.close();
     }
+    /**
+     * Delete all timestamps in the SQLite
+     */
+    public void deleteAll() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        // delete all timestamps
+        db.delete(TABLE_TIMESTAMP, null, null);
+        //db.execSQL("delete * From "+ TABLE_TIMESTAMP);
+        db.close();
+    }
+
+
 
     /**
      * Check Timestamp exist or not
       */
-    public String getTimestamp(String id, String code) {
-
+    public String getTSFromIntDB(String id, String code) {
+        String ts = null;
         // array of columns to fetch
         String[] columns = {
                 COLUMN_TIMESTAMP
         };
         SQLiteDatabase db = this.getReadableDatabase();
 
-        // selection criteria
-        String selection = COLUMN_STUDENT_ID + " = ? AND " + COLUMN_ASSMNT_CODE + " = ?";
-       // String selection = COLUMN_STUDENT_ID + " = ?";
+        // String selection = COLUMN_STUDENT_ID + " = ? AND " + COLUMN_ASSMNT_CODE + " = ?";
+        String selection = COLUMN_STUDENT_ID + " = ?";
 
         // selection argument
         String[] selectionArgs = {id};
@@ -187,8 +198,13 @@ public class TimestampDBHelper extends SQLiteOpenHelper {
 
       //  int index = cursor.getColumnIndex(COLUMN_TIMESTAMP);
      //   String ts = cursor.getString(index);
-        String ts =cursor.getString(cursor.getColumnIndex(COLUMN_TIMESTAMP));
+        System.out.println("-->TimestampDBHelper page: getTimestamp >> " + cursor);
+        if (cursor.moveToNext()) {
+            ts = cursor.getString(cursor.getColumnIndex(COLUMN_TIMESTAMP));
+            System.out.println("-->TimestampDBHelper page: ts >> " + ts);
+        }
         cursor.close();
+
         db.close();
 
         return ts;
@@ -201,15 +217,14 @@ public class TimestampDBHelper extends SQLiteOpenHelper {
 
         // array of columns to fetch
         String[] columns = {
-                COLUMN_STUDENT_ID
+                COLUMN_TIMESTAMP
         };
         SQLiteDatabase db = this.getReadableDatabase();
 
-        // selection criteria
-        String selection = COLUMN_STUDENT_ID + " = ? AND " + COLUMN_ASSMNT_CODE + " = ?";
+        String selection = COLUMN_STUDENT_ID + " = ?";
 
         // selection argument
-        String[] selectionArgs = {id, code};
+        String[] selectionArgs = {id};
 
         // query timestamp table with condition
         /**
@@ -233,6 +248,7 @@ public class TimestampDBHelper extends SQLiteOpenHelper {
 
         return false;
     }
+
 
      public Cursor getData() {
         String[] timestampTable = {COLUMN_STUDENT_ID,COLUMN_ASSMNT_CODE,COLUMN_TIMESTAMP};
