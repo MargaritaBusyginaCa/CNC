@@ -74,7 +74,7 @@ public class SubmitActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_submit);  //from layout to find listView
-        loadData();  //find the data
+        loadData();  //load the data
 
         //from server database to get Prof email
         String prof_id = "0";
@@ -178,7 +178,7 @@ public class SubmitActivity extends AppCompatActivity {
 
     }
 
-    private class MyListAdapter extends BaseAdapter {  //do listView, have to implement BaseAdapter
+    private class MyListAdapter extends BaseAdapter {  //do listView, have to implement BaseAdapter(BaseAdapter is interface that android studio defined)
         @Override
         public int getCount() {
             return elements.size() ;
@@ -221,12 +221,12 @@ public class SubmitActivity extends AppCompatActivity {
     }
 
     //Each time will clear data
-    private void loadData() {
-        elements.clear();
+    private void loadData() {  //will load data from orientation or assignment (ex: title)
+        elements.clear();  //will clear pictures
 
         studentID = studentID_def;  //studentID_def save in login, I have to get studentID_def to save in StudentID
         //determine the calling activity.
-        Intent intentFrPreActivity = getIntent();
+        Intent intentFrPreActivity = getIntent();  //get data from orientation or assignment
         title=intentFrPreActivity.getStringExtra("TITLE");  //from intent to get title, code_e and desc
         code_e = intentFrPreActivity.getStringExtra("E_CODE");
         desc = intentFrPreActivity.getStringExtra("DESC");
@@ -238,7 +238,7 @@ public class SubmitActivity extends AppCompatActivity {
         stimestampField.setVisibility(View.GONE); //if from orientation to submit page, we do not need start timestamp, so we use GONE to hide
         e_timestamp= intentFrPreActivity.getStringExtra("END_TS");  //from intent to get end timestamp and checklist code
         code_ck = intentFrPreActivity.getStringExtra("CK_CODE");
-        assignmentId="0";
+        assignmentId="0";  //hypothesis(假设）it comes from orientation, orientation ID is 0
         if(code_ck != null){  //if checklist code are not null, il will from assignment
             ck_timestamp = intentFrPreActivity.getStringExtra("CK_TS");  //we will get checklist, start and status timestamp
             s_timestamp = intentFrPreActivity.getStringExtra("START_TS");
@@ -287,9 +287,9 @@ public class SubmitActivity extends AppCompatActivity {
         public String doInBackground(String... args) {
             // Post timestamp to server
             try{
-                HttpURLConnection connection = (HttpURLConnection) new URL(args[0] ).openConnection(); //REST URL
-                connection.setRequestMethod("POST");
-                int responseCode = connection.getResponseCode(); //get response code
+                HttpURLConnection connection = (HttpURLConnection) new URL(args[0] ).openConnection(); //REST URL, create http connection
+                connection.setRequestMethod("POST");  //post update timestamps
+                int responseCode = connection.getResponseCode(); //get response code, server will give response, if code=200, post successful
                 // if response code is 200
                 if (responseCode == 200) {
                     return "done";  //query success
@@ -309,14 +309,14 @@ public class SubmitActivity extends AppCompatActivity {
     }
 
     //Post timestamp to server
-    private void UpdateServer(String student_id, String assignment_id, String task_id, String time_stamp){
-        String uri_params;
-        //prepare REST API parameter
+    private void UpdateServer(String student_id, String assignment_id, String task_id, String time_stamp){  //update server
+        String uri_params;  //parameter of url
+        //prepare REST API parameter, when I POST this url, I will get these
         uri_params = "student_id=" + student_id;
         uri_params += "&assignment_id=" + assignment_id;
         uri_params += "&task_id=" + task_id;
         uri_params += "&time_stamp=" + time_stamp;
-
+        // From Post url to get student_id, assignment_id, task_id and time_stamp, then I can see update data from MySQL
         ServerQuery req = new ServerQuery(); //creates a background thread
         req.execute(getString(R.string.rest_url) + "task/?"+uri_params);
 
@@ -328,15 +328,15 @@ public class SubmitActivity extends AppCompatActivity {
 
             // query server to get email
             try{
-                HttpURLConnection connection = (HttpURLConnection) new URL(args[0] ).openConnection(); //REST URL
-                connection.setRequestMethod("GET");
+                HttpURLConnection connection = (HttpURLConnection) new URL(args[0] ).openConnection(); //REST URL, create http connection
+                connection.setRequestMethod("GET");  //GET email, from GET url to get prof email address
                 int responseCode = connection.getResponseCode();  //Server response code
 
-                if (responseCode == 200) {  // successful
+                if (responseCode == 200) {  // successful, get response code, server will give response, if code=200, get successful
                     // read Server return message
                     String response = "";
                     String token;
-                    Scanner scanner = new Scanner(connection.getInputStream());
+                    Scanner scanner = new Scanner(connection.getInputStream());  //GET email is string
                     while (scanner.hasNextLine()) {
                         response += scanner.nextLine();
                         response += "\n";
@@ -347,7 +347,7 @@ public class SubmitActivity extends AppCompatActivity {
                         //Convert String to JSON
                         JSONObject obj = new JSONObject(response);
                         token = obj.keys().next();
-                        //get email
+                        //get email, From JSON to find email
                         prof_email = obj.getString(token);
                         System.out.println("-->Submission page: Prof email " + prof_email);
 
@@ -370,7 +370,7 @@ public class SubmitActivity extends AppCompatActivity {
        }
     }
 
-    private void getEmail(String id){  //query server to get Professor email
+    private void getEmail(String id){  //query server to get Professor email, call "getEmail" function
         //parameter for query email
         String uri_params;
         uri_params = "student_id=" + id;
