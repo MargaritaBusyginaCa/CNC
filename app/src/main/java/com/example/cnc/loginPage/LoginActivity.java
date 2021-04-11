@@ -61,7 +61,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public static String studentID_def;
     public List<User> users = new ArrayList<>();
     String email_def;
-    int index = -1;
+    int index = 0;
     int size;
     String studID, result;
     String[] task= {"01","11","12","13","21","22","23"};
@@ -137,13 +137,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 studentID_def = getStudentID(email_def);
 
                 doVerify();
-                clearTimestamp();
-
-                studID = studentID_def;
-                loadTimestamp(studID);
-
-                Intent intentAccount = new Intent(getApplicationContext(), AccountActivity.class);
-                startActivity(intentAccount);
 
                 break;
             case R.id.RegisterLink:
@@ -201,16 +194,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             scanner.close();
                             Snackbar.make(ButtonLogin, "OK REST", Snackbar.LENGTH_LONG).show();
 
+                            clearTimestamp();
 
-                           // Intent intentAccount = new Intent(getApplicationContext(), AccountActivity.class);
-                          //  intentAccount.putExtra("EMAIL", textEmail.getText().toString().trim());
-                            // email_def = textEmail.getText().toString().trim();
-                           //  studentID = getStudentID(email_def);
-                            //intentAccount.putExtra("ID", studentID_def);
+                            studID = studentID_def;
+                            loadTimestamp(studID);
+
+                            Intent intentAccount = new Intent(getApplicationContext(), AccountActivity.class);
+                            startActivity(intentAccount);
+
+                        //    email_def = textEmail.getText().toString().trim();
+                        //    studentID_def = getStudentID(email_def);
+                        //    intentAccount.putExtra("ID", studentID_def);
                             //--------------
                             emptyInputEditText();
-                         //   startActivity(intentAccount);
-
+                        //    startActivity(intentAccount);
+                            //return response;
                         } else if(responseCode == 302) {
                             /* Activation is required.
                              Snack Bar to show success message that record is wrong
@@ -457,13 +455,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         //--Load timestamps from server--
         for (String i : task) {
             getTimestamp(id, i);
-            try {
-                TimeUnit.MILLISECONDS.sleep(200);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+          //
+            waitforServerRepsonese();
+            //
         }
     }
-
+    private void waitforServerRepsonese() {
+        try {
+            TimeUnit.MILLISECONDS.sleep(200);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
 }
