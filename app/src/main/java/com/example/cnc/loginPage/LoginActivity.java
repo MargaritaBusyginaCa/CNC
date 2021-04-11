@@ -133,8 +133,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         switch (v.getId()) {
             case R.id.ButtonLogin:
 
-                email_def = textEmail.getText().toString().trim();
-                studentID_def = getStudentID(email_def);
+                //email_def = textEmail.getText().toString().trim();
+                //studentID_def = getStudentID(email_def);
 
                 doVerify();
 
@@ -195,7 +195,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             Snackbar.make(ButtonLogin, "OK REST", Snackbar.LENGTH_LONG).show();
 
                             clearTimestamp();
-
+                            email_def = textEmail.getText().toString().trim();
+                            studentID_def = getStudentID(email_def);
                             studID = studentID_def;
                             loadTimestamp(studID);
 
