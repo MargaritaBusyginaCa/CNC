@@ -52,7 +52,7 @@
     <string name="admin_report_bt">Get The Assignment Status </string>
     <string name="hint_status">Not Submitted</string>
     <string name="invalid_student_id">Invalid ID!</string>
-
+    <string name="error_email">Invalid Email Address</string>
 
 
 
@@ -92,7 +92,7 @@
     <!--    <string name="rest_url">http://192.168.2.200:8181/api/</string>-->
 
     <!-- use the below for virtual device running on the pc -->
-    <string name="rest_url">http://10.0.2.2:8181/api/</string>
+    <!--<string name="rest_url">http://10.0.2.2:8181/api/</string>-->
 
-    <!-- <string name="rest_url">http://192.168.0.22:8181/api/</string> -->
+    <string name="rest_url">http://192.168.0.22:8181/api/</string>
      </resources>

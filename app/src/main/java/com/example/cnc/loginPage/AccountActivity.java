@@ -37,10 +37,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import static com.example.cnc.loginPage.LoginActivity.studentID_def;
+import static com.example.cnc.loginPage.LoginActivity.email_def;
 
 public class AccountActivity extends AppCompatActivity {
     Button bt_orientation, bt_assignment, bt_submit, bt_manual, bt_status, bt_logout, bt_admin;
-    String adminID = "999999";
+    //String adminID = "999999";
+    String adminID = "admin@algonquinlive.com";
     String studID, result, resultTS;
 
 
@@ -57,29 +59,13 @@ public class AccountActivity extends AppCompatActivity {
         bt_logout=findViewById(R.id.logout_bt);
         bt_admin=findViewById(R.id.admin_bt);
 
-        if(studentID_def.equals(adminID)){
+        //if(studentID_def.equals(adminID)){
+        if(email_def.equals(adminID)){
              bt_admin.setVisibility(View.VISIBLE);
         }else{
             bt_admin.setVisibility(View.GONE);
         }
-/*
-        //--Load timestamps from server--
-        for (String i : task) {
-            getTimestamp(studID, i);
-        //        add_Timestamp(studID, i, result);
-                System.out.println("--> Account page: i>> " + i );
-           // }
-        }
-*/
-        /*
-        getTimestamp(studID, "01");
-        getTimestamp(studID, "11");
-        getTimestamp(studID, "12");
-        getTimestamp(studID, "13");
-        getTimestamp(studID, "21");
-        getTimestamp(studID, "22");
-        getTimestamp(studID, "23");
-*/
+
         init();
     }
 
@@ -118,41 +104,7 @@ public class AccountActivity extends AppCompatActivity {
         });
 
     }
-//---------------------
-    /*
-    private class ServerQuery extends AsyncTask< String, Integer, String> {
 
-        public String doInBackground(String... args) {
-
-            try{
-                HttpURLConnection connection = (HttpURLConnection) new URL(args[0] ).openConnection();
-                connection.setRequestMethod("GET");
-                int responseCode = connection.getResponseCode();
-
-                if (responseCode == 200) {
-
-                    System.out.println("-->Login page: loadTimestamp >> 200" );
-                    return "done";
-                }else
-                {
-                    System.out.println("-->Login page: loadTimestamp >> not work" );
-                    return (getString(R.string.error_valid_email_password));
-                }
-
-            }catch(Exception ex){
-            return "REST API Failed";
-            }
-        }
-    }
-
-    private void loadTimestamp(String student_id, String task_id){
-        String uri_params;
-        uri_params = "student_id=" + student_id;
-        uri_params += "&task_id=" + task_id;
-        ServerQuery req = new ServerQuery(); //creates a background thread
-        req.execute(getString(R.string.rest_url) + "get_timestamp/?"+uri_params);
-    }
-     */
     //-- load timestamps from Server
     private void getTimestamp(String student_id, String task_id) {
         Thread thread = new Thread(new Runnable() {

@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.cnc.loginPage.LoginActivity.studentID_def;
+import static com.example.cnc.loginPage.LoginActivity.email_def;
 import com.example.cnc.supporters.Timestamp;
 
 
@@ -43,18 +44,6 @@ public class StatusActivity extends AppCompatActivity{
 
     private void init() {
 
-
-        //--- retrieve email from database
-        DatabaseHelper databaseHelper = new DatabaseHelper(this);
-        List<User> users = databaseHelper.getAllUser();
-        Integer index=0;
-        for (int i = 0; i < users.size(); i++) {
-            if (users.get(i).getStudentID().equalsIgnoreCase(studentID_def)) {
-                index = i;
-                break;
-            }
-        }
-        String email = users.get(index).getEmail();
         //--- retrieve timestamp from database
         ori_ts = getTsFromDB(studentID_def, "01");
         ck1_ts = getTsFromDB(studentID_def, "11");
@@ -68,7 +57,7 @@ public class StatusActivity extends AppCompatActivity{
         TextView typedStudent = findViewById(R.id.submitStudentID);
         typedStudent.setText(studentID_def);
         TextView typedEmail = findViewById(R.id.submitEmail);
-        typedEmail.setText(email);
+        typedEmail.setText(email_def);
         TextView typedOri = findViewById(R.id.ori_timestamp);
         typedOri.setText(ori_ts);
         TextView typedCK1 = findViewById(R.id.ck1_timestamp);
@@ -105,22 +94,6 @@ public class StatusActivity extends AppCompatActivity{
         tsDBHelper = new TimestampDBHelper(this);
         String priKey = id + code;
         return (tsDBHelper.getTSFromIntDB(priKey, code));
-      /*
-        if(tsDBHelper.isExist(priKey, code)) {
-            List<Timestamp> ts = tsDBHelper.getAllRecords();
-            Integer index = 0;
-            for (int i = 0; i < ts.size(); i++) {
-                if (ts.get(i).getStudentID().equalsIgnoreCase(priKey)) {
-                    index = i;
-                    break;
-                }
-            }
-            String final_ts = ts.get(index).getTimestamp();
-            return final_ts;
-        }else {
-            return null;
-        }
-        */
 
     }
 

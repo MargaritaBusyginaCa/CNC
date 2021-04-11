@@ -14,8 +14,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cnc.R;
 import com.example.cnc.admin.AdminEmailActivity;
+import com.example.cnc.admin.AdminReportActivity;
 import com.example.cnc.sql.DatabaseHelper;
 import com.example.cnc.sql.TimestampDBHelper;
+import com.example.cnc.submit.SubmitActivity;
 import com.example.cnc.supporters.InputValidation;
 import com.example.cnc.supporters.Timestamp;
 import com.example.cnc.supporters.User;
@@ -59,8 +61,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
     public static String studentID_def;
+    public static String email_def;
     public List<User> users = new ArrayList<>();
-    String email_def;
+    //String email_def;
     int index = 0;
     int size;
     String studID, result;
@@ -133,8 +136,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         switch (v.getId()) {
             case R.id.ButtonLogin:
 
-                //email_def = textEmail.getText().toString().trim();
-                //studentID_def = getStudentID(email_def);
+                email_def = textEmail.getText().toString().trim();
+                getStudentID(email_def);
 
                 doVerify();
 
@@ -195,8 +198,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             Snackbar.make(ButtonLogin, "OK REST", Snackbar.LENGTH_LONG).show();
 
                             clearTimestamp();
-                            email_def = textEmail.getText().toString().trim();
-                            studentID_def = getStudentID(email_def);
+
                             studID = studentID_def;
                             loadTimestamp(studID);
 
@@ -366,7 +368,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             e.printStackTrace();
                         }
                     } else {
-                        Snackbar.make(ButtonLogin, "No Timestamp!", Snackbar.LENGTH_LONG).show();
+                       //Snackbar.make(ButtonLogin, "", Snackbar.LENGTH_LONG).show();
                     }
                     //do exception handling here
                 } catch (Exception ex) {
@@ -390,37 +392,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     }
     //------------------------
-/*
-    private void saveTSInSQLite(String id, String listResult){
-        Timestamp ts_new;
-        String priKey;
 
-         ts_new = new Timestamp();
-        try {
-            JSONArray jsonArr = new JSONArray(listResult);
-
-            for (int i = 0; i < jsonArr.length(); i++) {
-                JSONObject jsonObj = jsonArr.getJSONObject(i);
-                String k = jsonObj.keys().next();
-                String v = jsonObj.getString(k);
-                priKey = id + k;
-                ts_new.setStudentID(priKey);
-                ts_new.setAssmntCode(k);
-                ts_new.setTimestamp(v);
-
-                tsDBHelper.addTimestamp(ts_new);
-
-                System.out.println("Key: " + k + ", value: " + v);
-
-                Log.i("Info", "Key: " + k + ", value: " + jsonObj.getString(k));
-            }
-
-        } catch (JSONException ex) {
-            ex.printStackTrace();
-        }
-    }
-
- */
     // -- save Timestamp into the SQLite database
     private void add_Timestamp(String sID, String tastID, String timestamp) {
         Timestamp ts_new;
@@ -435,20 +407,51 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
 
     //--- retrieve student ID from database
+        private class ServerGet extends AsyncTask< String, Integer, String> {
 
-    private String getStudentID(String stuEmail) {
-      //  databaseHelper = new DatabaseHelper(this);
-        users = databaseHelper.getAllUser();
-        String stuID;
+            public String doInBackground(String... args) {
 
-        for (int i = 0; i < users.size(); i++) {
-            if (users.get(i).getEmail().equalsIgnoreCase(stuEmail)) {
-                index = i;
-                break;
+                try{
+                    HttpURLConnection connection = (HttpURLConnection) new URL(args[0] ).openConnection();
+                    connection.setRequestMethod("GET");
+                    int responseCode = connection.getResponseCode();
+
+                    if (responseCode == 200) {
+                        String response = "";
+                        String token;
+                        Scanner scanner = new Scanner(connection.getInputStream());
+                        while (scanner.hasNextLine()) {
+                            response += scanner.nextLine();
+                            response += "\n";
+                        }
+                        scanner.close();
+
+                        try {
+                            JSONObject obj = new JSONObject(response);
+                            studentID_def = obj.optString("student_id");
+                            System.out.println("-->Login page: getStudentID " + studentID_def);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        return "done";
+                    }
+                    else
+                    {
+                        return (getString(R.string.error_email));
+                    }
+
+                }catch(Exception ex){
+                    return "Error!!! Unable to get the student ID in server.";
+                }
             }
         }
-        stuID = users.get(index).getStudentID();
-        return stuID;
+
+    private void getStudentID(String stuEmail) {
+
+        String uri_params;
+        uri_params = "student_email=" + stuEmail;
+        ServerGet req = new ServerGet();
+        req.execute(getString(R.string.rest_url) + "get_student_id/?" + uri_params);
     }
 
     private void loadTimestamp(String id){
